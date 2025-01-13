@@ -4,7 +4,7 @@ export default {
   content: ['./src/**/*.jsx', './index.html', './App.jsx'],
   theme: {
     fontFamily:{
-      Inter: ['Inter' , 'sans-serif'],
+      Outfit: ['Outfit' , 'sans-serif'],
     },
     extend: {
       screens:{

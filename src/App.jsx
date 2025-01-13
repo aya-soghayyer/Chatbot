@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 import './App.css'
 import Circle from './Compononts/Circle/Circle'
+import Footer from './Compononts/Footer/Footer'
 import Header from './Compononts/Header/Header'
 import Navbar from './Compononts/Navbar/Navbar'
 
@@ -24,7 +25,7 @@ function App() {
       </div>
       <Header/>
       <Circle/>
-
+      <Footer/>
       </div>
     
 

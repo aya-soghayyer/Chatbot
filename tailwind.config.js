@@ -13,7 +13,8 @@ export default {
       colors:{
         BgPrimary: '#213C84',
         secondaryText:'#6B7280',
-        mainText:'#111928'
+        mainText:'#111928',
+        BgFooter:'#213C84C4'
       }
     },
   },

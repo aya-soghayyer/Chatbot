@@ -3,6 +3,9 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Welcome from "./Layout/Welcome";
 import Routes from "./Routes/Routes";
+import Login from "./Layout/Login";
+import About from "./Layout/About";
+import SignUp from "./Layout/SignUp";
 
 
 function App() {
@@ -18,7 +21,19 @@ function App() {
         element:<Welcome/> ,
       },
       {
-        // path: "/About",
+        path: "/About",
+        element: <About /> ,
+      },
+      {
+        path: "/Login",
+        element: <Login /> ,
+      },
+      {
+        path: "/Signup",
+        element: <SignUp /> ,
+      },
+      {
+        path: "/Contact",
         // element: <About /> ,
       },
      {

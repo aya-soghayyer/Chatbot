@@ -1,11 +1,15 @@
 // import { useState } from 'react'
 import "./App.css";
+import "regenerator-runtime/runtime";
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Welcome from "./Layout/Welcome";
 import Routes from "./Routes/Routes";
 import Login from "./Layout/Login";
 import About from "./Layout/About";
 import SignUp from "./Layout/SignUp";
+import GuestChat from "./Layout/GuestChat";
+import NotFound from "./Layout/NotFound";
 
 
 function App() {
@@ -36,9 +40,13 @@ function App() {
         path: "/Contact",
         // element: <About /> ,
       },
+      {
+        path: "/chat",
+        element: <GuestChat /> ,
+      },
      {
-        // path: "*",              //another way for the error 
-        // element: <NotFound />
+        path: "*",              //another way for the error 
+        element: <NotFound />
       }
     ]
   },

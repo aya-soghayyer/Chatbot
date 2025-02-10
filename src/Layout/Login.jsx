@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import Circle from '../Compononts/Circle/Circle'
 import HeaderL from '../Compononts/Header/HeaderL'
 
@@ -8,7 +8,7 @@ function Login() {
 <div className="bg-black">
                 <div className=" flex bg-black -mb-8">
                     <div className="  flex justify-between">
-                        <div className="-mt-16 ">
+                        <div className="-mt-16 -ml-7 z-0">
                             <Circle />
                         </div>
                     </div>

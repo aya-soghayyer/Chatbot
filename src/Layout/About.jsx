@@ -1,8 +1,13 @@
 import React from 'react'
+import Voice from '../Compononts/Header/voice'
 
 function About() {
   return (
-    <div>About</div>
+    <>
+    
+    
+    <Voice/>
+    </>
   )
 }
 

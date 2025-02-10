@@ -16,14 +16,14 @@ function Header() {
             <div className="flex justify-between mt-10   w-full ">
               <span className="w-[50%] mr-5 ">
                 <NavLink to="/Signup">
-                  <button className="w-full mt-10  px-5 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
+                  <button className="w-full mt-10  px-4 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
                     Sign Up
                   </button>
                 </NavLink>
               </span>
               <span className="w-[50%]">
                 <NavLink to="/Login">
-                  <button className="w-full mt-10  px-5 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
+                  <button className="w-full mt-10  px-4 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
                     Login
                   </button>
                 </NavLink>
@@ -31,7 +31,7 @@ function Header() {
             </div>
 
             <div className="text-xl flex justify-center my-6 underline underline-offset-2">
-              <NavLink to="/guest">Try it as Guest</NavLink>
+              <NavLink to="/chat">Try it as Guest</NavLink>
             </div>
           </div>
           <div className="w-full 2md:w-[50%]">

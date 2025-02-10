@@ -19,7 +19,7 @@ function Navbar() {
         rel="stylesheet"
       />
       <div className="flex space-x-4 font-Outfit"></div>
-      <nav className="flex items-center justify-between gap-8 max-w-[1280px] w-[90%] m-auto py-1 text-white border-b-2 border-slate-500 ">
+      <nav className="flex items-center justify-between gap-8 max-w-[1280px] w-[90%] m-auto py-1 text-white  border-b-2 border-slate-500 ">
         <div className="flex items-center w-full 2md:w-fit justify-between">
           <div>
             <NavLink to="/">

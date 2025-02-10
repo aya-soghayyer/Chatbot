@@ -6,10 +6,10 @@ import { Outlet } from "react-router-dom";
 function Routes() {
     return (
     <>
-        <div className="bg-black z-10">
+        <div className="bg-black">
             <Navbar />
             <Outlet />
-            <div className="text-white   bg-BgFooter ">
+            <div className="text-white mt-20  bg-BgFooter ">
                 <Footer />
             </div>
         </div>

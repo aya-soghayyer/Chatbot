@@ -13,9 +13,7 @@ function NotFound() {
             <Circle />
             </div>
           </div>
-          {/* <div className='z-10'> */}
           <HeaderNotFound />
-          {/* </div> */}
           <Circle />
         </div>
       </div>

@@ -1,8 +1,11 @@
-import React from 'react'
+import { useState } from "react";
 import Frame from "../../assets/Frame.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function HeaderL() {
+    const [isInvalidID, setInvalidID] = useState(false)
+    const [isInvalidMilo, setInvalidMilo] = useState(false)
+
     return (
         <>
             <header className="wrapper py-16  z-50 font-Outfit text-white">
@@ -19,18 +22,14 @@ function HeaderL() {
                                 <input
                                     type="text"
                                     id="studentId"
-                                    className="border p-4 h-4 w-full  bg-slate-500 border-white rounded-sm   invalid:border-red-500"
-                                    name="studentId"
+                                    className={`border p-4 h-4 w-full  bg-slate-500 border-white rounded-sm ${isInvalidID ? 'invalid:border-red-500 ' : 'border-white '}   `}
+                                    onFocus={() => setInvalidID(true)} name="studentId"
                                     placeholder="Studdent ID"
                                     required
                                     pattern="[0-9]{8}"
                                     size={7}
-
                                 />
                             </div>
-
-
-
                             <div className="grid justify-items-start gap-2 px-5 pb-2">
                                 <label
                                     htmlFor="password milo"
@@ -41,16 +40,15 @@ function HeaderL() {
                                 <input
                                     type="password"
                                     id="password milo"
-                                    className="border p-4   h-4 w-full bg-slate-500 border-white rounded-sm  invalid:border-red-500 "
-                                    name="passowrd"
+                                    className={`border p-4 h-4 w-full  bg-slate-500 border-white rounded-sm ${isInvalidMilo ? 'invalid:border-red-500 ' : 'border-white '}   `}
+                                    onFocus={() => setInvalidMilo(true)} name="passowrd"
                                     placeholder="Milo Password"
                                     required
                                 />
                             </div>
-                            <NavLink to="/" className='p-5 pt-1 text-base font-extralight'>
+                            <Link to="/" className="p-5 pt-1 text-base font-extralight">
                                 Forgot password?
-                            </NavLink>
-
+                            </Link>
                         </form>
                         <div className="  px-5 w-full ">
                             <span className=" ">
@@ -61,11 +59,13 @@ function HeaderL() {
                                 </NavLink>
                             </span>
                         </div>
-                        <div className='flex justify-center '>
-                            <span className="text-base font-extralight my-6"> Don't have an account? </span>
+                        <div className="flex justify-center ">
+                            <span className="text-base font-extralight my-6">
+                                {" "}
+                                Don't have an account?{" "}
+                            </span>
                             <div className="text-lg font-medium flex justify-center my-6 underline underline-offset-2 text-[#21ABDB]">
-
-                                <NavLink to="/Signup">Sign up</NavLink>
+                                <Link to="/Signup">Sign up</Link>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ function HeaderL() {
                 </div>
             </header>
         </>
-    )
+    );
 }
 
-export default HeaderL
+export default HeaderL;

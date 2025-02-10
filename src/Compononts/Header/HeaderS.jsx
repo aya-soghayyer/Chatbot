@@ -25,16 +25,23 @@ function HeaderS() {
         setError("")
 
         try {
-            const response = await axios.post("http://localhost:8000/createUser", {
-                username: formData.studentId,
-                password: formData.portalPassword,
-                miloPassword: formData.miloPassword,
+            const response = await fetch("http://localhost:8000/user/signup", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    portal_id: formData.studentId,
+                    portal_password: formData.portalPassword,
+                    password: formData.miloPassword
+                })
             });
-            setSuccess("User registered successfully!");
-            console.log("Response:", response.data);
-        } catch (e) {
-            setError("Failed to register. Please check your details.");
-            console.error("Error:", e);
+    
+            const data = await response.json();
+            console.log("Response:", data);
+        } catch (error) {
+            console.error("Error:", error);
         }
     }
     return (

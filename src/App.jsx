@@ -3,14 +3,13 @@ import "./App.css";
 import "regenerator-runtime/runtime";
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Welcome from "./Layout/Welcome";
+import Welcome from "./views/Welcome";
 import Routes from "./Routes/Routes";
-import Login from "./Layout/Login";
-import About from "./Layout/About";
-import SignUp from "./Layout/SignUp";
-import GuestChat from "./Layout/GuestChat";
-import NotFound from "./Layout/NotFound";
-
+import Login from "./views/Login";
+import About from "./views/About";
+import SignUp from "./views/SignUp";
+import GuestChat from "./views/GuestChat";
+import NotFound from "./views/NotFound";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -41,7 +40,7 @@ function App() {
         // element: <About /> ,
       },
       {
-        path: "/chat",
+        path: "/Chat",
         element: <GuestChat /> ,
       },
      {
@@ -53,7 +52,7 @@ function App() {
   ]);
   return (
     <>
-     <RouterProvider router={router} />
+    <RouterProvider router={router} />
     </>
   );
 }

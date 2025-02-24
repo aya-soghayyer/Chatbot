@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import SpeechRecognition, { useSpeechRecognition } from  'react-speech-recognition';
 import { useState } from 'react';
+import voiceMessage from '../../assets/images/RecordingButton.svg'
 
 function Voice() {
     const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const [language, setLanguage] = useState('en-US'); // Default language
+  const [language, setLanguage] = useState('en-US'); 
   const recognitionRef = useRef(null);
 
   useEffect(() => {
@@ -87,43 +88,23 @@ function Voice() {
       </div>
 
       {/* Record/Stop Button */}
-      <button
-        onClick={handleToggle}
-        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded flex items-center space-x-2 focus:outline-none"
-      >
+        <button type="submit"  onClick={handleToggle}  className="items-end w-8">
+                         
         {listening ? (
           // Stop icon: a square icon
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <rect x="6" y="6" width="12" height="12" />
-          </svg>
+          <img src={voiceMessage} alt="Send voice message icon"  className='bg-green-600' />
+     
         ) : (
           // Microphone icon: indicates ready to record
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 1v11m-4 0a4 4 0 118 0v4a4 4 0 01-8 0v-4z"
-            />
-          </svg>
+          <img src={voiceMessage} alt="Send voice message icon" className='bg-red-800'  />
+     
         )}
         <span>{listening ? 'Stop' : 'Record'}</span>
       </button>
 
       {/* Display Transcript */}
       <div className="w-full max-w-md p-4 border rounded">
-        <p className="text-gray-800 whitespace-pre-wrap">{transcript}</p>
+        <p className="text-white whitespace-pre-wrap">{transcript}</p>
       </div>
     </div>
 </>

@@ -1,6 +1,6 @@
-import notFound from '../../assets/notFound.svg'
+import notFound from '../../assets/images/notFound.svg'
 
-function HeaderNotFound() {
+function NotFoundHeader() {
     return (
         <>
             <div className=' w-[50%] z-10 '>
@@ -10,4 +10,4 @@ function HeaderNotFound() {
     )
 }
 
-export default HeaderNotFound
+export default NotFoundHeader

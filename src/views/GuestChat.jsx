@@ -1,18 +1,18 @@
 // import React from "react";
 import Circle from "../Compononts/Circle/Circle";
-import HeaderGuestChat from "../Compononts/Header/HeaderGuestChat";
+import GuestChatHeader from "../Compononts/Header/GuestChatHeader";
 
 function GuestChat() {
     return (
         <>
-            <div className="bg-black ">
-                <div className=" flex bg-black -mb-8">
+            <div className="bg-Primary  ">
+                <div className=" flex  -mb-8">
                     <div className="  flex justify-between">
                         <div className="-mt-16  ">
                             <Circle />
                         </div>
                     </div>
-                    <HeaderGuestChat />
+                    <GuestChatHeader />
                     <div className="z-20">
                     </div>
                     <Circle />

@@ -1,6 +1,6 @@
-import Frame from "../../assets/Frame.svg";
+import Frame from "../../assets/images/Frame.svg";
 import { NavLink } from "react-router-dom";
-function Header() {
+function WelcomeHeader() {
   return (
     <>
       <header className="wrapper py-16  z-50 font-Outfit text-white">
@@ -15,17 +15,22 @@ function Header() {
             </p>
             <div className="flex justify-between mt-10   w-full ">
               <span className="w-[50%] mr-5 ">
-                <NavLink to="/Signup">
-                  <button className="w-full mt-10  px-4 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
-                    Sign Up
+                <NavLink to="/Login">
+                  <button className="w-full mt-10  px-4 py-3 rounded-[10px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
+                    Login
                   </button>
                 </NavLink>
               </span>
               <span className="w-[50%]">
-                <NavLink to="/Login">
-                  <button className="w-full mt-10  px-4 py-3 rounded-[5px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
-                    Login
-                  </button>
+                <NavLink to="/Signup">
+                <button className="w-full p-[2px] rounded-[10px]  bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] mt-10 relative">
+      <dev className="rounded-[10px] capitalize font-medium text-white bg-Primary block px-4 py-3 ">
+        sign up
+      </dev>
+    </button>
+                 
+                 
+
                 </NavLink>
               </span>
             </div>
@@ -43,4 +48,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default WelcomeHeader;

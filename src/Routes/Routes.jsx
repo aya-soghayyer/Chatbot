@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 function Routes() {
     return (
     <>
-        <div className="bg-black">
+        <div className="bg-Primary">
             <Navbar />
             <Outlet />
             <div className="text-white mt-20  bg-BgFooter ">

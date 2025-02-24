@@ -1,23 +1,22 @@
 // import React from 'react'
 import Circle from "../Compononts/Circle/Circle";
-import Header from "../Compononts/Header/Header";
+import WelcomeHeader from "../Compononts/Header/WelcomeHeader";
 function Welcome() {
   return (
-
     <>
-    <div className="bg-black">
-        <div className=" flex bg-black -mb-8">
+      <div className="bg-Primary">
+        <div className=" flex bg-primary -mb-8">
           <div className="  flex justify-between">
             <div className="-mt-16 ">
-            <Circle />
+              <Circle />
             </div>
           </div>
-          <Header />
+          <WelcomeHeader />
           <Circle />
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Welcome
+export default Welcome;

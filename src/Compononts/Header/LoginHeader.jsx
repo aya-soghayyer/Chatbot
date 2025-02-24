@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Frame from "../../assets/Frame.svg";
+import Frame from "../../assets/images/Frame.svg";
 import { Link, NavLink } from "react-router-dom";
 
 function HeaderL() {

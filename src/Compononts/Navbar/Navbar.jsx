@@ -1,5 +1,5 @@
 import { useState } from "react";
-import websiteName from "../../assets/Frame 1 (2).png";
+import websiteName from "../../assets/images/Frame 1 (2).png";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -29,7 +29,6 @@ function Navbar() {
               alt="MiLo Logo"
             />  
             </NavLink>
-            
           </div>
           <div className="block 2md:hidden">
             <i className="material-icons">menu</i>

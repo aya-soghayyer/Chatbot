@@ -2,10 +2,42 @@ import { useState } from "react";
 import Frame from "../../assets/images/Frame.svg";
 import { Link, NavLink } from "react-router-dom";
 
-function HeaderL() {
+function LoginHeader() {
     const [isInvalidID, setInvalidID] = useState(false)
     const [isInvalidMilo, setInvalidMilo] = useState(false)
+    const [isSuccess, setSuccess] = useState("");
+    const [isError, setError] = useState("");
 
+    const [formData, setFormData] = useState({
+        studentId: "",
+        miloPassword: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSuccess("");
+        setError("");
+        try {
+            const response = await fetch("http://localhost:8000/user/signup", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    portal_id: formData.studentId,
+                    miloPassword: formData.miloPassword,
+                }),
+            });
+            const data = await response.json();
+            console.log("Response:", data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
     return (
         <>
             <header className="wrapper py-16  z-50 font-Outfit text-white">
@@ -14,7 +46,7 @@ function HeaderL() {
                         <h2 className=" text-4xl 2md:text-5xl flex justify-center line font-bold mb-6 capitalize ">
                             Login
                         </h2>
-                        <form action="" method="post" className="w-full">
+                        <form action="" onSubmit={handleSubmit} method="post" className="w-full">
                             <div className="grid justify-items-start gap-2 px-5 py-6">
                                 <label htmlFor="studentId" className="text-xl font-extralight">
                                     Student ID
@@ -26,6 +58,7 @@ function HeaderL() {
                                     onFocus={() => setInvalidID(true)} name="studentId"
                                     placeholder="Studdent ID"
                                     required
+                                    onChange={handleChange}
                                     pattern="[0-9]{8}"
                                     size={7}
                                 />
@@ -43,6 +76,7 @@ function HeaderL() {
                                     className={`border p-4 h-4 w-full  bg-slate-500 border-white rounded-sm ${isInvalidMilo ? 'invalid:border-red-500 ' : 'border-white '}   `}
                                     onFocus={() => setInvalidMilo(true)} name="passowrd"
                                     placeholder="Milo Password"
+                                    onChange={handleChange}
                                     required
                                 />
                             </div>
@@ -50,19 +84,18 @@ function HeaderL() {
                                 Forgot password?
                             </Link>
                         </form>
-                        <div className="  px-5 w-full ">
+                        <div className="px-5 w-full">
                             <span className=" ">
-                                <NavLink to="/Login">
+                                <Link to="/Login">
                                     <button className="w-full mt-4  px-5 py-2 rounded-[5px] capitalize text-lg font-normal bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
                                         Login
                                     </button>
-                                </NavLink>
+                                </Link>
                             </span>
                         </div>
-                        <div className="flex justify-center ">
+                        <div className="flex justify-center">
                             <span className="text-base font-extralight my-6">
-                                {" "}
-                                Don't have an account?{" "}
+                                Don't have an account?
                             </span>
                             <div className="text-lg font-medium flex justify-center my-6 underline underline-offset-2 text-[#21ABDB]">
                                 <Link to="/Signup">Sign up</Link>
@@ -78,4 +111,4 @@ function HeaderL() {
     );
 }
 
-export default HeaderL;
+export default LoginHeader;

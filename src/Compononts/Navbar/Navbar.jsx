@@ -1,5 +1,5 @@
 import { useState } from "react";
-import websiteName from "../../assets/images/Frame 1 (2).png";
+import websiteName from "../../assets/images/Logo.svg";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -20,16 +20,14 @@ function Navbar() {
       />
       <div className="flex space-x-4 font-Outfit"></div>
       <nav className="flex items-center justify-between gap-8 max-w-[1280px] w-[90%] m-auto py-1 text-white  border-b-2 border-slate-500 ">
-        <div className="flex items-center w-full 2md:w-fit justify-between">
-          <div>
+        <div className="flex items-center w-full 2md:w-fit z-30">
             <NavLink to="/">
             <img
-              className=" w-[120px] p-0 sm:w-[300px]"
+              className=" w-[100px] sm:w-[150px]"
               src={websiteName}
               alt="MiLo Logo"
             />  
             </NavLink>
-          </div>
           <div className="block 2md:hidden">
             <i className="material-icons">menu</i>
           </div>
@@ -38,11 +36,10 @@ function Navbar() {
           <ul className="flex gap-8">
             <div className="relative">
               <div
-                className={`absolute bottom-3 left-0 w-full h-[4px]  ${
-                  isHovered
-                    ? "bg-gradient-to-r scale-90 from-[#6327C9] to-[#21ABDB] rounded-full  "
-                    : "hidden"
-                }`}
+                className={`absolute bottom-3 left-0 w-full h-[4px] bg-gradient-to-r from-[#6327C9] to-[#21ABDB] rounded-full transition-all duration-1000 ${
+                    isHovered ? "blur-none opacity-100" : "blur-sm opacity-0"
+                    // "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
+                  }`}
               ></div>
               <div className="p-4">
                 <li>
@@ -59,10 +56,8 @@ function Navbar() {
             </div>
             <div className="relative">
               <div
-                className={`absolute bottom-3 left-0 w-full h-[4px]  ${
-                  isHovered3
-                    ? "bg-gradient-to-r scale-90 from-[#6327C9] to-[#21ABDB] rounded-full  "
-                    : "hidden"
+                 className={`absolute bottom-3 left-0 w-full h-[4px] bg-gradient-to-r from-[#6327C9] to-[#21ABDB] rounded-full transition-all duration-1000 ${
+                  isHovered3 ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
                 }`}
               ></div>
               <div className="p-4">
@@ -80,10 +75,10 @@ function Navbar() {
             </div>
             <div className="relative">
               <div
-                className={`absolute bottom-3 left-0 w-full h-[4px]  ${
-                  isHovered4
-                    ? "bg-gradient-to-r scale-90 from-[#6327C9] to-[#21ABDB] rounded-full  "
-                    : "hidden"
+                className={`absolute bottom-3 left-0 w-full h-[4px] bg-gradient-to-r from-[#6327C9] to-[#21ABDB] rounded-full transition-all duration-1000 ${
+                  isHovered4 ? "rotate-0 opacity-100" : "-rotate-12 opacity-0"
+                  // "blur-none opacity-100" : "blur-sm opacity-0"
+                  // "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
                 }`}
               ></div>
               <div className="p-4">
@@ -91,7 +86,7 @@ function Navbar() {
                   <NavLink
                     onMouseEnter={() => setIsHovered4(true)}
                     onMouseLeave={() => setIsHovered4(false)}
-                    className="  font-medium capitalize   "
+                    className="font-medium capitalize"
                     to="/About"
                   >
                     about us

@@ -10,6 +10,7 @@ import About from "./views/About";
 import SignUp from "./views/SignUp";
 import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
+import Navbar from "./Compononts/Navbar/Navbar";
 
 function App() {
   // const [count, setCount] = useState(0)

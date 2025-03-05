@@ -62,30 +62,56 @@ function HeaderGuestChat() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (inputValue.trim() !== "") {
-      setMessages([...messages, { text: inputValue, sender: "user" }]);
-      setInputValue("");
+    if (!inputValue.trim()) return; // Prevent empty messages
+  
+    // Add user message to chat
+    const userMessage = { text: inputValue, sender: "user" };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+  
+    setInputValue(""); // Clear input after sending
+  
+    try {
+      const response = await fetch("http://localhost:5000/chatbot", { // Change URL to match your backend
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: inputValue }),
+      });
+  
+      const data = await response.json();
+  
+      if (data.response) {
+        const botMessage = { text: data.response, sender: "bot" };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      }
+    } catch (error) {
+      console.error("Error fetching chatbot response:", error);
     }
   };
+  
 
   return (
     <div className="grid grid-rows-2 w-full mb-10 z-20 p-5 rounded-2xl mt-5">
-      <div className=" overflow-y-auto mb-4 backdrop-blur-3xl rounded-2xl p-5">
-        {messages.map((msg, index) => (
-          <span
-            key={index}
-            className={`p-2 rounded-lg mb-2 w-fit grid ${
-              msg.sender === "user" ? "bg-slate-400/40 text-white self-start " : "bg-[#213C84] text-white self-end"
-            }`}
-          >
-            {msg.text}
-          </span>
-        ))}
-      </div>
+      <div className="overflow-y-auto mb-4 backdrop-blur-3xl rounded-2xl p-5">
+  {messages.map((msg, index) => (
+    <div
+      key={index}
+      className={`flex w-full mb-2 ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+    >
+      <span
+        className={`p-2 rounded-lg mb-2 w-fit ${
+          msg.sender === "user" ? "bg-slate-700/40 text-white self-end rounded-br-none" : "bg-[#213C84] text-white self-start"
+        }`}
+      >
+        {msg.text}
+      </span>
+    </div>
+  ))}
+</div>
 
-      <h2 className="text-white font-bold text-[28px] mt-40">What can I help with?</h2>
+
+      <h2 className={`text-white font-bold text-[28px] flex justify-center items-end`}>What can I help with?</h2>
 
       {/* Input and Buttons */}
       <div className="relative grid">
@@ -106,7 +132,7 @@ function HeaderGuestChat() {
           <input
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="p-4 pl-12 rounded-2xl bg-slate-200 bg-opacity-10 w-full text-white absolute"
+            className="p-4 pl-12 rounded-2xl bg-slate-200 bg-opacity-10 w-full text-white sticky bottom-0"
             type="text"
             placeholder="Ask MiLo"
           />

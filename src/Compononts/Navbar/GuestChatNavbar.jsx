@@ -16,7 +16,7 @@ function NavbarChat() {
             <ul className="flex justify-between gap-3">
               <li>
                 <NavLink to="/login">
-                  <button className="w-full px-6 py-2 rounded-[10px] text-white font-medium capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB]">
+                  <button className="w-full px-6 py-2 rounded-[10px] text-white font-medium capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] shadow-inner shadow-white">
                     Login
                   </button>
                 </NavLink>
@@ -24,7 +24,7 @@ function NavbarChat() {
               <li>
                 <NavLink to="/signup">
                   <button className="w-full p-[2px] rounded-[10px] bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] relative">
-                    <dev className="rounded-[10px] capitalize font-medium text-white bg-Primary block px-6 py-2 ">
+                    <dev className="rounded-[10px] capitalize font-medium text-white bg-Primary block px-6 py-2">
                       sign up
                     </dev>
                   </button>
@@ -32,8 +32,8 @@ function NavbarChat() {
               </li>
               {/* <button className="px-6 py-2 font-semibold text-white  bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] border-b-4 border-blue-800 rounded hover:bg-gradient-to-r hover:from-[#4b1e98] hover:to-[#187ea0] hover:border-e-cyan-800">
     Button
-</button>
-<button
+</button> */}
+{/* <button
   className="bg-[linear-gradient(#e9e9e9,#e9e9e9_50%,#fff)] group w-full h-16 inline-flex transition-all duration-300 overflow-visible p-1 rounded-full group"
 >
   <div

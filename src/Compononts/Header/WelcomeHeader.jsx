@@ -16,7 +16,7 @@ function WelcomeHeader() {
             <div className="flex justify-between mt-10   w-full ">
               <span className="w-[50%] mr-5 ">
                 <NavLink to="/Login">
-                  <button className="w-full mt-10  px-4 py-3 rounded-[10px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
+                  <button className="w-full mt-10  px-4 py-3 rounded-[10px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] shadow-inner shadow-white">
                     Login
                   </button>
                 </NavLink>

@@ -4,20 +4,21 @@ import "regenerator-runtime/runtime";
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Welcome from "./views/Welcome";
-import Routes from "./Routes/Routes";
+import Layout from "./Routes/Layout";
 import Login from "./views/Login";
 import About from "./views/About";
 import SignUp from "./views/SignUp";
 import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
-import Navbar from "./Compononts/Navbar/Navbar";
+import UserChat from "./views/UserChat";
+import GuestChatId from "./views/GuestChatId";
 
 function App() {
   // const [count, setCount] = useState(0)
   const router = createBrowserRouter([
     {
     path: "/",
-    element: <Routes />,
+    element: <Layout />,
     // errorElement: <NotFound />, // way for showing error when user write a path outside of the project rand of paths , example: localhost.../register
     children:[
       {
@@ -29,20 +30,28 @@ function App() {
         element: <About /> ,
       },
       {
-        path: "/Login",
+        path: "/login",
         element: <Login /> ,
       },
       {
-        path: "/Signup",
+        path: "/signup",
         element: <SignUp /> ,
       },
       {
-        path: "/Contact",
+        path: "/contact",
         // element: <About /> ,
       },
       {
-        path: "/Chat",
+        path: "/guestchat",
         element: <GuestChat /> ,
+      },
+      {
+        path: "/chat/id",
+        element: <GuestChatId /> ,
+      },
+      {
+        path: "/userchat",
+        element: <UserChat /> ,
       },
      {
         path: "*",              //another way for the error 

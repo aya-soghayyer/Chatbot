@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Frame from "../../assets/images/Frame.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function LoginHeader() {
     const [isInvalidID, setInvalidID] = useState(false)
     const [isInvalidMilo, setInvalidMilo] = useState(false)
     const [isSuccess, setSuccess] = useState("");
     const [isError, setError] = useState("");
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         studentId: "",
@@ -93,11 +94,9 @@ function LoginHeader() {
                                 Forgot password?
                             </Link>
                         <div className="px-5 w-full">
-                                {/* <NavLink to="/chat"> */}
-                                    <button type="submit" className="w-full mt-4  px-5 py-2 rounded-[5px] capitalize text-lg font-normal bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
+                                    <button type="submit" onClick={()=>{navigate('/userchat')}} className="w-full mt-4  px-5 py-2 rounded-[5px] capitalize text-lg font-normal bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] ">
                                         Login
                                     </button>
-                                    {/* </NavLink> */}
                         </div>
                         </form>
 

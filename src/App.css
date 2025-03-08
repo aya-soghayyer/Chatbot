@@ -4,3 +4,21 @@
     background-position: center;
   }
   
+  /* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* Set width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #2d3748; /* Dark background */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Darker thumb */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #718096; /* Lighter on hover */
+}

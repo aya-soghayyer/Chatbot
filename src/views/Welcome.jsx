@@ -6,8 +6,8 @@ function Welcome() {
     <>
       <div className="bg-Primary">
         <div className=" flex bg-primary -mb-8">
-          <div className="  flex justify-between">
-            <div className="-mt-16 ">
+          <div className="flex justify-between">
+            <div className="-mt-16">
               <Circle />
             </div>
           </div>

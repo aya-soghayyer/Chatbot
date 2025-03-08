@@ -36,7 +36,7 @@ function WelcomeHeader() {
             </div>
 
             <div className="text-xl flex justify-center my-6 underline underline-offset-2">
-              <NavLink to="/chat">Try it as Guest</NavLink>
+              <NavLink to="/guestchat">Try it as Guest</NavLink>
             </div>
           </div>
           <div className="w-full 2md:w-[50%]">

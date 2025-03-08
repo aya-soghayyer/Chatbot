@@ -5,18 +5,19 @@ import GuestChatHeader from "../Compononts/Header/GuestChatHeader";
 function GuestChat() {
     return (
         <>
-            <div className="bg-Primary  ">
-                <div className=" flex  -mb-8">
-                    <div className="  flex justify-between">
-                        <div className="-mt-16  ">
+            <div className="bg-Primary flex-1">
+                <div className="flex relative w-screen">
+                    <div className="flex justify-between">
+                        <div className="-mt-16 z-0">
                             <Circle />
                         </div>
                     </div>
-                    <GuestChatHeader />
-                    <div className="z-20">
+                    <div className="mb-2 z-50 w-full">
+                        <GuestChatHeader />
                     </div>
+                    <div className="z-0">
                     <Circle />
-
+                    </div>
                 </div>
             </div>
         </>

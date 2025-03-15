@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Frame from "../../assets/images/Frame.svg";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import Frame from "../../../assets/images/Frame.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginHeader() {
     const [isInvalidID, setInvalidID] = useState(false)
@@ -8,6 +8,7 @@ function LoginHeader() {
     const [isSuccess, setSuccess] = useState("");
     const [isError, setError] = useState("");
     const navigate = useNavigate()
+
 
     const [formData, setFormData] = useState({
         studentId: "",
@@ -17,17 +18,16 @@ function LoginHeader() {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         console.log(e.target.name , e.target.value)
-        // console.log('ldjflgk')
     };
     console.log(formData)
     const handleSubmit = async (e) => {
-        console.log("hello world")
         e.preventDefault();
-        // setSuccess("");
-        // setError("");
-        console.log('try me')
+        setSuccess("");
+        setError("");
+        const tokenCook= document.cookie ="username=JohnDoe; expires=Fri, 31 Dec 2025 23:59:59 GMT";
+        console.log(tokenCook)
+
         try {
-            
             const response = await fetch("http://localhost:8000/user/login", {
                 method: "POST",
                 headers: {
@@ -38,8 +38,13 @@ function LoginHeader() {
                     portal_id: formData.studentId,
                     password: formData.miloPassword,
                 }),
-            });
+            }); 
+
             const data = await response.json();
+           
+
+            console.log(data.token)
+
             console.log("Response:", data);
         } catch (error) {
             console.error("Error:", error);

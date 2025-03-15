@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import textMessage from "../../assets/images/ArrowButton.svg";
-import voiceMessage from "../../assets/images/RecordingButton.svg";
+import textMessage from "../../../assets/images/ArrowButton.svg";
+import voiceMessage from "../../../assets/images/RecordingButton.svg";
+import Loader from "../../loader/Loader";
 
 function HeaderGuestChat() {
   const [messages, setMessages] = useState([]);
@@ -12,6 +13,7 @@ function HeaderGuestChat() {
   const recognitionRef = useRef(null);
   const messageEndRef = useRef(null);
   const [activeChat, setActiveChat] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -105,13 +107,24 @@ function HeaderGuestChat() {
       }
     } catch (error) {
       console.error("Error fetching chatbot response:", error);
+      // setIsLoading(false)
+
+    }
+    finally {
+      setIsLoading(false)
     }
   };
+  // if (isLoading){
+  //   return <Loader />
+  // }
 
   return (
     <>
+            {/* { setIsLoading  (false)} */}
+
       {!activeChat ? (
-        <div className="grid justify-between rounded-2xl w-full">
+        <div className="grid justify-between rounded-2xl w-full items-center mt-20">
+
           <h2
             className={`text-white font-bold text-[28px] flex justify-center items-center`}
           >
@@ -143,7 +156,7 @@ function HeaderGuestChat() {
               <input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="pl-7 p-4 flex-1 rounded-2xl bg-slate-200 bg-opacity-10 max-w-full text-white"
+                className="pl-7 pr-14 p-4 flex-1 rounded-2xl bg-slate-200 bg-opacity-10 max-w-full text-white"
                 type="text"
                 placeholder="Ask MiLo"
               />
@@ -209,6 +222,7 @@ function HeaderGuestChat() {
         </div>
       ) : (
         <div className="grid grid-rows-[1fr_auto] pt-3 w-full rounded-2xl min-h-[470px]">
+          {/* <Loader/> */}
           <div className="flex-1 overflow-y-auto w-full p-3 max-h-[379px] custom-scrollbar">
             {messages.map((msg, index) => (
               <div
@@ -230,7 +244,6 @@ function HeaderGuestChat() {
               </div>
             ))}
           </div>
-
           <div className="relative grid">
             <div className="flex space-x-2 mb-1 items-center">
               <label
@@ -254,7 +267,7 @@ function HeaderGuestChat() {
               <input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="pl-7 p-3 flex-auto rounded-br-2xl rounded-bl-2xl bg-zinc-400 bg-opacity-25 text-white"
+                className="pl-7 pr-14 p-3 flex-auto rounded-br-2xl rounded-bl-2xl bg-zinc-400 bg-opacity-25 text-white"
                 type="text"
                 placeholder="Ask MiLo"
               />

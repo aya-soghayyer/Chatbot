@@ -12,6 +12,8 @@ import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
 import UserChat from "./views/UserChat";
 import GuestChatId from "./views/GuestChatId";
+import ProtectedRout from "./Compononts/Header/user/ProtectedRout";
+import Contact from "./views/Contact";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -39,7 +41,7 @@ function App() {
       },
       {
         path: "/contact",
-        // element: <About /> ,
+        element: <Contact/> ,
       },
       {
         path: "/guestchat",
@@ -51,7 +53,10 @@ function App() {
       },
       {
         path: "/userchat",
-        element: <UserChat /> ,
+        element: 
+        // <ProtectedRout>
+          <UserChat /> 
+        // </ProtectedRout>
       },
      {
         path: "*",              //another way for the error 

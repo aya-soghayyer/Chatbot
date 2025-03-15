@@ -1,10 +1,10 @@
 import React from 'react'
 
-function GuestChatId() {
+function UserChatId() {
   return (
 <>
  <h2>hello world !</h2>
 </>  )
 }
 
-export default GuestChatId
+export default UserChatId

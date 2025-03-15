@@ -1,50 +1,41 @@
 import Frame from "../../assets/images/Frame.svg";
 import { NavLink } from "react-router-dom";
+
 function WelcomeHeader() {
   return (
-    <>
-      <header className="wrapper py-16  z-50 font-Outfit text-white">
-        <div className="flex flex-col pb-32 2md:flex-row gap-30 items-center justify-between">
-          <div className="w-full 2md:w-[50%] -ml-20 mt-12">
-            <h2 className=" text-4xl 2md:text-6xl line font-bold mb-6 uppercase">
-              WELCOME TO MILO chatbot
-            </h2>
-            <p className="text-xl  font-light">
-              Welcome to MiLo! Explore a smarter way to navigate university
-              resources and get the answers you need. Let’s get started!
-            </p>
-            <div className="flex justify-between mt-10   w-full ">
-              <span className="w-[50%] mr-5 ">
-                <NavLink to="/Login">
-                  <button className="w-full mt-10  px-4 py-3 rounded-[10px] capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] shadow-inner shadow-white">
-                    Login
-                  </button>
-                </NavLink>
-              </span>
-              <span className="w-[50%]">
-                <NavLink to="/Signup">
-                <button className="w-full p-[2px] rounded-[10px]  bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] mt-10 relative">
-      <dev className="rounded-[10px] capitalize font-medium text-white bg-Primary block px-4 py-3 ">
-        sign up
-      </dev>
-    </button>
-                 
-                 
-
-                </NavLink>
-              </span>
-            </div>
-
-            <div className="text-xl flex justify-center my-6 underline underline-offset-2">
-              <NavLink to="/guestchat">Try it as Guest</NavLink>
-            </div>
+    <header className="wrapper py-4 sm:py-8 lg:py-16 z-50 font-Outfit text-white max-w-7xl mx-auto">
+      <div className="flex flex-col 2md:flex-row gap-6 lg:gap-12 items-center justify-between px-4 sm:px-6">
+        <div className="w-full 2md:w-1/2 mt-6 lg:mt-12 -ml-0 sm:-ml-10 lg:-ml-20">
+          <h2 className="text-2xl sm:text-3xl 2md:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6 uppercase leading-tight">
+            WELCOME TO MILO chatbot
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl font-light mb-6">
+            Welcome to MiLo! Explore a smarter way to navigate university
+            resources and get the answers you need. Let’s get started!
+          </p>
+          <div className="flex flex-col w-full sm:flex-row justify-between mt-6 lg:mt-10 gap-4 sm:gap-5">
+            <NavLink to="/Login" className="w-full sm:w-1/2">
+              <button className="w-full px-4 py-3 rounded-[0.625rem] capitalize bg-gradient-to-r from-gradientPurple to-gradientSkyBlue shadow-inner shadow-white text-base lg:text-lg">
+                Login
+              </button>
+            </NavLink>
+            <NavLink to="/Signup" className="w-full sm:w-1/2">
+              <button className="w-full p-[0.125rem] rounded-[0.625rem] bg-gradient-to-r from-gradientPurple to-gradientSkyBlue relative">
+                <div className="rounded-[0.5rem] capitalize font-medium text-white bg-Primary px-4 py-3 text-base lg:text-lg">
+                  Sign Up
+                </div>
+              </button>
+            </NavLink>
           </div>
-          <div className="w-full 2md:w-[50%]">
-            <img className="w-full" src={Frame} alt="computer" />
+          <div className="text-base sm:text-lg lg:text-xl flex justify-center my-6 underline underline-offset-2">
+            <NavLink to="/guestchat">Try it as Guest</NavLink>
           </div>
         </div>
-      </header>
-    </>
+        <div className="w-full lg:w-screen 2md:w-4/5 2md:h-full mt-6 2md:mt-0">
+          <img className="w-full min-w-md mx-auto max-h-svh" src={Frame} alt="computer" />
+        </div>
+      </div>
+    </header>
   );
 }
 

@@ -9,14 +9,14 @@ function Layout() {
   const navbars = {
     "/": <Navbar />,
     "/guestchat": <GuestChatNavbar />,
-    "/userchat": <GuestChatNavbar />,
+    "/userchat": <></>,
   };
   return (
     <>
-      <div className="bg-Primary font-Outfit grid grid-rows-[1fr_auto]  min-h-screen">
+      <div className="bg-Primary font-Outfit  min-h-screen">
         {navbars[location.pathname] || <Navbar />}
         <Outlet />
-        <div className="text-white bg-BgFooter">
+        <div className="text-white bg-BgFooter mt-32">
           <Footer />
         </div>
       </div>

@@ -3,8 +3,8 @@ import { NavLink, Link } from "react-router-dom";
 
 function WelcomeHeader() {
   return (
-    <header className="wrapper py-4 sm:py-8 lg:py-16 z-50 font-Outfit text-white max-w-full mx-auto">
-      <div className="flex flex-col 2md:flex-row gap-6 lg:gap-12 items-center justify-between px-4 sm:px-6">
+    <header className="wrapper py-8  2xl:py-16 z-50 font-Outfit text-white max-w-full mx-auto">
+      <div className="flex flex-col md:flex-row gap-6 2xl:gap-12 items-center justify-between md:px-4 px-6">
         <div className="w-full md:w-full mt-6 lg:mt-12 -ml-0 sm:-ml-10 lg:-ml-20">
           <h2 className="text-2xl sm:text-3xl 2md:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6 uppercase leading-tight">
             WELCOME TO MILO chatbot
@@ -31,7 +31,7 @@ function WelcomeHeader() {
             <Link to="/guestchat">Try it as Guest</Link>
           </div>
         </div>
-        <div className="w-full lg:w-3/4 2md:w-4/5 2md:h-full mt-6 2md:mt-0">
+        <div className="w-full 2xl:w-3/4 md:w-4/5 md:h-full mt-6 md:mt-0">
           <img className="w-full min-w-md mx-auto max-h-svh" src={Frame} alt="computer" />
         </div>
       </div>

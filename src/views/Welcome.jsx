@@ -5,18 +5,15 @@ import WelcomeHeader from "../Compononts/Header/WelcomeHeader"; // Fixed typo in
 function Welcome() {
   return (
     <>
-      <div className="bg-Primary w-full">
-        <div className="flex flex-col md:flex-row bg-primary items-center justify-between px-4 sm:px-6 lg:px-16">
-          <div className="w-full  md:w-auto -mt-4 md:-mt-8 lg:scroll-mt-px">
+      <div className="bg-Primary h-full items-center md:h-screen md:flex md:justify-end md:items-center 2xl:h-screen 2xl:flex 2xl:justify-end 2xl:items-center">
+          <div className="-mt-28 md:-mt-72 2xl:-mt-[40rem]">
             <Circle />
           </div>
-          <div className="w-screen z-10 md:w-auto md:my-0">
+          <div className="z-10 md:w-[140rem] 2xl:w-[150rem] 2xl:-ml-16 2xl:-mt-16">
             <WelcomeHeader />
           </div>
-          <div className="w-full md:w-auto md:block">
+
             <Circle />
-          </div>
-        </div>
       </div>
     </>
   );

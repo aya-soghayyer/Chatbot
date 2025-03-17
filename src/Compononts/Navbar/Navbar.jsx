@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="flex items-center justify-between gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto py-1 md:py-2 text-white border-b-2 border-slate-500">
+      <nav className="z-10 flex items-center justify-between py-4 gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto md:py-2 text-white md:border-b-2 md:border-slate-500">
         {/* Logo Section */}
         <div className="flex items-center z-30">
           <NavLink to="/">
@@ -30,7 +30,7 @@ function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="focus:outline-none"
           >
-           <FontAwesomeIcon icon="fa-solid fa-bars" size="xl" />
+           <FontAwesomeIcon icon="fa-solid fa-bars" size="2xl" />
           </button>
           <div
   className={`md:hidden absolute text-2xl top-[5rem] left-0 w-full bg-white/5 rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${

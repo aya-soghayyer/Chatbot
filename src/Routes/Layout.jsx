@@ -13,7 +13,7 @@ function Layout() {
   };
   return (
     <>
-      <div className="bg-Primary font-Outfit ">
+      <div className="bg-Primary font-Outfit">
         {navbars[location.pathname] || <Navbar />}
         <Outlet />
         <div className="text-white bg-BgFooter">

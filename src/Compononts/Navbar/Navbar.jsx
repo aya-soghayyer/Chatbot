@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="flex items-center justify-between py-4 gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto md:py-2 text-white md:border-b-2 md:border-slate-500">
+      <nav className="z-10 flex items-center justify-between py-4 gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto md:py-2 text-white md:border-b-2 md:border-slate-500">
         {/* Logo Section */}
         <div className="flex items-center z-30">
           <NavLink to="/">

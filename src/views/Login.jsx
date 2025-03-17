@@ -12,7 +12,7 @@ function Login() {
           <div className="2xl:flex 2xl:justify-center z-10 md:w-11/12 2xl:w-11/12 2xl:-mt-16 md:absolute md:left-14">
             <LoginHeader />
           </div>
-          <div className="absolute hidden md:top-16 md:visible md:right-32 2xl:visible 2xl:top-40 2xl:right-11">
+          <div className="absolute hidden md:top-16 md:inline-flex md:right-32 2xl:visible 2xl:top-40 2xl:right-11">
             <Circle />
           </div>
       </div>

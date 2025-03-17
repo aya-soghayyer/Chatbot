@@ -25,7 +25,7 @@ function Navbar() {
         </div>
 
         {/* Hamburger Menu for Mobile */}
-        <div className="md:hidden">
+        <div className="md:hidden z-50">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="focus:outline-none"
@@ -33,7 +33,7 @@ function Navbar() {
            <FontAwesomeIcon icon="fa-solid fa-bars" size="2xl" />
           </button>
           <div
-  className={`md:hidden absolute text-2xl top-[5rem] left-0 w-full bg-white/5 rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${
+  className={`md:hidden absolute text-2xl top-[5rem] left-0 w-full bg-Primary rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${
     isMobileMenuOpen
       ? "opacity-100 translate-y-0 scale-y-100"
       : "opacity-0 -translate-y-5 scale-y-95 pointer-events-none"

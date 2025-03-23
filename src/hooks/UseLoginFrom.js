@@ -1,4 +1,5 @@
 // src/hooks/useLoginForm.js
+import { fromJSON } from "postcss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,9 +28,12 @@ export const useLoginForm = (authService) => {
     try {
       const data = await authService.login(formData.studentId, formData.miloPassword);
       setSuccess("Login successful!");
+      // const userData = localStorage.setItem("users", JSON.stringify(formData));
+      // console.log(token)
+      // const tokenCoockie = 
       navigate("/userchat");
     } catch (error) {
-      setError("Login failed. Please check your credentials.");
+      setError("Login failed. Please check your student id and password.");
     } finally {
       setLoading(false);
     }

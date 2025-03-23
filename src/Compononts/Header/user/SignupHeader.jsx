@@ -21,10 +21,10 @@ function HeaderS() {
   } = useSignupForm(AuthService);
 
   return (
-    <header className="wrapper py-16 md:py-36 md:h-full 2xl:py-16 z-50 font-Outfit text-white h-full">
+    <header className="py-16 md:py-36 md:h-full 2xl:py-16 z-50 font-Outfit text-white h-screen">
       <div className="flex flex-col md:flex-row md:justify-center md:items-center md:gap-9 2xl:gap-12 items-center justify-between">
         {/* Form Section */}
-        <div className="z-40 w-full md:w-1/3 2xl:w-2/5 2xl:-ml-20 mt-5 md:mt-4 2xl:mt-8">
+        <div className="z-40 w-full px-4 md:w-1/3 2xl:w-2/5 2xl:-ml-20 md:mt-4 2xl:mt-8">
           <h2 className="text-5xl md:text-4xl 2xl:text-5xl flex justify-center font-bold mb-4 md:mb-6 2xl:mb-8 capitalize">
             Sign Up
           </h2>
@@ -179,6 +179,14 @@ function HeaderS() {
         <div className="w-full hidden md:inline-flex md:w-1/2 2xl:w-3/5 mt-6 md:mt-0">
           <img className="w-full" src={Frame} alt="Computer" />
         </div>
+      </div>
+        <div className="flex justify-between items-end px-10 mt-6 md:hidden">
+          <hr className="border-t border-white/30 w-3/4 mx-auto mb-3 md:mb-6 2xl:mb-8" />
+          <h3 className="uppercase px-4 flex items-start">or</h3>
+          <hr className="border-t border-white/30 w-3/4 mx-auto mb-3 md:mb-6 2xl:mb-8" />
+        </div>
+      <div className="text-base flex justify-center my-6 underline underline-offset-2 md:hidden">
+        <Link to="/guestchat">Try it as Guest</Link>
       </div>
     </header>
   );

@@ -12,11 +12,11 @@ import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
 import UserChat from "./views/UserChat";
 import GuestChatId from "./views/GuestChatId";
-import ProtectedRout from "./Compononts/Header/user/ProtectedRout";
+import ProtectedRout from "./utils/ProtectedRout";
 import Contact from "./views/Contact";
+import Admin from "./views/Admin";
 
 function App() {
-  // const [count, setCount] = useState(0)
   const router = createBrowserRouter([
     {
     path: "/",
@@ -54,9 +54,16 @@ function App() {
       {
         path: "/userchat",
         element: 
-        // <ProtectedRout>
+        <ProtectedRout>
           <UserChat /> 
-        // </ProtectedRout>
+        </ProtectedRout>
+      },
+      {
+        path: "/admin",
+        element: 
+        <ProtectedRout>
+          <Admin /> 
+        </ProtectedRout>
       },
      {
         path: "*",              //another way for the error 

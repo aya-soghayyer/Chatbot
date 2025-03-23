@@ -3,7 +3,6 @@ import websiteName from "../../assets/images/Logo.svg";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
@@ -30,45 +29,45 @@ function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="focus:outline-none"
           >
-           <FontAwesomeIcon icon="fa-solid fa-bars" size="2xl" />
+            <FontAwesomeIcon icon="fa-solid fa-bars" size="2xl" />
           </button>
           <div
-  className={`md:hidden absolute text-2xl top-[5rem] left-0 w-full bg-Primary rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${
-    isMobileMenuOpen
-      ? "opacity-100 translate-y-0 scale-y-100"
-      : "opacity-0 -translate-y-5 scale-y-95 pointer-events-none"
-  }`}
->
-  <ul className="flex flex-col items-center gap-4 w-full text-center">
-    <li>
-      <NavLink
-        to="/"
-        className="block px-5 py-2 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full border-b-[0.1rem] border-white transition-colors duration-300"
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        Home
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/contact"
-        className="block px-5 py-2 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full border-b-[0.1rem] border-white transition-colors duration-300"
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        Contact Us
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/about"
-        className="block px-5 py-2 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full border-b-[0.1rem] border-white transition-colors duration-300"
-        onClick={() => setIsMobileMenuOpen(false)}
-      >
-        About Us
-      </NavLink>
-    </li>
-  </ul>
-</div>
+            className={`md:hidden absolute w-44 h-44 text-xl top-[4rem] right-5 bg-darkBlue rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${
+              isMobileMenuOpen
+                ? "opacity-100 translate-y-0 scale-y-100"
+                : "opacity-0 -translate-y-5 scale-y-95 pointer-events-none"
+            }`}
+          >
+            <ul className="flex flex-col items-center gap-7 text-center ">
+              <li>
+                <NavLink
+                  to="/"
+                  className="p-3 w-screen hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className="p-4 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300 border-b-[0.001rem] border-t-[0.001rem]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className="p-3 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About Us
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
@@ -76,7 +75,7 @@ function Navbar() {
           <ul className="flex gap-6 md:gap-6 2xl:gap-8">
             <div className="relative">
               <div
-    className={`absolute bottom-3 left-0 w-full h-[0.25rem] 2xl:h-[0.3rem] 2xl:bottom-2 bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full transition-all duration-300 ${
+                className={`absolute bottom-3 left-0 w-full h-[0.25rem] 2xl:h-[0.3rem] 2xl:bottom-2 bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full transition-all duration-300 ${
                   isHovered ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
                 }`}
               ></div>
@@ -96,7 +95,7 @@ function Navbar() {
 
             <div className="relative">
               <div
-               className={`absolute bottom-3 left-0 w-full h-[0.25rem] 2xl:h-[0.3rem] 2xl:bottom-2 bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full transition-all duration-300 ${
+                className={`absolute bottom-3 left-0 w-full h-[0.25rem] 2xl:h-[0.3rem] 2xl:bottom-2 bg-gradient-to-r from-gradientPurple to-gradientSkyBlue rounded-full transition-all duration-300 ${
                   isHovered3 ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
                 }`}
               ></div>

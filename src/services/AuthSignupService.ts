@@ -1,6 +1,5 @@
-// src/services/AuthService.js
 class AuthService {
-    async signup(portalId, portalPassword, miloPassword) {
+    async signup(portalId:Number, portalPassword:String, miloPassword:String) {
       try {
         const response = await fetch("http://localhost:8000/user/signup", {
           method: "POST",

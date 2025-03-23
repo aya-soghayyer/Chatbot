@@ -13,8 +13,10 @@ function Layout() {
   };
   return (
     <>
-      <div className="bg-Primary font-Outfit z-30">
+      <div className="bg-primary font-Outfit z-30">
+        {/* <div className="z-50"> */}
         {navbars[location.pathname] || <Navbar />}
+        {/* </div> */}
         <Outlet />
         <div className="text-white bg-BgFooter">
           <Footer />

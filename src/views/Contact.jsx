@@ -4,7 +4,7 @@ import ContactHeader from '../Compononts/Header/ContactHeader';
 
 function Contact() {
   return (
-    <div className="bg-Primary min-h-screen">
+    <div className="bg-primary min-h-screen">
       <div className="container mx-auto px-4 relative">
         {/* Circles as decorative elements */}
         <div className="absolute left-0 top-0 -translate-y-1/2 md:-translate-y-16 z-10">

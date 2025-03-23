@@ -11,12 +11,13 @@ export default {
         "2md": "960px"
       },
       colors:{
-        Primary: '#060318',
+        primary: '#060318',
         secondaryText:'#6B7280',
         mainText:'#111928',
         BgFooter:'#213C84C4',
         gradientPurple:'#6327C9',
-        gradientSkyBlue: '#21ABDB'
+        gradientSkyBlue: '#21ABDB',
+        darkBlue:'#213C84'
       }
     },
   },

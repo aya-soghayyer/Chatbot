@@ -4,7 +4,7 @@ import Circle from '../Compononts/Circle/Circle'
 function GuestChatId() {
   return (
    <>
-    <div className="bg-Primary  ">
+    <div className="bg-primary  ">
                 <div className=" flex  -mb-8">
                     <div className="  flex justify-between">
                         <div className="-mt-16  ">

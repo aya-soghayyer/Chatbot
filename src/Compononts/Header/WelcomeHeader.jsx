@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 function WelcomeHeader() {
   return (
     <header className="py-8 z-20 flex font-Outfit text-white md:w-[70rem] md:justify-start 2xl:w-[80rem] 2xl:-mt-16">
-      <div className="flex flex-col md:flex-row gap-6 2xl:gap-12 items-center md:px-4 px-6 2xl:px-7 relative">
+      <div className="flex flex-col px-6 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
         <div className="w-full z-10 md:w-3/5 2xl:w-3/5">
           <h2 className="text-5xl md:text-4xl 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
             WELCOME TO MILO chatbot
@@ -22,7 +22,7 @@ function WelcomeHeader() {
               </NavLink>
               <NavLink to="/Signup" className="w-full hidden md:flex md:w-1/2">
                 <button className="w-full p-[0.125rem] rounded-[0.625rem] bg-gradient-to-r from-gradientPurple to-gradientSkyBlue relative">
-                  <div className="rounded-[0.5rem] capitalize font-medium text-white bg-Primary px-4 py-3 text-base 2xl:text-lg">
+                  <div className="rounded-[0.5rem] capitalize font-medium text-white bg-primary px-4 py-3 text-base 2xl:text-lg">
                     Sign Up
                   </div>
                 </button>
@@ -48,7 +48,7 @@ function WelcomeHeader() {
             </NavLink>
             <NavLink to="/Signup" className="w-full">
               <button className="w-full p-[0.125rem] rounded-[0.625rem] bg-gradient-to-r from-gradientPurple to-gradientSkyBlue relative">
-                <div className="rounded-[0.5rem] capitalize font-medium text-white bg-Primary px-4 py-3 text-base">
+                <div className="rounded-[0.5rem] capitalize font-medium text-white bg-primary px-4 py-3 text-base">
                   Sign Up
                 </div>
               </button>

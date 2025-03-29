@@ -18,7 +18,7 @@ function Layout() {
         {navbars[location.pathname] || <Navbar />}
         {/* </div> */}
         <Outlet />
-        <div className="text-white bg-BgFooter">
+        <div className="text-white bg-BgFooter z-50">
           <Footer />
         </div>
       </div>

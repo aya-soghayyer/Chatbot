@@ -1,14 +1,14 @@
-// UserChatHeader.js
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import ChatService from "../../../../services/userChatService";
 import MessageFactory from "../../../../utils/messageFactory";
 import Header from "../chat/Header";
 import ChatArea from "../chat/ChatArea";
 import ChatInput from "../chat/ChatInput";
 import Settings from "../chat/Settings";
+import usePhoto from "../../../../hooks/usePhoto";
 
 function UserChatHeader() {
   const [messages, setMessages] = useState([]);
@@ -20,6 +20,8 @@ function UserChatHeader() {
   const [showSettings, setSettings] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState(true);
   const [greeting, setGreeting] = useState("");
+  const [isChangePhoto, setChangePhoto] = useState(false);
+  const { preview, handleFileChange } = usePhoto(); // use hook for file and preview
 
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
@@ -131,7 +133,7 @@ function UserChatHeader() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between gap-4 text-white min-h-screen p-2 md:p-0">
+    <div className={`flex flex-col md:flex-row justify-between gap-4 text-white min-h-screen p-2 md:p-0`}>
       <Header
         chatHistory={chatHistory}
         setChatHistory={setChatHistory}
@@ -140,23 +142,33 @@ function UserChatHeader() {
       <div className="relative w-full md:w-[70vw] m-2 md:m-5 h-[80vh] md:h-screen">
         <div className="text-white fixed top-5 right-5">
           <button
-            className="w-10 h-10 md:w-12 md:h-12 border rounded-full"
+            className="md:w-14 md:h-14 rounded-full border"
             onClick={() => setSettings(!showSettings)}
           >
-            <FontAwesomeIcon icon="fa-solid fa-user" size="xl" />
+            {isChangePhoto ? (
+              <div>
+                {preview && (
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="w-14 h-14 object-cover rounded-full shadow-md"
+                  />
+                )}
+              </div>
+            ) : (
+              <FontAwesomeIcon icon="fa-solid fa-user" size="xl" />
+            )}
           </button>
         </div>
+
         <Settings showSettings={showSettings} setSettings={setSettings} />
+
         {isActiveChat ? (
           <div className="grid items-center rounded-2xl w-full h-full">
-            <h2
-              className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center"
-            >
+            <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
               {greeting} {userData?.studentId} :) !
             </h2>
-            <h2
-              className="text-white font-bold text-xl md:text-[28px] flex justify-center items-center"
-            >
+            <h2 className="text-white font-bold text-xl md:text-[28px] flex justify-center items-center">
               What can I help with?
             </h2>
             <div className="relative mt-4">

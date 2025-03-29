@@ -14,7 +14,7 @@ const ChatArea = ({ messages, messageEndRef }) => {
               className={`p-2 rounded-lg mb-2 w-fit text-sm md:text-base ${
                 msg.sender === "user"
                   ? "bg-slate-500/40 text-white self-end rounded-br-none max-w-[70%]"
-                  : "bg-[#213C84] text-white self-start rounded-bl-none max-w-[70%]"
+                  : "text-white self-start rounded-bl-none max-w-[70%]"
               }`}
               ref={messageEndRef}
             >

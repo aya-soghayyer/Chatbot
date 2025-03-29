@@ -1,6 +1,9 @@
 // components/ChatInput.js
 import textMessage from "../../../../assets/images/ArrowButton.svg";
 import voiceMessage from "../../../../assets/images/RecordingButton.svg";
+import useSound from "use-sound"
+import micStart from "../../../../assets/sounds/mixkit-video-game-mystery-alert-234.wav"
+import micStop from "../../../../assets/sounds/mixkit-select-click-1109.wav"
 
 const ChatInput = ({
   inputValue,
@@ -11,7 +14,10 @@ const ChatInput = ({
   handleToggle,
   handleSubmit,
   setIsActiveChat,
-}) => {
+  }) => {
+  const [play] = useSound(micStart)
+  const [pause] = useSound(micStop)
+
   return (
     <div className="relative grid w-full">
       <div className="flex space-x-2 mb-1 items-center">
@@ -39,7 +45,7 @@ const ChatInput = ({
           type="text"
           placeholder="Ask MiLo"
         />
-        {inputValue.trim() ? (
+        {inputValue.trim()? (
           <button
             type="submit"
             onClick={() => setIsActiveChat(false)}
@@ -55,6 +61,7 @@ const ChatInput = ({
           >
             <img
               src={voiceMessage}
+              onClick={pause}
               alt="Send voice message icon"
               className={listening ? "bg-green-500" : ""}
             />

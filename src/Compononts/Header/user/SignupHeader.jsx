@@ -46,7 +46,7 @@ function HeaderS() {
                 pattern="[0-9]{8}"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="userName" className="text-lg font-light">User Name</label>
               <input
                 type="text"
@@ -58,7 +58,7 @@ function HeaderS() {
                 value={formData.userName}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="portalPassword" className="text-lg font-light">Portal Password</label>
               <input

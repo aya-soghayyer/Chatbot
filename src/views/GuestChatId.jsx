@@ -1,4 +1,3 @@
-import React from 'react'
 import Circle from '../Compononts/Circle/Circle'
 
 function GuestChatId() {

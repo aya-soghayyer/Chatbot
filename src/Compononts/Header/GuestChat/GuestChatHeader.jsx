@@ -31,19 +31,27 @@ function HeaderGuestChat() {
   ];
 
   return (
-    
-    <div className={`wrapper py-6 md:py-8 2xl:py-12 text-white font-Outfit h-screen z-10 relative`}>
+    <div
+      className={`wrapper py-6 md:py-8 2xl:py-12 text-white font-Outfit h-screen z-10 relative`}
+    >
       <div className="absolute top-1/3 left-[40%] flex justify-center items-center">
-      {isLoading && <Loader />}
-        </div>
+        {isLoading && <Loader />}
+      </div>
       {!activeChat ? (
-        <div className={`grid gap-4 justify-center md:gap-6 2xl:gap-8 w-full max-w-md md:max-w-3xl 2xl:max-w-5xl mx-auto mt-10 md:mt-16 2xl:mt-20 ${isLoading?"backdrop-brightness-50 z-50":""}`}>
+        <div
+          className={`grid gap-4 justify-center md:gap-6 2xl:gap-8 w-full max-w-md md:max-w-3xl 2xl:max-w-5xl mx-auto mt-10 md:mt-16 2xl:mt-20 ${
+            isLoading ? "backdrop-brightness-50 z-50" : ""
+          }`}
+        >
           <h2 className="text-2xl md:text-2xl 2xl:text-3xl font-bold flex justify-center items-center">
             What can I help with?
           </h2>
           <div className="space-y-3 md:space-y-4 2xl:space-y-6">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <label htmlFor="language" className="font-medium text-sm md:text-base 2xl:text-lg">
+              <label
+                htmlFor="language"
+                className="font-medium text-sm md:text-base 2xl:text-lg"
+              >
                 Select Language:
               </label>
               <select
@@ -59,7 +67,7 @@ function HeaderGuestChat() {
             <form onSubmit={handleSubmit} className="relative flex">
               <input
                 value={inputValue}
-                onChange={(e) =>  setInputValue(e.target.value)}
+                onChange={(e) => setInputValue(e.target.value)}
                 onFocus={() => setIsInputFocused(true)}
                 onBlur={() => setIsInputFocused(false)}
                 className="pl-4 pr-10 md:pl-7 md:pr-14 p-3 md:p-4 2xl:p-5 flex-1 rounded-2xl bg-slate-200 bg-opacity-10 text-sm md:text-base 2xl:text-lg"
@@ -68,18 +76,28 @@ function HeaderGuestChat() {
               />
               <button
                 type={inputValue.trim() ? "submit" : "button"}
-                onClick={inputValue.trim() ? () => setActiveChat(true) : handleToggleSpeech}
+                onClick={
+                  inputValue.trim()
+                    ? () => setActiveChat(true)
+                    : handleToggleSpeech
+                }
                 className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-6 md:w-8 2xl:w-10"
               >
                 <img
                   src={inputValue.trim() ? textMessage : voiceMessage}
-                  alt={inputValue.trim() ? "Send text message" : "Send voice message"}
+                  alt={
+                    inputValue.trim()
+                      ? "Send text message"
+                      : "Send voice message"
+                  }
                   className={listening ? "bg-green-500 rounded-full p-1" : ""}
                 />
               </button>
             </form>
             <div className="p-2 md:p-3 2xl:p-4 text-white space-y-3 md:space-y-4 2xl:space-y-5">
-              <p className="text-sm md:text-base 2xl:text-lg">Suggestion questions:</p>
+              <p className="text-sm md:text-base 2xl:text-lg">
+                Suggestion questions:
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 md: gap-2 md:gap-3 2xl:gap-4">
                 {suggestionQuestions.map((question, index) => (
                   <button
@@ -98,7 +116,9 @@ function HeaderGuestChat() {
           </div>
         </div>
       ) : (
-        <div className={`grid grid-rows-[1fr_auto] w-full max-w-md md:max-w-3xl 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[470px] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}>
+        <div
+          className={`grid grid-rows-[1fr_auto] w-full max-w-md md:max-w-3xl 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[470px] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
+        >
           <div className="flex-1 overflow-y-auto p-2 md:p-3 2xl:p-4 max-h-[250px] md:max-h-[379px] 2xl:max-h-[500px] custom-scrollbar">
             {messages.map((msg, index) => (
               <div
@@ -123,7 +143,10 @@ function HeaderGuestChat() {
           </div>
           <div className="p-2 md:p-3 2xl:p-4 space-y-2 md:space-y-3 2xl:space-y-4">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <label htmlFor="language" className="font-medium text-sm md:text-base 2xl:text-lg">
+              <label
+                htmlFor="language"
+                className="font-medium text-sm md:text-base 2xl:text-lg"
+              >
                 Select Language:
               </label>
               <select
@@ -153,7 +176,11 @@ function HeaderGuestChat() {
               >
                 <img
                   src={inputValue.trim() ? textMessage : voiceMessage}
-                  alt={inputValue.trim() ? "Send text message" : "Send voice message"}
+                  alt={
+                    inputValue.trim()
+                      ? "Send text message"
+                      : "Send voice message"
+                  }
                   className={listening ? "bg-green-500 rounded-full p-1" : ""}
                 />
               </button>

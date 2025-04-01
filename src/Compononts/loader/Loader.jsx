@@ -1,24 +1,30 @@
-import React from 'react'
-import style from '../loader/Loader.module.css'
+// import React from 'react'
+// import style from '../loader/Loader.module.css'
 
 function Loader() {
   return (
-<>
-{/* <div className={style.container}>
+    <>
+      {/* <div className={style.container}>
   <span />
   <span />
   <span />
   <span />
 </div> */}
 
-<div className={style.spinner}>
+      {/* <div className={style.spinner}>
     <div className={style.spinner1}></div>
-</div>
+</div> */}
 
+      <div className="flex space-x-1 justify-center items-center h-fit w-fit p-5 rounded-lg rounded-bl-none">
+        <span className="sr-only">Loading...</span>
+        <div className="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
+        <div className="h-2 w-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
+        <div className="h-2 w-2 bg-white rounded-full animate-bounce" />
+      </div>
 
-<>
-  {/* /* From Uiverse.io by clarencedion */}
-  {/* <div className="flex items-center justify-center min-h-screen">
+      <>
+        {/* /* From Uiverse.io by clarencedion */}
+        {/* <div className="flex items-center justify-center min-h-screen">
     <div className="relative">
       <div className="relative w-32 h-32">
         <div
@@ -33,10 +39,9 @@ function Loader() {
       <div className="absolute inset-0 bg-gradient-to-tr from-[#0ff]/10 via-transparent to-[#0ff]/5 animate-pulse rounded-full blur-sm" />
     </div>
   </div> */}
-</>
-
-</>
-  )
+      </>
+    </>
+  );
 }
 
-export default Loader
+export default Loader;

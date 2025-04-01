@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Logo from "../../assets/images/Logo.svg";
-import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import FilledButton from "../ui/FilledButton";
+import UnFilledButton from "../ui/UnFilledButton";
 
 function NavbarChat() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,9 +12,9 @@ function NavbarChat() {
     <>
       <div className="flex justify-between items-center p-6 md:justify-between md:pt-5 md:px-11 text-white">
         <div className="z-40">
-          <NavLink to="/">
+          <Link to="/">
             <img src={Logo} alt="MiLo Logo" />
-          </NavLink>
+          </Link>
         </div>
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden z-40">
@@ -30,48 +32,41 @@ function NavbarChat() {
             }`}
           >
             <ul className="flex flex-col items-center gap-7 text-center ">
-              <li>
-                <NavLink
+            <li className="transition-transform duration-300 ease-out hover:scale-125">
+            <Link
                   to="/"
-                  className="p-3 w-screen hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
-                </NavLink>
+                </Link>
               </li>
-              <li>
-                <NavLink
+              <li className="transition-transform duration-300 ease-out hover:scale-110">
+                <Link
                   to="/contact"
-                  className="p-4 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300 border-b-[0.001rem] border-t-[0.001rem]"
+                  className="p-4 px-7 border-b-[0.001rem] border-t-[0.001rem]"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Contact Us
-                </NavLink>
+                </Link>
               </li>
-              <li>
-                <NavLink
+              <li className="transition-transform duration-300 ease-out hover:scale-125">
+                <Link
                   to="/about"
-                  className="p-3 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About Us
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink to="/login" className="p-4 border-b-[0.001rem] border-t-[0.001rem]">
-                  <button className="px-3 py-1 md:px-6 md:py-2 rounded-[10px] text-white md:font-medium capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] shadow-inner shadow-slate-400">
-                    Login
-                  </button>
-                </NavLink>
+                <Link to="/login" className="p-4 border-b-[0.001rem] border-t-[0.001rem]">
+                  <FilledButton title={"login"} className="px-10 py-2"/>
+                </Link>
               </li>
               <li>
-                <NavLink to="/signup">
-                  <button className="p-[2px] rounded-[10px] bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] relative">
-                    <dev className="rounded-[10px] capitalize font-medium text-white bg-primary block px-6 py-2">
-                      sign up
-                    </dev>
-                  </button>
-                </NavLink>
+                <Link to="/signup">
+                <UnFilledButton title={"signup"} className2="" className="px-9 py-2"/>
+
+                </Link>
               </li>
             </ul>
           </div>
@@ -80,20 +75,20 @@ function NavbarChat() {
         <div className="hidden md:inline-flex">
           <ul className="flex justify-between gap-3">
             <li>
-              <NavLink to="/login">
+              <Link to="/login">
                 <button className="w-full px-3 py-1 m-1 md:px-6 md:py-2 rounded-[10px] text-white md:font-medium capitalize bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] shadow-inner shadow-slate-400">
                   Login
                 </button>
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink to="/signup">
+              <Link to="/signup">
                 <button className="w-full p-[2px] rounded-[10px] bg-gradient-to-r from-[#6327C9]  to-[#21ABDB] relative">
                   <dev className="rounded-[10px] capitalize font-medium text-white bg-primary block px-6 py-2">
                     sign up
                   </dev>
                 </button>
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </div>

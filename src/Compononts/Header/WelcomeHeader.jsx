@@ -1,6 +1,6 @@
 import Frame from "../../assets/images/Frame.svg";
 import { Link } from "react-router-dom";
-import FilledButton from "../ui/FilledButton"
+import FilledButton from "../ui/FilledButton";
 import UnFilledButton from "../ui/UnFilledButton";
 
 function WelcomeHeader() {
@@ -9,7 +9,7 @@ function WelcomeHeader() {
       <div className="flex flex-col px-6 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
         <div className="w-full z-10 md:w-1/2 md:ml-7 2xl:w-3/5">
           <h2 className="text-5xl md:whitespace-break-spaces md:text-5xl/tight 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
-            WELCOME     TO MILO chatbot
+            WELCOME TO MILO chatbot
           </h2>
           <p className="md:text-xl md:font-light text-lg 2xl:text-xl font-light mb-6">
             Welcome to MiLo! Explore a smarter way to navigate university
@@ -17,10 +17,20 @@ function WelcomeHeader() {
           </p>
           <div className="flex flex-col w-full md:pt-16 md:flex-row justify-between mt-6 2xl:mt-10 gap-4 md:gap-5">
             <Link to="/Login" className="w-full hidden md:flex md:w-1/2">
-             <FilledButton title="login" className="px-4 py-3 w-full" />
+              <FilledButton
+                title="login"
+                className="px-4 h-5/6 w-full md:mt-1"
+              />
             </Link>
-            <Link to="/Signup" className="w-full hidden md:flex md:w-1/2">
-             <UnFilledButton title="Sign Up" className="px-4 py-3" className2="w-full"/>
+            <Link
+              to="/Signup"
+              className="w-full hidden md:flex md:w-1/2 md:mt-2"
+            >
+              <UnFilledButton
+                title="Sign Up"
+                className="px-4 py-3"
+                className2="w-full"
+              />
             </Link>
           </div>
 
@@ -37,10 +47,14 @@ function WelcomeHeader() {
           <div className="flex flex-col w-full mt-6 gap-4 md:hidden">
             <div className="flex flex-row justify-center gap-5 items-center">
               <Link to="/Login" className="w-full">
-              <FilledButton title="login" className="px-4 py-3 w-full" />
+                <FilledButton title="login" className="px-4 py-3 w-full" />
               </Link>
               <Link to="/Signup" className="w-full">
-              <UnFilledButton title="Sign Up" className="px-4 py-3" className2="w-full"/>
+                <UnFilledButton
+                  title="Sign Up"
+                  className="px-4 py-3"
+                  className2="w-full"
+                />
               </Link>
             </div>
             <div className="text-base flex justify-center my-6 underline underline-offset-2">

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useLoginForm } from "../../../hooks/UseLoginFrom";
 import AuthService from "../../../services/AuthService.ts";
 // import ProtectedRout from "../../../utils/ProtectedRout.jsx";
+import FilledButton from "../../../Compononts/ui/FilledButton"
+
 
 function LoginHeader() {
   const {
@@ -19,7 +21,7 @@ function LoginHeader() {
   } = useLoginForm(AuthService);
 
   return (
-    <header className="wrapper py-4 h-screen md:py-2 2xl:py-16 z-50 font-Outfit md:h-screen text-white">
+    <header className="wrapper py-4 md:py-2 2xl:py-16 z-50 font-Outfit md:h-screen text-white">
       <div className="flex flex-col md:flex-row md:gap-6 2xl:gap-12 items-center justify-between">
         {/* Form Section */}
         <div className="grid items-center p-8 w-full md:p-5 md:w-2/5 2xl:w-full  2xl:-ml-20 mt-8 2xl:mt-12 z-40">
@@ -68,6 +70,8 @@ function LoginHeader() {
                 onChange={handleChange}
                 required
                 value={formData.miloPassword}
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               />
             </div>
             <Link
@@ -77,13 +81,15 @@ function LoginHeader() {
               Forgot password?
             </Link>
             <div className="px-4 md:px-5 2xl:px-6 w-full">
-            <button
+            {/* <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full mt-3 md:mt-4 2xl:mt-6 px-4 md:px-5 2xl:px-6 py-2 md:py-2.5 2xl:py-3 rounded-md capitalize text-base md:text-lg 2xl:text-xl font-normal bg-gradient-to-r from-gradientPurple to-gradientSkyBlue shadow-inner shadow-slate-400 disabled:opacity-50"
               >
                 {isLoading ? "Logging In..." : "Login"}
-              </button>
+              </button> */}
+                <FilledButton title={isLoading ? "Logging In..." : "Login"}  type="submit"
+              disabled={isLoading} className="w-full py-3 rounded-md disabled:opacity-50" />     
             </div>
             {isSuccess && (
               <p className="text-green-500 text-center mt-4">{isSuccess}</p>

@@ -17,9 +17,10 @@ function Layout() {
         {/* <div className="z-50"> */}
         {navbars[location.pathname] || <Navbar />}
         {/* </div> */}
-        <Outlet />
-        <div className="text-white bg-BgFooter z-50">
-          <Footer />
+        
+        <Outlet className="z-40"/>
+        <div className="text-white bg-BgFooter">
+          <Footer className="z-50"/>
         </div>
       </div>
     </>

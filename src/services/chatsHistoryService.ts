@@ -1,25 +1,20 @@
-// services/ChatService.js
 import Cookie from "js-cookie";
 import { domainName } from "../App";
 
-class ChatService {
-  async addMessage(message, chatId) {
+class chatsHistoryService {
+  async getMessage() {
     const token = Cookie.get("token");
     if (!token) {
       throw new Error("No token found, please log in.");
     }
 
-    const response = await fetch(`${domainName}chat/addmessage`, {
-      method: "POST",
+    const response = await fetch(`${domainName}chat/chats`, {
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        message,
-        chat_id: chatId,
-      }),
+      }
     });
 
     if (!response.ok) {
@@ -33,4 +28,4 @@ class ChatService {
   }
 }
 
-export default new ChatService();
+export default new chatsHistoryService();

@@ -14,6 +14,8 @@ const ChatInput = ({
   handleToggle,
   handleSubmit,
   setIsActiveChat,
+  isActiveChat,
+  className="" 
   }) => {
   const [play] = useSound(micStart)
   const [pause] = useSound(micStop)
@@ -23,7 +25,7 @@ const ChatInput = ({
       <div className="flex space-x-2 mb-1 items-center">
         <label
           htmlFor="language"
-          className="font-medium text-white text-sm md:text-base grid justify-start"
+          className="font-medium text-white text-xs md:text-base grid justify-start"
         >
           Select Language:
         </label>
@@ -31,17 +33,18 @@ const ChatInput = ({
           id="language"
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="rounded px-2 py-1 h-8 text-white bg-opacity-10 bg-blue-900 w-fit text-sm"
+          className="py-1 h-8 text-white  bg-opacity-10 rounded-2xl bg-primary font-medium  w-fit text-xs"
         >
-          <option value="en-US">English</option>
-          <option value="ar-SA">Arabic</option>
+          <option value="en-US" className="bg-primary">EN</option>
+          <option value="ar-SA" className="bg-primary">AR</option>
         </select>
       </div>
-      <form onSubmit={handleSubmit} className="flex w-full">
+      {/* {isActiveChat?( */}
+      <form onSubmit={handleSubmit} className="flex justify-center items-center w-full">
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="pl-4 pr-14 p-3 flex-auto rounded-br-2xl rounded-bl-2xl bg-zinc-400 bg-opacity-25 text-white text-sm md:text-base"
+          className={`pl-4 pr-14 p-3 flex-auto rounded-br-2xl rounded-bl-2xl ${className}  text-white text-sm md:text-base`}
           type="text"
           placeholder="Ask MiLo"
         />
@@ -68,6 +71,7 @@ const ChatInput = ({
           </button>
         )}
       </form>
+      {/* ):( <div></div> )} */}
     </div>
   );
 };

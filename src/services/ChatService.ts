@@ -1,8 +1,9 @@
 // src/services/ChatService.js
+import { domainName } from "../App";
 class ChatService {
     async sendGuestMessage(message, chatId = "") {
       try {
-        const response = await fetch("http://localhost:8000/guest/addmessage", {
+        const response = await fetch(`${domainName}guest/addmessage`, {
           method: "POST",
           headers: {
             Accept: "application/json",

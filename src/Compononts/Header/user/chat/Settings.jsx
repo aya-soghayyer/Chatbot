@@ -24,7 +24,7 @@ const Settings = ({
 
   const handleNewPassword = () => {
     setSettings(false);
-    navigate("/resetpassword");
+    navigate("/changepassword");
   };
 
   // If showSettings is false, return null

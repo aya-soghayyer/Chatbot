@@ -1,11 +1,12 @@
 // src/services/AuthService.js
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
+import { domainName } from "../App";
 
 class AuthService {
     async login(portalId, password) {
       try {
-        const response = await fetch("http://localhost:8000/user/login", {
+        const response = await fetch(`${domainName}user/login`, {
           method: "POST",
           headers: {
             Accept: "application/json",

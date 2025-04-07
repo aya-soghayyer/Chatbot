@@ -1,5 +1,44 @@
 // components/ChatArea.js
+import Cookie from "js-cookie";
+import { useState, useEffect, useRef } from "react";
+
 const ChatArea = ({ messages, messageEndRef }) => {
+//   const [messages, setMessages] = useState([]);
+// const [newMessage, setNewMessage] = useState("");
+// const [isTyping, setIsTyping] = useState(false);
+// const [typingInterval, setTypingInterval] = useState(null);
+// const [lastTypingTime, setLastTypingTime] = useState(null);
+// const [userTyping, setUserTyping] = useState(false);
+
+  // useEffect(() => {
+
+  //   const fetchMessages = async (chatId) => {
+  //     try {
+  //       const token = Cookie.get("token");
+  //       if (!token) throw new Error("No token found, please log in.");
+  
+  //       const responseMessages = await fetch(`${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`, {
+  //         method: "GET",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+  
+  //       if (!responseMessages.ok) throw new Error(`Error fetching messages: ${responseMessages.status}`);
+  
+  //       const data = await responseMessages.json();
+  //       console.log("Fetched Messages:", data);
+  //       setMessages(data.Messages); // Store messages in state
+  //     } catch (err) {
+  //       console.error("Error fetching messages:", err.message);
+  //       // setError(err.message);
+  //     }
+  //   };
+  //   fetchMessages(chatId);
+  // }, []);
+  
     return (
       <div className="overflow-y-auto w-full p-3 max-h-[379px] custom-scrollbar">
         {messages.map((msg, index) => (

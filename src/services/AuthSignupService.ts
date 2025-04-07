@@ -1,7 +1,8 @@
+import { domainName } from "../App";
 class AuthService {
     async signup(portalId:Number, portalPassword:String, miloPassword:String) {
       try {
-        const response = await fetch("http://localhost:8000/user/signup", {
+        const response = await fetch(`${domainName}user/signup`, {
           method: "POST",
           headers: {
             Accept: "application/json",

@@ -15,8 +15,11 @@ import GuestChatId from "./views/GuestChatId";
 import ProtectedRout from "./utils/ProtectedRout";
 import Contact from "./views/Contact";
 import Admin from "./views/Admin";
-import ResetPassword from "./views/ResetPassword";
+import ChangePassword from "./views/ChangePassword";
 import ForgetPassword from "./views/ForgetPassword";
+
+export let domainName = "http://localhost:8000/"
+
 
 function App() {
   const router = createBrowserRouter([
@@ -66,10 +69,10 @@ function App() {
           ),
         },
         {
-          path: "/resetpassword",
+          path: "/changepassword",
           element: (
             <ProtectedRout>
-              <ResetPassword />
+              <ChangePassword/>
             </ProtectedRout>
           ),
         },

@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Cookie from "js-cookie";
 import ChatService from "../../../../services/userChatService";
 import MessageFactory from "../../../../utils/messageFactory";
-import Header from "../chat/Header";
 import ChatArea from "../chat/ChatArea";
 import ChatInput from "../chat/ChatInput";
 import Settings from "../chat/Settings";
 import usePhoto from "../../../../hooks/usePhoto";
+import Cookie from "js-cookie";
+import { domainName } from "../../../../App";
+import ChatHistory from "./ChatHistory";
+
 
 function UserChatHeader() {
   const [messages, setMessages] = useState([]);
@@ -22,6 +25,7 @@ function UserChatHeader() {
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
   const { preview, handleFileChange } = usePhoto(); // use hook for file and preview
+  
 
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
@@ -100,6 +104,7 @@ function UserChatHeader() {
   };
 
   const handleNewChat = () => {
+    window.location.reload(true);
     setChatId("newchat");
     setMessages([]);
     setIsActiveChat(true);
@@ -131,13 +136,39 @@ function UserChatHeader() {
       }
     }
   };
+  // const [messages, setMessages] = useState([]);
+  const [selectedChatId, setSelectedChatId] = useState(null);
+  // const messageEndRef = useRef(null);
+
+  const fetchMessages = async (chatId) => {
+    try {
+      const token = Cookie.get("token");
+      const response = await fetch(`${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      const data = await response.json();
+      setMessages(data.Messages || []);
+    } catch (error) {
+      console.error("Failed to fetch messages:", error);
+    }
+  };
+
 
   return (
-    <div className={`flex flex-col md:flex-row justify-between gap-4 text-white min-h-screen p-2 md:p-0`}>
-      <Header
+    <div
+      className={`flex flex-col md:flex-row md:-ml-12 md:justify-between text-white min-h-screen p-2 md:p-3`}
+    >
+      <ChatHistory
         chatHistory={chatHistory}
         setChatHistory={setChatHistory}
         onNewChat={handleNewChat}
+        selectedChatId={fetchMessages}
+        setIsActiveChat={setIsActiveChat}
       />
       <div className="relative w-full md:w-[70vw] m-2 md:m-5 h-[80vh] md:h-screen">
         <div className="text-white fixed top-5 right-5">
@@ -164,14 +195,15 @@ function UserChatHeader() {
         <Settings showSettings={showSettings} setSettings={setSettings} />
 
         {isActiveChat ? (
-          <div className="grid items-center rounded-2xl w-full h-full">
+          <div className="flex  justify-center items-center h-full">
+          <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
             <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
-              {greeting} {userData?.studentId} :) !
+              {greeting} {userData?.studentId} :) 
             </h2>
-            <h2 className="text-white font-bold text-xl md:text-[28px] flex justify-center items-center">
+            <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
               What can I help with?
             </h2>
-            <div className="relative mt-4">
+            <div className="relative mx-4">
               <ChatInput
                 inputValue={inputValue}
                 setInputValue={setInputValue}
@@ -181,11 +213,14 @@ function UserChatHeader() {
                 handleToggle={handleToggle}
                 handleSubmit={handleSubmit}
                 setIsActiveChat={setIsActiveChat}
+                className="rounded-2xl bg-white bg-opacity-25"
               />
             </div>
           </div>
+          </div>
+
         ) : (
-          <div className="grid grid-rows-[1fr_auto] mb-8 pt-3 w-full rounded-2xl min-h-[60vh] md:min-h-[470px]">
+          <div className="grid grid-rows-[1fr_auto] min-h-[99%] pt-3 w-full rounded-2xl md:min-h-[96%]">
             <ChatArea messages={messages} messageEndRef={messageEndRef} />
             <ChatInput
               inputValue={inputValue}
@@ -196,6 +231,7 @@ function UserChatHeader() {
               handleToggle={handleToggle}
               handleSubmit={handleSubmit}
               setIsActiveChat={setIsActiveChat}
+              className="bg-white bg-opacity-25 "
             />
           </div>
         )}

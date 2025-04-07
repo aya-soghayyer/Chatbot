@@ -1,6 +1,6 @@
 import { useState } from "react";
 import websiteName from "../../assets/images/Logo.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navbar() {
@@ -11,16 +11,16 @@ function Navbar() {
 
   return (
     <>
-      <nav className="z-10 flex items-center justify-between py-4 gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto md:py-2 text-white md:border-b-2 md:border-slate-500">
+      <nav className="flex items-center justify-between py-4 gap-4 md:gap-8 2xl:h-[8rem] max-w-[120rem] w-[90%] mx-auto md:py-2 text-white md:border-b-2 md:border-slate-500">
         {/* Logo Section */}
-        <div className="flex items-center z-30">
-          <NavLink to="/">
+        <div className="flex items-center z-10">
+          <Link to="/">
             <img
               className="2xl:w-[15rem] md:w-full w-[10rem]"
               src={websiteName}
               alt="MiLo Logo"
             />
-          </NavLink>
+          </Link>
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -39,32 +39,30 @@ function Navbar() {
             }`}
           >
             <ul className="flex flex-col items-center gap-7 text-center ">
-              <li>
-                <NavLink
+            <li className="transition-transform duration-300 ease-out hover:scale-125">
+                <Link
                   to="/"
-                  className="p-3 w-screen hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
-                </NavLink>
+                </Link>
               </li>
-              <li>
-                <NavLink
+              <li className="transition-transform duration-300 ease-out hover:scale-110">
+              <Link
                   to="/contact"
-                  className="p-4 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300 border-b-[0.001rem] border-t-[0.001rem]"
+                  className="p-4 border-b-[0.001rem] border-t-[0.001rem]"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Contact Us
-                </NavLink>
+                </Link>
               </li>
-              <li>
-                <NavLink
+              <li className="transition-transform duration-300 ease-out hover:scale-125">
+              <Link
                   to="/about"
-                  className="p-3 hover:bg-gradient-to-r from-gradientPurple to-gradientSkyBlue transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About Us
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>
@@ -81,14 +79,14 @@ function Navbar() {
               ></div>
               <div className="p-4">
                 <li>
-                  <NavLink
+                  <Link
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     className="md:font-medium md:text-base 2xl:text-3xl capitalize hover:text-gray-200 transition-colors"
                     to="/"
                   >
                     Home
-                  </NavLink>
+                  </Link>
                 </li>
               </div>
             </div>
@@ -101,14 +99,14 @@ function Navbar() {
               ></div>
               <div className="p-4">
                 <li>
-                  <NavLink
+                  <Link
                     onMouseEnter={() => setIsHovered3(true)}
                     onMouseLeave={() => setIsHovered3(false)}
                     className="font-medium 2xl:text-3xl md:text-base capitalize hover:text-gray-200 transition-colors"
                     to="/contact"
                   >
                     Contact Us
-                  </NavLink>
+                  </Link>
                 </li>
               </div>
             </div>
@@ -121,14 +119,14 @@ function Navbar() {
               ></div>
               <div className="p-4">
                 <li>
-                  <NavLink
+                  <Link
                     onMouseEnter={() => setIsHovered4(true)}
                     onMouseLeave={() => setIsHovered4(false)}
                     className="font-medium 2xl:text-3xl md:text-base capitalize hover:text-gray-200 transition-colors"
                     to="/about"
                   >
                     About Us
-                  </NavLink>
+                  </Link>
                 </li>
               </div>
             </div>

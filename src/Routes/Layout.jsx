@@ -10,6 +10,8 @@ function Layout() {
     "/": <Navbar />,
     "/guestchat": <GuestChatNavbar />,
     "/userchat": <></>,
+    // "/changepassword": <></>,
+
   };
   return (
     <>

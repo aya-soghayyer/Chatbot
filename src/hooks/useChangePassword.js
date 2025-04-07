@@ -14,6 +14,8 @@ export const useChangePassword = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isInvalidPassword, setInvalidPassword] = useState(false);
+  const [isInvalidNewPassword, setInvalidNewPassword] = useState(false);
+  const [isInvalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState("");
   const [isError, setError] = useState("");
@@ -75,6 +77,10 @@ export const useChangePassword = () => {
     setShowNewPassword,
     showConfirmPassword,
     setShowConfirmPassword,
+    isInvalidNewPassword,
+    setInvalidNewPassword,
+    isInvalidConfirmPassword,
+    setInvalidConfirmPassword,
     setShowPassword,
     handleChange,
     handleSubmit,

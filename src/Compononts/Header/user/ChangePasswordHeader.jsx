@@ -17,6 +17,10 @@ function ChangePasswordHeader() {
     setShowConfirmPassword,
     isInvalidPassword,
     setInvalidPassword,
+    isInvalidNewPassword,
+    setInvalidNewPassword,
+    isInvalidConfirmPassword,
+    setInvalidConfirmPassword,
     handleChange,
     handleSubmit,
     isLoading,
@@ -26,16 +30,17 @@ function ChangePasswordHeader() {
 
   return (
     <>
-      <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:p-6 md:w-1/3 rounded-xl md:items-center md:absolute md:-top-44 md:right-96">
-        <h1 className="flex justify-center items-center z-0 md:text-lg text-2xl font-normal md:py-2">
+      <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-3 md:px-8 md:w-2/5 rounded-xl md:items-center ">
+        <h1 className="flex justify-center items-center md:justify-start z-0 md:text-lg text-2xl font-normal md:py-2">
           Change Password
         </h1>
-        <hr className="hidden md:inline-flex" />
+        <hr className="hidden md:inline-flex md:opacity-40" />
         <form
           onSubmit={handleSubmit}
-          className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:w-full"
+          className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:gap-3 md:py-6 md:w-full"
         >
-          <div className="px-8 py-3 gap-1 grid w-svw md:w-full relative">
+          <div className="">
+          <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
             <label htmlFor="current" className="text-base font-light">
               Current Password
             </label>
@@ -58,13 +63,13 @@ function ChangePasswordHeader() {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-12 top-16 md:top-1/2 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                className="absolute right-12 top-16 md:right-3 md:top-12  md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
               >
                 <img src={eye} alt="eye icon" className="scale-125 " />
               </button>
             </div>
           </div>
-          <div className="px-8 py-3 gap-1 grid w-svw md:w-full relative">
+          <div className="px-8 py-3 gap-1 grid w-svw md:w-full md:py-0 md:px-0 relative">
             <label htmlFor="new" className="text-base font-light">
               New Password
             </label>
@@ -73,9 +78,9 @@ function ChangePasswordHeader() {
               id="new"
               name="newPassword"
               className={`border p-3 2xl:p-5 h-12 md:h-10 pr-12 2xl:h-16 w-full bg-white/15 border-white rounded-md ${
-                isInvalidPassword ? "invalid:border-red-500" : "border-white"
+                isInvalidNewPassword ? "invalid:border-red-500" : "border-white"
               }`}
-              onFocus={() => setInvalidPassword(true)}
+              onFocus={() => setInvalidNewPassword(true)}
               placeholder="New Password"
               onChange={handleChange}
               required
@@ -87,14 +92,14 @@ function ChangePasswordHeader() {
               <button
                 type="button"
                 onClick={() => setShowNewPassword((prev) => !prev)}
-                className="absolute right-12 top-16 md:top-1/2 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                className="absolute right-12 top-16 md:right-3 md:top-12 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
               >
                 <img src={eye} alt="eye icon" className="scale-125 " />
               </button>
             </div>
           </div>
 
-          <div className="px-8 py-3 gap-1 grid w-svw md:w-full relative">
+          <div className="px-8 py-3 gap-1 grid w-svw md:w-full md:py-0 md:px-0 relative">
             <label htmlFor="confirm" className="text-base font-light">
               Confirm Password
             </label>
@@ -103,9 +108,9 @@ function ChangePasswordHeader() {
               id="confirm"
               name="confirmPassword"
               className={`border p-3 2xl:p-5 h-12 md:h-10 pr-12 2xl:h-16 w-full bg-white/15 border-white rounded-md ${
-                isInvalidPassword ? "invalid:border-red-500" : "border-white"
+                isInvalidConfirmPassword ? "invalid:border-red-500" : "border-white"
               }`}
-              onFocus={() => setInvalidPassword(true)}
+              onFocus={() => setInvalidConfirmPassword(true)}
               placeholder="Confirm Password"
               onChange={handleChange}
               required
@@ -117,20 +122,20 @@ function ChangePasswordHeader() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
-                className="absolute right-12 top-16 md:top-1/2 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                className="absolute right-12 top-16 md:right-3 md:top-12  md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
               >
-                <img src={eye} alt="eye icon" className="scale-125 " />
+                <img src={eye} alt="eye icon" className="scale-125" />
               </button>
             </div>
           </div>
 
           {console.log("old " + passwordData.currentPassword)}
 
-          <div className="flex gap-6 py-5 px-8 h-full">
+          <div className="flex gap-6 py-5 px-8 md:py-8 md:px-0 h-full">
             <FilledButton
               title={isLoading ? "Saving..." : "Save"}
               type="submit"
-              className={`w-1/2 py-3 rounded-full text-lg font-normal ${
+              className={`w-1/2 py-3 rounded-full text-lg font-normal md:py-0 ${
                 isLoading ? "cursor-not-allowed bg-none bg-white/15" : ""
               } `}
               disabled={isLoading}
@@ -141,6 +146,7 @@ function ChangePasswordHeader() {
             >
               Cancel
             </button>
+          </div>
           </div>
         </form>
         {isSuccess && (

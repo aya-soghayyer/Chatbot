@@ -5,7 +5,7 @@
 // import micStart from "../../../../assets/sounds/mixkit-video-game-mystery-alert-234.wav"
 // import micStop from "../../../../assets/sounds/mixkit-select-click-1109.wav"
 import SelectLanguageSpeak from "../../../ui/SelectLanguageSpeak";
-import SendButton from "../../../ui/sendButton";
+import SendButton from "../../../ui/SendButton";
 
 const ChatInput = ({
   inputValue,

@@ -1,68 +1,57 @@
 // components/ChatArea.js
-import Cookie from "js-cookie";
-import { useState, useEffect, useRef } from "react";
+import React from "react";
+import Loader from "../../../loader/Loader";
 
-const ChatArea = ({ messages, messageEndRef }) => {
-//   const [messages, setMessages] = useState([]);
-// const [newMessage, setNewMessage] = useState("");
-// const [isTyping, setIsTyping] = useState(false);
-// const [typingInterval, setTypingInterval] = useState(null);
-// const [lastTypingTime, setLastTypingTime] = useState(null);
-// const [userTyping, setUserTyping] = useState(false);
+const ChatArea = ({ messages, messageEndRef, isLoading }) => {
+  return (
+    <div className="overflow-y-auto w-full p-3 max-h-[400px] md:max-h-[480px] custom-scrollbar relative">
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          className={`flex mb-4 items-end ${
+            msg.sender === "user" ? "justify-end" : "justify-start"
+          }`}
+        >
+          {msg.sender !== "user" && (
+            <div className="w-10 h-10 md:w-14 md:h-14 mr-2">
+              <img
+                src="https://avatar.iran.liara.run/public/1"
+                alt="Bot Avatar"
+                className="rounded-full w-full h-full object-cover"
+              />
+            </div>
+          )}
 
-  // useEffect(() => {
-
-  //   const fetchMessages = async (chatId) => {
-  //     try {
-  //       const token = Cookie.get("token");
-  //       if (!token) throw new Error("No token found, please log in.");
-  
-  //       const responseMessages = await fetch(`${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`, {
-  //         method: "GET",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  
-  //       if (!responseMessages.ok) throw new Error(`Error fetching messages: ${responseMessages.status}`);
-  
-  //       const data = await responseMessages.json();
-  //       console.log("Fetched Messages:", data);
-  //       setMessages(data.Messages); // Store messages in state
-  //     } catch (err) {
-  //       console.error("Error fetching messages:", err.message);
-  //       // setError(err.message);
-  //     }
-  //   };
-  //   fetchMessages(chatId);
-  // }, []);
-  
-    return (
-      <div className="overflow-y-auto w-full p-3 max-h-[379px] custom-scrollbar">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`flex mb-2 ${
-              msg.sender === "user" ? "justify-end" : "justify-start"
+          <span
+            className={`p-3 rounded-lg text-sm md:text-base max-w-[70%] break-words ${
+              msg.sender === "user"
+                ? "bg-slate-500/40 text-white rounded-br-none"
+                : "text-white rounded-bl-none"
             }`}
+            ref={index === messages.length - 1 ? messageEndRef : null}
           >
-            <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-yellow-50"></div>
-            <span
-              className={`p-2 rounded-lg mb-2 w-fit text-sm md:text-base ${
-                msg.sender === "user"
-                  ? "bg-slate-500/40 text-white self-end rounded-br-none max-w-[70%]"
-                  : "text-white self-start rounded-bl-none max-w-[70%]"
-              }`}
-              ref={messageEndRef}
-            >
-              {msg.text}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  };
-  
-  export default ChatArea;
+            {msg.text}
+          </span>
+
+          {msg.sender === "user" && (
+            <div className="w-10 h-10 md:w-14 md:h-14 ml-2">
+              <img
+                src="https://avatar.iran.liara.run/public/2"
+                alt="User Avatar"
+                className="rounded-full w-full h-full object-cover"
+              />
+            </div>
+          )}
+        </div>
+      ))}
+
+      {isLoading && (
+        <div className="flex justify-start mt-2">
+          <Loader />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ChatArea;

@@ -10,6 +10,21 @@ export const useGuestChat = (chatService, SpeechService) => {
   const [isLoading, setIsLoading] = useState(false);
   const messageEndRef = useRef(null);
   const speechServiceRef = useRef(null);
+  const [greeting, setGreeting] = useState("");
+
+
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+    if (currentHour >= 6 && currentHour < 12) {
+      setGreeting("Good Morning");
+    } else if (currentHour >= 12 && currentHour < 18) {
+      setGreeting("Good Afternoon");
+    } else if (currentHour >= 18 && currentHour < 22) {
+      setGreeting("Good Evening");
+    } else {
+      setGreeting("Good Night");
+    }
+  }, []);
 
   // Initialize Speech Service
   useEffect(() => {
@@ -81,6 +96,7 @@ export const useGuestChat = (chatService, SpeechService) => {
   };
 
   return {
+    greeting,
     messages,
     inputValue,
     listening,

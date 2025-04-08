@@ -77,14 +77,14 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
         <>
         <h1 className="text-xl  mt-3 font-semibold text-white mb-3">Chat History</h1>
 
-        <div className="overflow-y-auto max-h-full custom-scrollbar">
+        <div className="">
 
           {loading ? (
             <p className="text-gray-400">Loading chats...</p>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : chats.length > 0 ? (
-            <ul className="space-y-1">
+            <ul className="space-y-1 overflow-y-auto max-h-[480px] custom-scrollbar px-1">
               {chats.map((chat) => (
                 <li
                   key={chat.id} // Use chat_number as key
@@ -98,15 +98,6 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
                 </li>
                 
               ))}
-              <li>
-                hello
-              </li>
-              <li>
-                hello
-              </li>
-              <li>
-                hello
-              </li>
             </ul>
           ) : (
             <p className="text-gray-500">No chats available.</p>

@@ -25,6 +25,8 @@ function UserChatHeader() {
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
   const { preview, handleFileChange } = usePhoto(); // use hook for file and preview
+  const [isLoading, setIsLoading] = useState(false);
+
   
 
   const navigate = useNavigate();
@@ -117,6 +119,8 @@ function UserChatHeader() {
     const userMessage = MessageFactory.createUserMessage(inputValue);
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInputValue("");
+    setIsLoading(true);
+
 
     try {
       const data = await ChatService.addMessage(userMessage.text, chatId);
@@ -134,6 +138,9 @@ function UserChatHeader() {
         );
         setMessages((prevMessages) => [...prevMessages, errorMessage]);
       }
+    }
+    finally{
+      setIsLoading(false);
     }
   };
   // const [messages, setMessages] = useState([]);
@@ -221,7 +228,7 @@ function UserChatHeader() {
 
         ) : (
           <div className="grid grid-rows-[1fr_auto] min-h-[99%] pt-3 w-full rounded-2xl md:min-h-[96%]">
-            <ChatArea messages={messages} messageEndRef={messageEndRef} />
+            <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading}/>
             <ChatInput
               inputValue={inputValue}
               setInputValue={setInputValue}
@@ -231,7 +238,7 @@ function UserChatHeader() {
               handleToggle={handleToggle}
               handleSubmit={handleSubmit}
               setIsActiveChat={setIsActiveChat}
-              className="bg-white bg-opacity-25 "
+              className="bg-white bg-opacity-25"
             />
           </div>
         )}

@@ -17,7 +17,8 @@ const ChatInput = ({
   handleSubmit,
   setIsActiveChat,
   isActiveChat,
-  className="" 
+  className="",
+  isBotLoading // ⬅️ Add this prop
   }) => {
   // const [play] = useSound(micStart)
   // const [pause] = useSound(micStop)
@@ -26,15 +27,18 @@ const ChatInput = ({
     <div className="relative grid w-full">
       <SelectLanguageSpeak language={language} setLanguage={setLanguage} />
       <form onSubmit={handleSubmit} className="flex justify-center items-center w-full">
-        <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          className={`pl-4 pr-14 p-3 flex-auto rounded-br-2xl rounded-bl-2xl ${className}  text-white text-sm md:text-base`}
-          type="text"
-          placeholder="Ask MiLo"
-        />
+      <input
+  value={inputValue}
+  onChange={(e) => setInputValue(e.target.value)}
+  className={`pl-4 pr-14 p-3 flex-auto rounded-br-2xl rounded-bl-2xl ${className} text-sm md:text-base bg-opacity-80 ${
+    isBotLoading ? "bg-gray-700 cursor-not-allowed" : "bg-gray-800"
+  }`}
+  type="text"
+  placeholder="Ask MiLo"
+  disabled={isBotLoading}
+/>
         <SendButton  listening={listening}
-           handleToggle={handleToggle} setIsActiveChat={setIsActiveChat}
+            handleToggle={handleToggle} setIsActiveChat={setIsActiveChat}
             isActiveChat={isActiveChat} inputValue={inputValue} />
       </form>
     </div>

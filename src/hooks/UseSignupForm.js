@@ -37,7 +37,7 @@ export const useSignupForm = (authService) => {
         formData.miloPassword
       );
       setSuccess("Signup successful! Check your email.");
-      setTimeout(() => navigate("/login"), 2000); // Navigate after success
+      setTimeout(() => navigate("/userchat"), 2000); // Navigate after success
     } catch (error) {
       setError("Signup failed. Please try again.");
     } finally {

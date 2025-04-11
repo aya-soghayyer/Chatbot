@@ -27,8 +27,8 @@ function Footer() {
         </div>
         {showPrivacy && (
           <>
-            <div className="fixed inset-0 md:z-50  bg-black/85 flex items-center justify-center p-4 md:p-6 2xl:p-8">
-              <div className="bg-sky-700 w-full overflow-y-auto max-h-full custom-scrollbar z-50 text-white p-6 md:p-8 2xl:p-10 rounded-xl shadow-md md:w-full 2xl:max-w-2xl overflow-hidden relative">
+            <div className="fixed inset-0 md:z-50  bg-black flex items-center justify-center p-4 md:p-6 2xl:p-8">
+              <div className="bg-BgFooter w-full overflow-y-auto max-h-full custom-scrollbar z-50 text-white p-6 md:p-8 2xl:p-10 rounded-xl shadow-md md:w-full 2xl:max-w-2xl overflow-hidden relative">
                 <div className="top-4 md:top-8 2xl:top-10 right-4 md:right-12 2xl:right-16">
                   <button
                     onClick={togglePrivacy}

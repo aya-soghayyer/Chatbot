@@ -180,7 +180,7 @@ function HeaderS() {
               <h2 className="relative font-semibold text-lg md:text-xl 2xl:text-2xl mb-4">
                 How to sign up on MiLo?
               </h2>
-              <ul className="relative font-thin text-sm md:text-base 2xl:text-lg space-y-2">
+              <ul className="relative font-light text-sm md:text-base 2xl:text-lg space-y-2">
                 <li>
                   <span className="font-medium">Step 1:</span> Enter your
                   university number in the student ID field.

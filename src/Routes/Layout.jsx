@@ -15,12 +15,13 @@ function Layout() {
   };
   return (
     <>
-      <div className="bg-primary font-Outfit z-30">
+      <div className="bg-primary font-Outfit z-30 min-h-[100vh] flex flex-col">
         {/* <div className="z-50"> */}
         {navbars[location.pathname] || <Navbar />}
         {/* </div> */}
-        
+        <div className="flex-1">
         <Outlet className="z-40"/>
+        </div>
         <div className="text-white bg-BgFooter">
           <Footer className="z-50"/>
         </div>

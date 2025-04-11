@@ -210,7 +210,7 @@ function UserChatHeader() {
             <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
               What can I help with?
             </h2>
-            <div className="relative mx-4">
+            <div className="relative mx-4 -z-0">
               <ChatInput
                 inputValue={inputValue}
                 setInputValue={setInputValue}

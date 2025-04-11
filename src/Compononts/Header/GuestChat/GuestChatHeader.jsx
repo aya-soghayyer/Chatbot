@@ -48,10 +48,10 @@ function HeaderGuestChat() {
       >
         {!activeChat ? (
           <div
-            className={`grid gap-1 md:-mt-28 px-5 md:px-44 md:gap-3 2xl:gap-8 w-full min-w-full md:min-w-full 2xl:max-w-5xl mx-auto 2xl:mt-20 z-10 relative`}
+            className={`grid gap-1 md:-mt-28 px-5 md:px-44 md:gap-3 2xl:gap-8 w-full min-w-full md:min-w-full 2xl:max-w-5xl mx-auto 2xl:mt-20 z-10 relative `}
           >
             <h2 className="text-white font-extralight text-xl md:text-2xl flex justify-center items-center">
-              {greeting} :)
+              {greeting}
             </h2>
             <h2 className="text-2xl md:text-2xl 2xl:text-3xl font-bold flex justify-center items-center">
               What can I help with?
@@ -67,7 +67,7 @@ function HeaderGuestChat() {
                 handleToggle={handleToggle}
                 handleSubmit={handleSubmit}
                 setIsActiveChat={setIsActiveChat}
-                className="rounded-2xl bg-white bg-opacity-25"
+                className="rounded-2xl bg-white/15"
               />
             </div>
               <div className="hidden md:inline-grid md:px-7 2xl:p-4 text-white md:w-full space-y-3 md:space-y-4 2xl:space-y-5">
@@ -93,7 +93,7 @@ function HeaderGuestChat() {
           </div>
         ) : (
           <div
-            className={`grid grid-rows-[1fr_auto] w-full md:px-44 items-end max-w-full md:max-w-full 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[610px] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
+            className={`grid grid-rows-[1fr_auto] w-full  items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[610px] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
           >
             {/* <div className="flex-1 overflow-y-auto p-2 2xl:p-4 max-h-[250px] md:max-h-[480px] 2xl:max-h-[500px] custom-scrollbar">
               {messages.map((msg, index) => (
@@ -134,7 +134,7 @@ function HeaderGuestChat() {
                handleToggle={handleToggle}
                handleSubmit={handleSubmit}
                setIsActiveChat={setIsActiveChat}
-                className="bg-white bg-opacity-25"
+                className="bg-white/15"
               />
             </div>
             </div>

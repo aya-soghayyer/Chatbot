@@ -17,6 +17,7 @@ import Contact from "./views/Contact";
 import Admin from "./views/Admin";
 import ChangePassword from "./views/ChangePassword";
 import ForgetPassword from "./views/ForgetPassword";
+import ResetPassword from "./views/ResetPassword";
 
 export let domainName = "http://localhost:8000/"
 
@@ -59,6 +60,10 @@ function App() {
         {
           path: "/forgetpassword",
           element: <ForgetPassword />,
+        },
+        {
+          path: "/resetpassword",
+          element: <ResetPassword />,
         },
         {
           path: "/userchat",

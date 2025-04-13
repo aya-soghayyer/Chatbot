@@ -75,7 +75,7 @@ function LoginHeader() {
               />
             </div>
             <Link
-              to="/"
+              to="/forgetpassword"
               className="px-4 md:px-5 2xl:px-6 pt-1 text-sm md:text-base 2xl:text-lg font-extralight"
             >
               Forgot password?

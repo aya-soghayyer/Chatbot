@@ -5,11 +5,11 @@ import UnFilledButton from "../ui/UnFilledButton";
 
 function WelcomeHeader() {
   return (
-    <header className="py-8 z-20 flex font-Outfit text-white md:w-[70rem] md:justify-start 2xl:w-[80rem] 2xl:-mt-16">
+    <header className="py-8 z-20 flex font-Outfit text-white  md:justify-start  2xl:-mt-16">
       <div className="flex flex-col px-6 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
         <div className="w-full z-10 md:w-1/2 md:ml-7 2xl:w-3/5">
           <h2 className="text-5xl md:whitespace-break-spaces md:text-5xl/tight 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
-            WELCOME TO MILO chatbot
+            welcome     to milo chatbot
           </h2>
           <p className="md:text-xl md:font-light text-lg 2xl:text-xl font-light mb-6">
             Welcome to MiLo! Explore a smarter way to navigate university

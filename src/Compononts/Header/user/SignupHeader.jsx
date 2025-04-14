@@ -6,6 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useSignupForm } from "../../../hooks/UseSignupForm";
 import AuthService from "../../../services/AuthSignupService";
 import FilledButton from "../../../Compononts/ui/FilledButton";
+import eye from "../../../assets/images/eye.svg";
 
 function HeaderS() {
   const {
@@ -19,6 +20,10 @@ function HeaderS() {
     isLoading,
     showHelp,
     toggleHelp,
+    showMiloPassword,
+    setShowMiloPassword,
+    showPortalPassword,
+    setShowPortalPassword,
   } = useSignupForm(AuthService);
 
   return (
@@ -63,37 +68,60 @@ function HeaderS() {
               />
             </div> */}
             <div>
-              <label htmlFor="portalPassword" className="text-lg font-light">
-                Portal Password
-              </label>
-              <input
-                type="password"
-                id="portalPassword"
-                className="border p-3 h-12 w-full bg-slate-500 border-white rounded-md"
-                name="portalPassword"
-                placeholder="Portal Password"
-                required
-                value={formData.portalPassword}
-                onChange={handleChange}
-              />
+              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+                <label htmlFor="portalPassword" className="text-lg font-light">
+                  Portal Password
+                </label>
+                <input
+                  type={showPortalPassword ? "text" : "password"}
+                  id="portalPassword"
+                  className="border p-3 h-12 w-full bg-slate-500 border-white rounded-md"
+                  name="portalPassword"
+                  placeholder="Portal Password"
+                  required
+                  value={formData.portalPassword}
+                  onChange={handleChange}
+                />
+                <div className="flex justify-center items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowPortalPassword((prev) => !prev)}
+                    className="absolute right-12 top-16 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                  >
+                    <img src={eye} alt="eye icon" className="scale-110 " />
+                  </button>
+                </div>
+              </div>
             </div>
             <div>
-              <label htmlFor="miloPassword" className="text-lg font-light">
-                Milo Password
-              </label>
-              <input
-                type="password"
-                id="miloPassword"
-                className="border p-3 h-12 w-full bg-slate-500 border-white rounded-md"
-                name="miloPassword"
-                placeholder="Milo Password"
-                required
-                value={formData.miloPassword}
-                onChange={handleChange}
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-              />
+              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+                <label htmlFor="miloPassword" className="text-lg font-light">
+                  Milo Password
+                </label>
+                <input
+                  type={showMiloPassword ? "text" : "password"}
+                  id="miloPassword"
+                  className="border p-3 h-12 w-full bg-slate-500 border-white rounded-md"
+                  name="miloPassword"
+                  placeholder="Milo Password"
+                  required
+                  value={formData.miloPassword}
+                  onChange={handleChange}
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                />
+                <div className="flex justify-center items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowMiloPassword((prev) => !prev)}
+                    className="absolute right-12 top-16 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                  >
+                    <img src={eye} alt="eye icon" className="scale-110 " />
+                  </button>
+                </div>
+              </div>
             </div>
+
             {/* <div>
               <label htmlFor="photo" className="text-lg font-light">Choose Your Photo</label>
               <input

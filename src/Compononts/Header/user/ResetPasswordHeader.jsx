@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FilledButton from "../../ui/FilledButton";
 import eye from "../../../assets/images/eye.svg";
 import { useResetPassword } from "../../../hooks/useResetPassword";
+import { useForgetPassword } from "../../../hooks/useForgetPassword";
 
 
 
@@ -28,16 +29,15 @@ function ResetPasswordHeader() {
 
   return (
     <>
-      <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-3 md:px-8 md:w-2/5 rounded-xl md:items-center ">
-        <h1 className="flex justify-center items-center md:justify-start z-0 md:text-lg text-2xl font-normal md:py-2">
+      <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-10 md:px-0 md:w-1/3 md:h-1/3 rounded-xl md:items-center ">
+        <h1 className="flex justify-center items-center md:justify-center z-0 md:text-3xl md:font-medium text-2xl font-normal">
           Reset Password
         </h1>
-        <hr className="hidden md:inline-flex md:opacity-40" />
         <form
           onSubmit={handleSubmit}
-          className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:gap-3 md:py-6 md:w-full">
+          className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:gap-3 md:py-3 md:w-full">
           <div className="">
-            <div className="px-8 py-3 gap-1 grid w-svw md:w-full md:py-0 md:px-0 relative">
+            <div className="px-8 py-3 gap-1 grid w-svw md:w-full md:py-0 md:my-2 md:px-0 relative">
               <label htmlFor="new" className="text-base font-light">
                 New Password
               </label>
@@ -102,7 +102,7 @@ function ResetPasswordHeader() {
             </div>
 
 
-            <div className="flex py-5 px-8 md:py-8 md:px-0 h-full">
+            <div className="flex py-5 px-8 md:pt-8 md:px-0 h-full">
               <FilledButton
                 title={isLoading ? "Saving..." : "Save Password"}
                 type="submit"

@@ -18,6 +18,8 @@ export const useSignupForm = (authService) => {
   const [isError, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [showMiloPassword, setShowMiloPassword] = useState(false);
+const [showPortalPassword, setShowPortalPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -58,5 +60,9 @@ export const useSignupForm = (authService) => {
     isLoading,
     showHelp,
     toggleHelp,
+    showMiloPassword,
+    setShowMiloPassword,
+    showPortalPassword, 
+    setShowPortalPassword
   };
 };

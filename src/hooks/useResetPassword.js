@@ -3,8 +3,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookie from "js-cookie";
 import { domainName } from "../App";
+import { useForgetPassword } from "./useForgetPassword";
+import { useToken } from "../store/TokenContext";
+
 
 export const useResetPassword = () => {
+
+
   const [passwordData, setPasswordData] = useState({
     newPassword: "",
     confirmPassword: "",
@@ -17,6 +22,7 @@ export const useResetPassword = () => {
   const [isSuccess, setSuccess] = useState("");
   const [isError, setError] = useState("");
   const navigate = useNavigate();
+  const {token} = useToken()
 
   const handleChange = (e) => {
     setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
@@ -35,7 +41,6 @@ export const useResetPassword = () => {
     }
 
     try {
-      const token = Cookie.get("token");
       const response = await fetch(`${domainName}user/resetpassword`, {
         method: "POST",
         headers: {
@@ -47,13 +52,11 @@ export const useResetPassword = () => {
           password: passwordData.newPassword,
         }),
       });
-
+      console.log(token)
       const data = await response.json();
 
       if (response.ok) {
         setSuccess(data.message || "Password changed successfully.");
-        // Cookie.remove("token");
-        // localStorage.removeItem("users");
         navigate("/login");
       } else {
         setError(data.message || "Password change failed.");

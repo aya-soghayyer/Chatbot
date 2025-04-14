@@ -7,10 +7,12 @@ import { useForgetPassword } from '../../../hooks/useForgetPassword';
 
 
 
-function ForgetPasswordHeader() {
+function ForgetPasswordHeader({}) {
   const navigate = useNavigate();
 
   const {
+    setInvalidId,
+    isInvalidId,
     userData,
     showPassword,
     setShowPassword,
@@ -25,13 +27,17 @@ function ForgetPasswordHeader() {
 
   return (
     <>
-    <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-3 md:px-8 md:w-2/5 rounded-xl md:items-center ">
-        <h1 className="flex justify-center items-center md:justify-start z-0 md:text-lg text-2xl font-normal md:py-2">
+    <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-6 md:w-1/3 md:h-1/3 rounded-xl md:items-center ">
+    <div className="grid px-16">
+
+        <h1 className="flex justify-center text-2xl items-center md:justify-center z-0 md:text-3xl md:font-medium font-normal md:py-2">
           Forget Password?
         </h1>
-        <p>
-        Enter your university ID and portal password to verify your identity
+        <p className="flex justify-center text-center text-base font-light md:justify-start z-0 md:text-sm md:py-2">
+          Enter your university ID and portal password to verify your identity
         </p>
+        </div>
+
         <form
           onSubmit={handleSubmit}
           className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:gap-3 md:py-6 md:w-full"
@@ -46,9 +52,9 @@ function ForgetPasswordHeader() {
               id="userId"
               name="userId"
               className={`border w-full p-3 2xl:p-5 h-12 md:h-10 pr-12 2xl:h-16 bg-white/15 border-white rounded-md ${
-                isInvalidPassword ? "invalid:border-red-500" : "border-white"
+                isInvalidId ? "invalid:border-red-500" : "border-white"
               }`}
-              onFocus={() => setInvalidPassword(true)}
+              onFocus={() => setInvalidId(true)}
               placeholder="Your ID"
               onChange={handleChange}
               required
@@ -80,14 +86,14 @@ function ForgetPasswordHeader() {
                 onClick={() => setShowPassword((prev) => !prev)}
                 className="absolute right-12 top-16 md:right-3 md:top-12 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
               >
-                <img src={eye} alt="eye icon" className="scale-125 " />
+                <img src={eye} alt="eye icon" className="scale-110 " />
               </button>
             </div>
           </div>
 
           {/* {console.log("old " + passwordData.currentPassword)} */}
 
-          <div className="flex gap-6 py-5 px-8 md:py-8 md:px-0 h-full">
+          <div className="flex gap-6 py-5 px-8 md:py-5 md:px-0 h-full">
             <FilledButton
               title={isLoading ? "Go to reset page ..." : "Reset Password"}
               type="submit"

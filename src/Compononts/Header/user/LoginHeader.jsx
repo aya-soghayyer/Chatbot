@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useLoginForm } from "../../../hooks/UseLoginFrom";
 import AuthService from "../../../services/AuthService.ts";
 // import ProtectedRout from "../../../utils/ProtectedRout.jsx";
-import FilledButton from "../../../Compononts/ui/FilledButton"
-
+import FilledButton from "../../../Compononts/ui/FilledButton";
+import eye from "../../../assets/images/eye.svg";
 
 function LoginHeader() {
   const {
@@ -18,6 +18,8 @@ function LoginHeader() {
     isLoading,
     isSuccess,
     isError,
+    showMiloPassword,
+    setShowMiloPassword,
   } = useLoginForm(AuthService);
 
   return (
@@ -51,45 +53,61 @@ function LoginHeader() {
                 pattern="[0-9]{8}"
               />
             </div>
-            <div className="grid justify-items-start gap-2 px-4 md:px-5 2xl:px-6 pb-2 md:pb-4 2xl:pb-6">
-              <label
-                htmlFor="miloPassword"
-                className="text-lg md:text-xl 2xl:text-2xl font-extralight"
-              >
-                Milo Password
-              </label>
-              <input
-                type="password"
-                id="miloPassword"
-                className={`border p-3 2xl:p-5 h-12 md:h-10 2xl:h-16 w-full bg-slate-500 border-white rounded-md ${
-                  isInvalidMilo ? "invalid:border-red-500" : "border-white"
-                }`}
-                onFocus={() => setInvalidMilo(true)}
-                name="miloPassword"
-                placeholder="Milo Password"
-                onChange={handleChange}
-                required
-                value={formData.miloPassword}
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-              />
+            <div className="grid justify-items-start gap-2 px-4 md:px-5 2xl:px-6 pb-2 2xl:pb-6  md:-mb-1">
+              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+                <label
+                  htmlFor="miloPassword"
+                  className="text-lg md:text-xl 2xl:text-2xl font-extralight"
+                >
+                  Milo Password
+                </label>
+                <input
+                  type={showMiloPassword ? "text" : "password"}
+                  id="miloPassword"
+                  className={`border p-3 2xl:p-5 h-12 md:h-10 2xl:h-16 w-full bg-slate-500 border-white rounded-md ${
+                    isInvalidMilo ? "invalid:border-red-500" : "border-white"
+                  }`}
+                  onFocus={() => setInvalidMilo(true)}
+                  name="miloPassword"
+                  placeholder="Milo Password"
+                  onChange={handleChange}
+                  required
+                  value={formData.miloPassword}
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                />
+                <div className="flex justify-center items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowMiloPassword((prev) => !prev)}
+                    className="absolute right-12 top-16 md:right-3 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                  >
+                    <img src={eye} alt="eye icon" className="scale-110 " />
+                  </button>
+                </div>
+              </div>
             </div>
+
             <Link
               to="/forgetpassword"
               className="px-4 md:px-5 2xl:px-6 pt-1 text-sm md:text-base 2xl:text-lg font-extralight"
             >
               Forgot password?
             </Link>
-            <div className="px-4 md:px-5 2xl:px-6 w-full">
-            {/* <button
+            <div className="px-4 md:px-5 md:pt-4 2xl:px-6 w-full">
+              {/* <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full mt-3 md:mt-4 2xl:mt-6 px-4 md:px-5 2xl:px-6 py-2 md:py-2.5 2xl:py-3 rounded-md capitalize text-base md:text-lg 2xl:text-xl font-normal bg-gradient-to-r from-gradientPurple to-gradientSkyBlue shadow-inner shadow-slate-400 disabled:opacity-50"
               >
                 {isLoading ? "Logging In..." : "Login"}
               </button> */}
-                <FilledButton title={isLoading ? "Logging In..." : "Login"}  type="submit"
-              disabled={isLoading} className="w-full py-3 rounded-md disabled:opacity-50" />     
+              <FilledButton
+                title={isLoading ? "Logging In..." : "Login"}
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 rounded-md disabled:opacity-50"
+              />
             </div>
             {isSuccess && (
               <p className="text-green-500 text-center mt-4">{isSuccess}</p>
@@ -121,9 +139,9 @@ function LoginHeader() {
       </div>
       <div className="text-base flex justify-center my-6 underline underline-offset-2 md:hidden">
         <Link to="/guestchat">Try it as Guest</Link>
-    </div>
-  </header>
-);
+      </div>
+    </header>
+  );
 }
 
 export default LoginHeader;

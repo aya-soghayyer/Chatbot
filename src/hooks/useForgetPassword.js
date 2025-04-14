@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookie from "js-cookie";
 import { domainName } from "../App";
+import { useToken } from "../store/TokenContext";
 
 export const useForgetPassword = () => {
   const [userData, setUserData] = useState({
@@ -10,12 +11,14 @@ export const useForgetPassword = () => {
     portalPassword: "",
   });
 
+  const [ isInvalidId, setInvalidId] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [isInvalidPassword, setInvalidPassword] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState("");
   const [isError, setError] = useState("");
   const navigate = useNavigate();
+  let {setToken} = useToken(0)
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -26,7 +29,6 @@ export const useForgetPassword = () => {
     setLoading(true);
     setSuccess(isSuccess);
     setError(isError);
-
 
     try {
       const response = await fetch(`${domainName}user/forgetpassword`, {
@@ -42,6 +44,9 @@ export const useForgetPassword = () => {
       });
 
       const data = await response.json();
+      setToken(data.token)
+      // console.log(token)
+
 
       if (response.ok) {
         setSuccess(data.message || "Got the data successfully.");
@@ -58,6 +63,8 @@ export const useForgetPassword = () => {
   };
 
   return {
+    setInvalidId,
+    isInvalidId,
     userData,
     showPassword,
     setShowPassword,
@@ -68,5 +75,6 @@ export const useForgetPassword = () => {
     isLoading,
     isSuccess,
     isError,
+    setToken
   };
 };

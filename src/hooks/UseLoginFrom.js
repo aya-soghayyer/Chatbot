@@ -12,6 +12,7 @@ export const useLoginForm = (authService) => {
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState("");
   const [isError, setError] = useState("");
+  const [showMiloPassword, setShowMiloPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -49,5 +50,7 @@ export const useLoginForm = (authService) => {
     isLoading,
     isSuccess,
     isError,
+    showMiloPassword,
+    setShowMiloPassword,
   };
 };

@@ -18,9 +18,9 @@ import Admin from "./views/Admin";
 import ChangePassword from "./views/ChangePassword";
 import ForgetPassword from "./views/ForgetPassword";
 import ResetPassword from "./views/ResetPassword";
+import { TokenProvider } from "./store/TokenContext.tsx";
 
-export let domainName = "http://localhost:8000/"
-
+export let domainName = "http://localhost:8000/";
 
 function App() {
   const router = createBrowserRouter([
@@ -59,11 +59,19 @@ function App() {
         },
         {
           path: "/forgetpassword",
-          element: <ForgetPassword />,
+          element: (
+            <TokenProvider>
+              <ForgetPassword />
+            </TokenProvider>
+          ),
         },
         {
           path: "/resetpassword",
-          element: <ResetPassword />,
+          element: (
+            <TokenProvider>
+              <ResetPassword />
+            </TokenProvider>
+          ),
         },
         {
           path: "/userchat",
@@ -77,7 +85,7 @@ function App() {
           path: "/changepassword",
           element: (
             <ProtectedRout>
-              <ChangePassword/>
+              <ChangePassword />
             </ProtectedRout>
           ),
         },

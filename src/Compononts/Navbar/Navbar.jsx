@@ -16,7 +16,7 @@ function Navbar() {
         <div className="flex items-center z-10">
           <Link to="/">
             <img
-              className="2xl:w-[15rem] md:w-full w-[10rem]"
+              className="2xl:w-[15rem] md:w-full w-[8rem]"
               src={websiteName}
               alt="MiLo Logo"
             />
@@ -29,7 +29,7 @@ function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="focus:outline-none"
           >
-            <FontAwesomeIcon icon="fa-solid fa-bars" size="2xl" />
+            <FontAwesomeIcon icon="fa-solid fa-bars" size="xl" />
           </button>
           <div
             className={`md:hidden absolute w-44 h-44 text-xl top-[4rem] right-5 bg-darkBlue rounded-md flex-col items-center py-4 font-Outfit z-50 transition-all duration-500 ease-in-out ${

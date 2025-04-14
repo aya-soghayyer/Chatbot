@@ -1,10 +1,17 @@
 // components/ChatArea.js
 import React from "react";
 import Loader from "../../../loader/Loader";
+import { marked } from "marked";
+
+// Optional config for better Markdown rendering
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+});
 
 const ChatArea = ({ messages, messageEndRef, isLoading }) => {
   return (
-    <div className="overflow-y-auto w-full p-6 max-h-[400px] md:max-h-[480px] custom-scrollbar relative">
+    <div className="overflow-y-auto w-full p-3 md:p-0 md:px-7 max-h-[400px] md:max-h-[480px] custom-scrollbar relative">
       {messages.map((msg, index) => (
         <div
           key={index}
@@ -23,16 +30,20 @@ const ChatArea = ({ messages, messageEndRef, isLoading }) => {
           )}
 
           <span
-            className={`p-3 rounded-lg text-sm md:text-base max-w-[70%] break-words ${
+            className={`p-3 rounded-lg text-sm md:text-base max-w-[70%] break-words prose prose-invert ${
               msg.sender === "user"
                 ? "bg-slate-500/40 text-white rounded-br-none"
-                : "text-white rounded-bl-none"
+                : "text-white bg-darkBlue rounded-bl-none"
             }`}
             ref={index === messages.length - 1 ? messageEndRef : null}
           >
-            {msg.text} 
-            
-            {console.log(msg)}
+            {msg.sender === "bot" ? (
+              <div
+                dangerouslySetInnerHTML={{ __html: marked.parse(msg.text || "") }}
+              />
+            ) : (
+              msg.text
+            )}
           </span>
 
           {msg.sender === "user" && (

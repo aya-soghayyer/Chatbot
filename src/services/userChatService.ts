@@ -3,7 +3,7 @@ import Cookie from "js-cookie";
 import { domainName } from "../App";
 
 class ChatService {
-  async addMessage(message, chatId) {
+  async addMessage(message, chatId, onStreamUpdate) {
     const token = Cookie.get("token");
     if (!token) {
       throw new Error("No token found, please log in.");
@@ -29,7 +29,39 @@ class ChatService {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return await response.json();
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    let buffer = "";
+    let fullResponse = "";
+    let newChatId = chatId;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      const lines = buffer.split("\n\n");
+      for (let line of lines) {
+        if (line.startsWith("data:")) {
+          const jsonString = line.replace("data: ", "").trim();
+          if (!jsonString) continue;
+
+          const parsed = JSON.parse(jsonString);
+
+          if (parsed.status === "[DONE]") {
+            newChatId = parsed.chat_id || newChatId;
+          } else {
+            fullResponse += parsed.content;
+            if (onStreamUpdate) onStreamUpdate(parsed.content);
+          }
+        }
+      }
+
+      buffer = "";
+    }
+
+    return { fullResponse, chat_id: newChatId };
   }
 }
 

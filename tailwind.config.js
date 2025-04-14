@@ -17,7 +17,8 @@ export default {
         BgFooter:'#213C84C4',
         gradientPurple:'#6327C9',
         gradientSkyBlue: '#21ABDB',
-        darkBlue:'#213C84'
+        darkBlue:'#213C84',
+        darkPrimary: '#132964'
       }
     },
   },

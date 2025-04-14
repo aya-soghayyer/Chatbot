@@ -5,14 +5,20 @@ import eyeSlash from "../../../../assets/images/EyeSlash.svg";
 import newchat from "../../../../assets/images/newChat.svg";
 import Cookie from "js-cookie";
 
-const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,setIsActiveChat }) => {
+const ChatHistory = ({
+  chatHistory,
+  setChatHistory,
+  onNewChat,
+  setSelectedChat,
+  setIsActiveChat,
+  className,
+}) => {
   const [chats, setChats] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedChatId, setSelectedChatId] = useState(null); // Store selected chat ID
   const [messages, setMessages] = useState([]); // Store messages for the selected chat
   // const [isActiveChat, setIsActiveChat] = useState(true);
-
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -32,7 +38,8 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
 
         console.log("Response Status:", response.status);
 
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP error! Status: ${response.status}`);
 
         const data = await response.json();
         console.log("Fetched Chats:", data); // Ensure data structure is correct
@@ -53,7 +60,6 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
     fetchChats();
   }, []);
 
-
   // const handleChatClick = (chatId) => {
   //   setSelectedChatId(chatId); // Set the selected chat ID
   //   // fetchMessages(chatId); // Fetch the messages for the selected chat
@@ -61,49 +67,70 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
 
   return (
     <>
-    <div className={`flex md:justify-start md:items-start mt-7 gap-1 ${!chatHistory? "w-2/5 transition-all duration-300 ease-in-out":"transition-all duration-300 ease-in-out"} `}>
-    <div className={`w-full md:h-full md:w-1/2 max-h-fit flex flex-col px-4 py-2 rounded-2xl ${!chatHistory ? "bg-white bg-opacity-[15%] transition-all duration-75 ease-in-out" : " transition-all duration-300 ease-in-out"}`}>
-      
-      <div className={` w-14 ${!chatHistory? "flex justify-between w-full transition-all duration-300 ease-in-out":"flex justify-between h-10 transition-all duration-300 ease-in-out"} `} >
-          <button onClick={() => setChatHistory(!chatHistory)}>
-            <img src={eyeSlash} alt="Toggle Chat History" className="w-6 h-6" />
-          </button>
-          <button onClick={onNewChat}>
-            <img src={newchat} alt="New Chat" className="w-6 h-6" />
-          </button>
-      </div>
+      <div
+        className={`flex md:justify-start md:items-start w-full md:w-1/5 md:-ml-2 md:py-5 ${className} gap-1 ${
+          !chatHistory
+            ? "w-2/5 h-full transition-all  duration-300 ease-in-out"
+            : "transition-all duration-300  ease-in-out"
+        } `}
+      >
+        <div
+          className={`w-full md:w-full max-h-fit flex flex-col px-4 ${
+            !chatHistory
+              ? "md:bg-darkBlue/25 md:py-5 md:h-screen md:w-full transition-all duration-75 ease-in-out bg-darkPrimary h-screen"
+              : "transition-all duration-300 md:py-5 ease-in-out"
+          }`}
+        >
+          <div className={`flex felx-row items-start w-screen h-full gap-6`}>
+            <Link to="/" className="w-20 h-8 md:w-28 md:h-10">
+              <img src={Logo} alt="MiLo Logo" className="w-full h-full" />
+            </Link>
+            <div
+              className={`w-14 mt-3 flex justify-between`}
+            >
+              <button onClick={() => setChatHistory(!chatHistory)}>
+                <img
+                  src={eyeSlash}
+                  alt="Toggle Chat History"
+                  className="w-6 h-6"
+                />
+              </button>
+              <button onClick={onNewChat}>
+                <img src={newchat} alt="New Chat" className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+          {!chatHistory && (
+            <>
+              <h1 className="text-xl mt-3 font-semibold text-white mb-3">
+                Chat History
+              </h1>
 
-      {!chatHistory && (
-        <>
-        <h1 className="text-xl  mt-3 font-semibold text-white mb-3">Chat History</h1>
+              <div className="">
+                {loading ? (
+                  <p className="text-gray-400">Loading chats...</p>
+                ) : error ? (
+                  <p className="text-red-500">{error}</p>
+                ) : chats.length > 0 ? (
+                  <ul className="space-y-1 overflow-y-auto max-h-[480px] custom-scrollbar px-1 md:pb-3">
+                    {chats.map((chat) => (
+                      <li
+                        key={chat.id} // Use chat_number as key
+                        className="p-2 bg-gray-800/20 text-white rounded-lg cursor-pointer hover:bg-gray-700"
+                        onClick={() => {
+                          setSelectedChat(chat.id);
+                          setIsActiveChat(false);
+                        }} // Pass correct chat ID
+                      >
+                        {chat.chat_number || "Untitled Chat"}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-500">No chats available.</p>
+                )}
 
-        <div className="">
-
-          {loading ? (
-            <p className="text-gray-400">Loading chats...</p>
-          ) : error ? (
-            <p className="text-red-500">{error}</p>
-          ) : chats.length > 0 ? (
-            <ul className="space-y-1 overflow-y-auto max-h-[480px] custom-scrollbar px-1">
-              {chats.map((chat) => (
-                <li
-                  key={chat.id} // Use chat_number as key
-                  className="p-2 bg-gray-800/20 text-white rounded-lg cursor-pointer hover:bg-gray-700"
-                  onClick={() => {
-                    setSelectedChat(chat.id);
-                    setIsActiveChat(false);
-                  }} // Pass correct chat ID
-                >
-                  {chat.chat_number || "Untitled Chat"}
-                </li>
-                
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500">No chats available.</p>
-          )}
-
-          {/* {selectedChatId && (
+                {/* {selectedChatId && (
             <div className="mt-6">
               <h2 className="text-xl font-bold text-white">Messages in Chat {selectedChatId}</h2>
               <div className="mt-2">
@@ -121,15 +148,11 @@ const ChatHistory = ({ chatHistory, setChatHistory, onNewChat, setSelectedChat,s
               </div>
             </div>
           )} */}
+              </div>
+            </>
+          )}
         </div>
-        </>
-
-      )}
-    </div>
-    <Link to="/" className="w-20 h-8 md:w-28 md:h-10">
-          <img src={Logo} alt="MiLo Logo" className="w-full h-full" />
-        </Link>
-        </div>
+      </div>
     </>
   );
 };

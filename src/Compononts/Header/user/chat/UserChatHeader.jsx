@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Cookie from "js-cookie";
 import ChatService from "../../../../services/userChatService";
 import MessageFactory from "../../../../utils/messageFactory";
 import ChatArea from "../chat/ChatArea";
@@ -11,7 +10,6 @@ import usePhoto from "../../../../hooks/usePhoto";
 import Cookie from "js-cookie";
 import { domainName } from "../../../../App";
 import ChatHistory from "./ChatHistory";
-
 
 function UserChatHeader() {
   const [messages, setMessages] = useState([]);
@@ -24,10 +22,9 @@ function UserChatHeader() {
   const [isActiveChat, setIsActiveChat] = useState(true);
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
-  const { preview, handleFileChange } = usePhoto(); // use hook for file and preview
+  const { preview, handleFileChange } = usePhoto();
   const [isLoading, setIsLoading] = useState(false);
-
-  
+  const [botBuffer, setBotBuffer] = useState("");
 
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
@@ -121,11 +118,28 @@ function UserChatHeader() {
     setInputValue("");
     setIsLoading(true);
 
+    let streamedText = "";
 
     try {
-      const data = await ChatService.addMessage(userMessage.text, chatId);
-      const botMessage = MessageFactory.createBotMessage(data["AI Response"]);
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      const data = await ChatService.addMessage(
+        userMessage.text,
+        chatId,
+        (chunk) => {
+          streamedText += chunk;
+          const streamingBotMessage =
+            MessageFactory.createBotMessage(streamedText);
+          setMessages((prev) => {
+            const updated = [...prev];
+            if (updated[updated.length - 1]?.sender === "bot") {
+              updated[updated.length - 1] = streamingBotMessage;
+            } else {
+              updated.push(streamingBotMessage);
+            }
+            return updated;
+          });
+        }
+      );
+
       setChatId(data.chat_id);
     } catch (error) {
       console.error("Error fetching chatbot response:", error);
@@ -138,26 +152,27 @@ function UserChatHeader() {
         );
         setMessages((prevMessages) => [...prevMessages, errorMessage]);
       }
-    }
-    finally{
+    } finally {
       setIsLoading(false);
     }
   };
-  // const [messages, setMessages] = useState([]);
+
   const [selectedChatId, setSelectedChatId] = useState(null);
-  // const messageEndRef = useRef(null);
 
   const fetchMessages = async (chatId) => {
     try {
       const token = Cookie.get("token");
-      const response = await fetch(`${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-  
+      const response = await fetch(
+        `${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       const data = await response.json();
       setMessages(data.Messages || []);
     } catch (error) {
@@ -165,10 +180,9 @@ function UserChatHeader() {
     }
   };
 
-
   return (
     <div
-      className={`flex flex-col md:flex-row md:-ml-12 md:justify-between text-white min-h-screen p-2 md:p-3`}
+      className={`flex flex-col md:flex-row md:-ml-12 md:justify-between text-white min-h-screen p-2 md:p-0`}
     >
       <ChatHistory
         chatHistory={chatHistory}
@@ -176,6 +190,7 @@ function UserChatHeader() {
         onNewChat={handleNewChat}
         selectedChatId={fetchMessages}
         setIsActiveChat={setIsActiveChat}
+        className="z-50"
       />
       <div className="relative w-full md:w-[70vw] m-2 md:m-5 h-[80vh] md:h-screen">
         <div className="text-white fixed top-5 right-5">
@@ -203,32 +218,35 @@ function UserChatHeader() {
 
         {isActiveChat ? (
           <div className="flex  justify-center items-center h-full">
-          <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
-            <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
-              {greeting} {userData?.studentId} :) 
-            </h2>
-            <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
-              What can I help with?
-            </h2>
-            <div className="relative mx-4 -z-0">
-              <ChatInput
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-                language={language}
-                setLanguage={setLanguage}
-                listening={listening}
-                handleToggle={handleToggle}
-                handleSubmit={handleSubmit}
-                setIsActiveChat={setIsActiveChat}
-                className="rounded-2xl bg-white bg-opacity-25"
-              />
+            <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
+              <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
+                {greeting}
+              </h2>
+              <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
+                What can I help with?
+              </h2>
+              <div className="relative mx-4">
+                <ChatInput
+                  inputValue={inputValue}
+                  setInputValue={setInputValue}
+                  language={language}
+                  setLanguage={setLanguage}
+                  listening={listening}
+                  handleToggle={handleToggle}
+                  handleSubmit={handleSubmit}
+                  setIsActiveChat={setIsActiveChat}
+                  className="rounded-2xl bg-white bg-opacity-10 md:py-4"
+                />
+              </div>
             </div>
           </div>
-          </div>
-
         ) : (
           <div className="grid grid-rows-[1fr_auto] min-h-[99%] pt-3 w-full rounded-2xl md:min-h-[96%]">
-            <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading}/>
+            <ChatArea
+              messages={messages}
+              messageEndRef={messageEndRef}
+              isLoading={isLoading}
+            />
             <ChatInput
               inputValue={inputValue}
               setInputValue={setInputValue}
@@ -239,6 +257,7 @@ function UserChatHeader() {
               handleSubmit={handleSubmit}
               setIsActiveChat={setIsActiveChat}
               className="bg-white bg-opacity-25"
+              isBotLoading={isLoading}
             />
           </div>
         )}

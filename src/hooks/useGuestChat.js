@@ -1,4 +1,4 @@
-// src/hooks/useGuestChat.js
+// ✅ useGuestChat.js (updated to support live streaming updates)
 import { useState, useEffect, useRef } from "react";
 
 export const useGuestChat = (chatService, SpeechService) => {
@@ -11,22 +11,16 @@ export const useGuestChat = (chatService, SpeechService) => {
   const messageEndRef = useRef(null);
   const speechServiceRef = useRef(null);
   const [greeting, setGreeting] = useState("");
-
+  const [botBuffer, setBotBuffer] = useState("");
 
   useEffect(() => {
     const currentHour = new Date().getHours();
-    if (currentHour >= 6 && currentHour < 12) {
-      setGreeting("Good Morning");
-    } else if (currentHour >= 12 && currentHour < 18) {
-      setGreeting("Good Afternoon");
-    } else if (currentHour >= 18 && currentHour < 22) {
-      setGreeting("Good Evening");
-    } else {
-      setGreeting("Good Night");
-    }
+    if (currentHour >= 6 && currentHour < 12) setGreeting("Good Morning");
+    else if (currentHour >= 12 && currentHour < 18) setGreeting("Good Afternoon");
+    else if (currentHour >= 18 && currentHour < 22) setGreeting("Good Evening");
+    else setGreeting("Good Night");
   }, []);
 
-  // Initialize Speech Service
   useEffect(() => {
     try {
       speechServiceRef.current = new SpeechService();
@@ -34,29 +28,23 @@ export const useGuestChat = (chatService, SpeechService) => {
     } catch (error) {
       console.error("Speech recognition not supported:", error);
     }
-
     return () => {
-      if (speechServiceRef.current) {
-        speechServiceRef.current.cleanup();
-      }
+      speechServiceRef.current?.cleanup();
     };
   }, []);
 
-  // Update language
   useEffect(() => {
     if (speechServiceRef.current) {
       speechServiceRef.current.setLanguage(language);
     }
   }, [language]);
 
-  // Auto-scroll to latest message
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const handleToggleSpeech = () => {
     if (!speechServiceRef.current) return;
-
     if (!listening) {
       speechServiceRef.current.start(
         (text) => setInputValue((prev) => prev + " " + text),
@@ -78,11 +66,17 @@ export const useGuestChat = (chatService, SpeechService) => {
     setInputValue("");
     setActiveChat(true);
     setIsLoading(true);
+    setBotBuffer("");
 
     try {
-      const data = await chatService.sendGuestMessage(userMessage.text);
-      const botMessage = { text: data["AI Response"], sender: "bot" };
-      setMessages((prev) => [...prev, botMessage]);
+      await chatService.sendGuestMessage(
+        userMessage.text,
+        "",
+        (streamedText) => {
+          setBotBuffer((prev) => prev + streamedText);
+        }
+      );
+      setMessages((prev) => [...prev, { text: botBuffer, sender: "bot" }]);
     } catch (error) {
       console.error("Error sending message:", error);
       setMessages((prev) => [...prev, { text: "Error: Could not get response", sender: "bot" }]);

@@ -23,12 +23,14 @@ const Settings = ({
   };
 
   const handleNewPassword = () => {
-    setSettings(false);
+    setSettings(true);
     navigate("/changepassword");
   };
 
   // If showSettings is false, return null
-  if (!showSettings) return null;
+  if (!showSettings
+    
+  ) return null;
 
   return (
     <>
@@ -39,17 +41,17 @@ const Settings = ({
               setShowSettinges(false); // corrected the function name
               setSettings(true);
             }}
-            className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-2 2xl:text-3xl font-bold md:font-bold bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-t-2xl"
+            className="hidden  md:flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white md:text-base md:font-normal md:text-2 2xl:text-3xl font-bold bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-t-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-gear" size="lg" />
             Settings
           </button>
-          <div className="w-">
+          <div className="">
             <hr />
           </div>
           <button
             onClick={handleLogout}
-            className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-red-700 text-lg md:text-2 2xl:text-3xl font-bold md:font-bold bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
+            className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-base md:font-normal 2xl:text-3xl bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" size="lg" />
             Logout

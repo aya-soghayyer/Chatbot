@@ -26,12 +26,12 @@ function LoginHeader() {
     <header className="wrapper py-4 md:py-2 2xl:py-16 z-50 font-Outfit md:h-screen text-white">
       <div className="flex flex-col md:flex-row md:gap-6 2xl:gap-12 items-center justify-between">
         {/* Form Section */}
-        <div className="grid items-center p-8 w-full md:p-5 md:w-2/5 2xl:w-full  2xl:-ml-20 mt-8 2xl:mt-12 z-40">
+        <div className="grid items-center md:p-5 md:w-2/5 2xl:w-full 2xl:-ml-20 mt-8 2xl:mt-12 z-40">
           <h2 className="text-3xl md:text-4xl 2xl:text-5xl flex justify-center font-bold mb-4 md:mb-3 2xl:mb-8 capitalize">
             Login
           </h2>
           <form onSubmit={handleSubmit} method="post" className="w-full">
-            <div className="grid justify-items-start gap-2 px-4 md:px-5 2xl:px-6 py-4 2xl:py-8">
+            <div className="grid justify-items-start gap-2 px-10 md:px-5 2xl:px-6 py-4 2xl:py-8">
               <label
                 htmlFor="studentId"
                 className="text-lg md:text-xl 2xl:text-2xl font-extralight"
@@ -53,8 +53,8 @@ function LoginHeader() {
                 pattern="[0-9]{8}"
               />
             </div>
-            <div className="grid justify-items-start gap-2 px-4 md:px-5 2xl:px-6 pb-2 2xl:pb-6  md:-mb-1">
-              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+            <div className="grid justify-items-start gap-2 -mb-6 md:px-5 2xl:px-6 pb-2 2xl:pb-6  md:-mb-1">
+              <div className="px-10 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
                 <label
                   htmlFor="miloPassword"
                   className="text-lg md:text-xl 2xl:text-2xl font-extralight"
@@ -80,9 +80,9 @@ function LoginHeader() {
                   <button
                     type="button"
                     onClick={() => setShowMiloPassword((prev) => !prev)}
-                    className="absolute right-12 top-16 md:right-3 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                    className="absolute right-14 top-[4.4rem] md:right-3 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none "
                   >
-                    <img src={eye} alt="eye icon" className="scale-110 " />
+                    <img src={eye} alt="eye icon" className="scale-110" />
                   </button>
                 </div>
               </div>
@@ -90,11 +90,11 @@ function LoginHeader() {
 
             <Link
               to="/forgetpassword"
-              className="px-4 md:px-5 2xl:px-6 pt-1 text-sm md:text-base 2xl:text-lg font-extralight"
+              className="px-10 md:px-5 2xl:px-6 pt-1 text-sm md:text-base 2xl:text-lg font-extralight"
             >
               Forgot password?
             </Link>
-            <div className="px-4 md:px-5 md:pt-4 2xl:px-6 w-full">
+            <div className="px-10 mt-3 md:px-5 md:pt-4 2xl:px-6 w-full">
               {/* <button
                 type="submit"
                 disabled={isLoading}

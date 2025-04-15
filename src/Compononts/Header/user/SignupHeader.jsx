@@ -34,8 +34,8 @@ function HeaderS() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 capitalize">
             Sign Up
           </h2>
-          <form onSubmit={handleSubmit} className="w-full space-y-4">
-            <div>
+          <form onSubmit={handleSubmit} className="w-full space-y-4 px-5">
+            <div className="gap-1 grid">
               <label htmlFor="studentId" className="text-lg font-light">
                 Student ID
               </label>
@@ -68,7 +68,7 @@ function HeaderS() {
               />
             </div> */}
             <div>
-              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+              <div className="gap-1 grid  md:py-0 md:px-0 md:w-full relative">
                 <label htmlFor="portalPassword" className="text-lg font-light">
                   Portal Password
                 </label>
@@ -86,7 +86,7 @@ function HeaderS() {
                   <button
                     type="button"
                     onClick={() => setShowPortalPassword((prev) => !prev)}
-                    className="absolute right-12 top-16 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                    className="absolute right-5 top-14 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
                   >
                     <img src={eye} alt="eye icon" className="scale-110 " />
                   </button>
@@ -94,7 +94,7 @@ function HeaderS() {
               </div>
             </div>
             <div>
-              <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+              <div className="gap-1 grid  md:py-0 md:px-0 md:w-full relative">
                 <label htmlFor="miloPassword" className="text-lg font-light">
                   Milo Password
                 </label>
@@ -114,9 +114,9 @@ function HeaderS() {
                   <button
                     type="button"
                     onClick={() => setShowMiloPassword((prev) => !prev)}
-                    className="absolute right-12 top-16 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                    className="absolute right-5 top-14 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
                   >
-                    <img src={eye} alt="eye icon" className="scale-110 " />
+                    <img src={eye} alt="eye icon" className="scale-110" />
                   </button>
                 </div>
               </div>

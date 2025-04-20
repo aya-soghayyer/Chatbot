@@ -18,7 +18,8 @@ export default {
         gradientPurple:'#6327C9',
         gradientSkyBlue: '#21ABDB',
         darkBlue:'#213C84',
-        darkPrimary: '#132964'
+        darkPrimary: '#132964',
+        grey:'#626B83'
       }
     },
   },

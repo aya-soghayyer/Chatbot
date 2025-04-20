@@ -14,11 +14,14 @@ import UserChat from "./views/UserChat";
 import GuestChatId from "./views/GuestChatId";
 import ProtectedRout from "./utils/ProtectedRout";
 import Contact from "./views/Contact";
-import Admin from "./views/Admin";
+import Admin from "./views/AdminDashboard.jsx";
 import ChangePassword from "./views/ChangePassword";
 import ForgetPassword from "./views/ForgetPassword";
 import ResetPassword from "./views/ResetPassword";
 import { TokenProvider } from "./store/TokenContext.tsx";
+import AdminCourses from "./views/AdminCourses.jsx";
+import AdminServices from "./views/AdminServices.jsx";
+import AdminAccounts from "./views/AdminAccounts.jsx";
 
 export let domainName = "http://localhost:8000/";
 
@@ -92,11 +95,37 @@ function App() {
         {
           path: "/admin",
           element: (
-            <ProtectedRout>
+            // <ProtectedRout>
               <Admin />
-            </ProtectedRout>
+            // </ProtectedRout>
           ),
         },
+        {
+          path: "/admin/courses",
+          element: (
+            // <ProtectedRout>
+              <AdminCourses />
+            // </ProtectedRout>
+          ),
+        },
+        {
+          path: "/admin/students",
+          element: (
+            // <ProtectedRout>
+              <AdminAccounts />
+            // </ProtectedRout>
+          ),
+        },
+        {
+          path: "/admin/services",
+          element: (
+            // <ProtectedRout>
+              <AdminServices />
+            // </ProtectedRout>
+          ),
+        },
+
+
         {
           path: "*", //another way for the error
           element: <NotFound />,

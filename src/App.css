@@ -22,3 +22,28 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #718096; /* Lighter on hover */
 }
+
+
+
+ 
+  /* Custom Scrollbar for Admin */
+  .custom-scrollbar-admin::-webkit-scrollbar {
+    width: 3px; /* Set width */
+  }
+  
+  .custom-scrollbar-admin::-webkit-scrollbar-track {
+    background: #ffffffae; /* Dark background */
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar-admin::-webkit-scrollbar-thumb {
+    background: #ffffff; /* Darker thumb */
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar-admin::-webkit-scrollbar-thumb:hover {
+    background: #718096; 
+  }
+  
+  
+  

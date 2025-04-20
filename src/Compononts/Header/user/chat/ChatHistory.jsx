@@ -102,7 +102,7 @@ const ChatHistory = ({
           </div>
           {!chatHistory && (
             <>
-              <h1 className="text-xl mt-3 font-semibold text-white mb-3">
+              <h1 className="text-lg mt-3 font-normal text-slate-300 mb-3">
                 Chat History
               </h1>
 

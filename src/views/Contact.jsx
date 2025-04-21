@@ -4,22 +4,17 @@ import ContactHeader from '../Compononts/Header/ContactHeader';
 
 function Contact() {
   return (
-    <div className="bg-primary min-h-screen">
-      <div className="container mx-auto px-4 relative">
-        {/* Circles as decorative elements */}
-        <div className="absolute left-0 top-0 -translate-y-1/2 md:-translate-y-16 z-10">
-          <Circle />
-        </div>
-        <div className="absolute right-0 bottom-0 translate-y-1/2 md:translate-y-0 z-10 hidden md:block">
-          <Circle />
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-20 pt-16 md:pt-24 pb-16 md:pb-24">
-          <ContactHeader />
-        </div>
-      </div>
+    <div className="bg-primary h-full items-center md:h-lvh md:flex md:justify-end md:items-center 2xl:h-screen 2xl:flex 2xl:justify-center 2xl:items-center relative">
+    <div className="absolute right-3 -top-12  md:-mt-28 md:right-[63rem] 2xl:-left-64 2xl:-top-24">
+      <Circle />
     </div>
+    <div className=" 2xl:flex 2xl:justify-center md:my-14 md:w-11/12 2xl:w-11/12 2xl:-mt-16">
+      <ContactHeader />
+    </div>
+    <div className="absolute hidden md:inline-flex md:top-16 md:right-32 2xl:visible 2xl:top-40 2xl:right-11">
+      <Circle />
+    </div>
+</div>
   );
 }
 

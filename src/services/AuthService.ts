@@ -14,7 +14,7 @@ class AuthService {
         },
         body: JSON.stringify({
           portal_id: portalId,
-          password,
+          password  ,
         }),
       });
       const data = await response.json();

@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Welcome from "./views/Welcome";
 import Layout from "./Routes/Layout";
 import Login from "./views/Login";
-import About from "./views/About";
+import About from "./views/About.jsx";
 import SignUp from "./views/SignUp";
 import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";

@@ -56,9 +56,7 @@ export const useChangePassword = () => {
 
       if (response.ok) {
         setSuccess(data.message || "Password changed successfully.");
-        Cookie.remove("token");
-        localStorage.removeItem("users");
-        navigate("/login");
+        navigate("/userchat");
       } else {
         setError(data.message || "Password change failed.");
       }

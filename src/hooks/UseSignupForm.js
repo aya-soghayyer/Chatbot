@@ -1,25 +1,34 @@
 // src/hooks/useSignupForm.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Cookies from "js-cookie";
 
 export const useSignupForm = (authService) => {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     studentId: "",
     portalPassword: "",
     miloPassword: "",
+    confirmPassword: "",
   });
-  const [isInvalid, setInvalid] = useState({
-    studentId: false,
-    portalPassword: false,
-    miloPassword: false,
-  });
+
+  // console.log(formData)
+
   const [isSuccess, setSuccess] = useState("");
   const [isError, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [showMiloPassword, setShowMiloPassword] = useState(false);
-const [showPortalPassword, setShowPortalPassword] = useState(false);
+  const [showPortalPassword, setShowPortalPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isInvalidID, setInvalidID] = useState(false);
+  const [isInvalidMilo, setInvalidMilo] = useState(false);
+  const [isInvalidFirst, setInvalidFirst] = useState(false);
+  const [isInvalidLast, setInvalidLast] = useState(false);
+  const [isInvalidConfirm, setInvalidConfirm] = useState(false);
+  const [isInvalidPortal, setInvalidPortal] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,15 +41,43 @@ const [showPortalPassword, setShowPortalPassword] = useState(false);
     setError("");
     setLoading(true);
 
+    // Validate passwords match
+    if (formData.miloPassword !== formData.confirmPassword) {
+      setInvalidConfirm(true)
+      setError("Milo password and confirm paassword didn't match !");
+      setLoading(false);
+      return;
+    }
+
     try {
       const data = await authService.signup(
         formData.studentId,
         formData.portalPassword,
-        formData.miloPassword
+        formData.miloPassword,
+        formData.firstName,
+        formData.lastName
       );
-      setSuccess("Signup successful! Check your email.");
-      setTimeout(() => navigate("/userchat"), 2000); // Navigate after success
+      console.log("useSignupForm: "+ data)
+      // if (data.Token) {
+      //   const expiresAt = new Date(new Date().getTime() + 30 * 60 * 1000); // 30 mins
+      //   Cookies.set("token", data.Token, {
+      //     expires: expiresAt,
+      //     secure: true,
+      //     sameSite: "Strict",
+      //   });
+      // if(response.ok){
+      //   navigate("/userchat")
+      // }
+      if(data){
+        console.log("Navigating to userchat...");
+        navigate("/userchat");
+        console.log("Navigation called.");
+      }
+      //       } else {
+      //   setError("Signup succeeded but no token returned.");
+      // }
     } catch (error) {
+      console.log("Error in useSignupForm: " + error)
       setError("Signup failed. Please try again.");
     } finally {
       setLoading(false);
@@ -53,8 +90,6 @@ const [showPortalPassword, setShowPortalPassword] = useState(false);
     formData,
     handleChange,
     handleSubmit,
-    isInvalid,
-    setInvalid,
     isSuccess,
     isError,
     isLoading,
@@ -62,7 +97,21 @@ const [showPortalPassword, setShowPortalPassword] = useState(false);
     toggleHelp,
     showMiloPassword,
     setShowMiloPassword,
-    showPortalPassword, 
-    setShowPortalPassword
+    showPortalPassword,
+    setShowPortalPassword,
+    setShowConfirmPassword,
+    showConfirmPassword,
+    isInvalidID,
+    setInvalidID,
+    isInvalidMilo,
+    setInvalidMilo,
+    isInvalidFirst,
+    setInvalidFirst,
+    isInvalidLast,
+    setInvalidLast,
+    isInvalidConfirm,
+    setInvalidConfirm,
+    isInvalidPortal,
+    setInvalidPortal,
   };
 };

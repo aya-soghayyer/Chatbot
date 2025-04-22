@@ -51,6 +51,8 @@ function LoginHeader() {
                 value={formData.studentId}
                 onChange={handleChange}
                 pattern="[0-9]{8}"
+                title="Must contain 8 digits"
+
               />
             </div>
             <div className="grid justify-items-start gap-2 -mb-6 md:px-5 2xl:px-6 pb-2 2xl:pb-6  md:-mb-1">
@@ -95,13 +97,6 @@ function LoginHeader() {
               Forgot password?
             </Link>
             <div className="px-10 mt-3 md:px-5 md:pt-4 2xl:px-6 w-full">
-              {/* <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full mt-3 md:mt-4 2xl:mt-6 px-4 md:px-5 2xl:px-6 py-2 md:py-2.5 2xl:py-3 rounded-md capitalize text-base md:text-lg 2xl:text-xl font-normal bg-gradient-to-r from-gradientPurple to-gradientSkyBlue shadow-inner shadow-slate-400 disabled:opacity-50"
-              >
-                {isLoading ? "Logging In..." : "Login"}
-              </button> */}
               <FilledButton
                 title={isLoading ? "Logging In..." : "Login"}
                 type="submit"

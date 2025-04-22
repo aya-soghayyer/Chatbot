@@ -18,6 +18,8 @@ const Settings = ({
 
   const handleLogout = () => {
     Cookie.remove("token");
+    Cookie.remove("token_expiration");
+
     localStorage.removeItem("users");
     navigate("/login");
   };

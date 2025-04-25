@@ -6,8 +6,8 @@ import UnFilledButton from "../ui/UnFilledButton";
 function WelcomeHeader() {
   return (
     <header className="py-8 z-20 flex font-Outfit text-white  md:justify-start  2xl:-mt-16">
-      <div className="flex flex-col px-6 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
-        <div className="w-full md:z-10 md:w-1/2 md:ml-7 2xl:w-3/5">
+      <div className="flex flex-col px-6 md:gap-24 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
+        <div className="w-full md:z-10 md:w-1/3 md:ml-7 2xl:w-3/5">
           <h2 className="text-4xl whitespace-break-spaces md:whitespace-break-spaces md:text-5xl/tight 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
             <span className="tracking-wider" >welcome  to</span> milo chatbot
           </h2>
@@ -15,8 +15,8 @@ function WelcomeHeader() {
             Welcome to MiLo! Explore a smarter way to navigate university
             resources and get the answers you need. Let’s get started!
           </p>
-          <div className="flex flex-col w-full md:pt-16 md:flex-row justify-between mt-6 2xl:mt-10 gap-4 md:gap-5">
-            <Link to="/Login" className="w-full hidden md:flex md:w-1/2">
+          <div className="flex flex-col w-full md:pt-10 md:flex-row md:w-[95%] justify-between mt-6 2xl:mt-10 gap-4 ">
+            <Link to="/Login" className="w-full hidden md:flex md:w-[45%]">
               <FilledButton
                 title="login"
                 className="px-4 h-5/6 w-full md:mt-1"
@@ -24,7 +24,7 @@ function WelcomeHeader() {
             </Link>
             <Link
               to="/Signup"
-              className="w-full hidden md:flex md:w-1/2 md:mt-2"
+              className="w-full hidden md:flex md:w-[45%] md:mt-2"
             >
               <UnFilledButton
                 title="Sign Up"
@@ -39,7 +39,7 @@ function WelcomeHeader() {
           </div>
         </div>
 
-        <div className="md:z-40 w-4/5 sm:h-full  2xl:w-3/4 md:w-8/12 md:h-full flex flex-col -mt-4 items-center">
+        <div className="md:z-40 w-4/5 sm:h-full  2xl:w-3/4 md:w-1/2 md:h-full flex flex-col -mt-4 items-center">
           <div className="">
             <img src={Frame} alt="computer" />
           </div>
@@ -49,9 +49,9 @@ function WelcomeHeader() {
               <Link to="/Login" className="w-full">
                 <FilledButton title="login" className="px-4 py-3 w-full" />
               </Link>
-              <Link to="/Signup" className="w-full">
+              <Link to="/Signup" className="w-full mt-2">
                 <UnFilledButton
-                  title="Sign Up"
+                  title="Sign up"
                   className="px-4 py-3"
                   className2="w-full"
                 />

@@ -213,7 +213,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
         setChatHistory={setChatHistory}
         onNewChat={handleNewChat}
         setSelectedChat={setSelectedChatId}
-        fetchMessages={fetchMessages} // ✅ ADD THIS
+        fetchMessages={fetchMessages} 
         setIsActiveChat={setIsActiveChat}
         className="z-50 md:z-0 hidden md:inline-flex"
       />
@@ -251,18 +251,18 @@ function UserChatHeader({ chatid, onChatIdChange }) {
                 What can I help with?
               </h2>
               <div className="relative mx-4">
-                <ChatInput
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                  language={language}
-                  setLanguage={setLanguage}
-                  listening={listening}
-                  handleToggle={handleToggle}
-                  handleSubmit={handleSubmit}
-                  setIsActiveChat={setIsActiveChat}
-                  className="rounded-2xl bg-white bg-opacity-10 md:py-4"
-                />
-              </div>
+              <ChatInput
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+                language={language}
+                setLanguage={setLanguage}
+                listening={listening}
+                handleToggle={handleToggle}
+                handleSubmit={handleSubmit}
+                setIsActiveChat={setIsActiveChat}
+                className="rounded-2xl bg-white/15"
+              />
+            </div>
             </div>
           </div>
         ) : (

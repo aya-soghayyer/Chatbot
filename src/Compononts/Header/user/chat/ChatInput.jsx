@@ -43,7 +43,7 @@ const ChatInput = ({
         <SendButton
           listening={listening}
           handleToggle={handleToggle}
-          setIsActiveChat={setIsActiveChat}
+          setIsActiveChat={setIsActiveChat} 
           isActiveChat={isActiveChat}
           inputValue={inputValue}
           isBotLoading={isBotLoading}

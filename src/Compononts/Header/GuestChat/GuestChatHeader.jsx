@@ -95,32 +95,6 @@ function HeaderGuestChat() {
           <div
             className={`grid grid-rows-[1fr_auto] w-full  items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
           >
-            {/* <div className="flex-1 overflow-y-auto p-2 2xl:p-4 max-h-[250px] md:max-h-[480px] 2xl:max-h-[500px] custom-scrollbar">
-              {messages.map((msg, index) => (
-                <>
-                  <div
-                    key={index}
-                    className={`flex mb-2 md:mb-3 2xl:mb-4 ${
-                      msg.sender === "user" ? "justify-end" : "justify-start"
-                    }`}
-                  >
-                    <span
-                      className={`p-2 md:p-3 2xl:p-4 rounded-lg w-fit max-w-[80%] md:max-w-[70%] 2xl:max-w-[60%] ${
-                        msg.sender === "user"
-                          ? "bg-slate-500/40 text-white self-end rounded-br-none"
-                          : "text-white self-start rounded-bl-none"
-                      }`}
-                      ref={index === messages.length - 1 ? messageEndRef : null}
-                    >
-                      {msg.text}
-                    </span>
-                  </div>
-                </>
-              ))}
-              <div className="flex justify-start">
-                {isLoading && <Loader />}
-              </div>
-            </div> */}
              <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
 
             <div className="p-2 md:p-3 2xl:p-4 space-y-2 2xl:space-y-4">

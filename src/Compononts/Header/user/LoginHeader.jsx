@@ -26,7 +26,7 @@ function LoginHeader() {
     <header className="wrapper py-4 md:py-2 2xl:py-16 z-50 font-Outfit md:h-screen text-white">
       <div className="flex flex-col md:flex-row md:gap-6 2xl:gap-12 items-center justify-between">
         {/* Form Section */}
-        <div className="grid items-center md:p-5 md:w-2/5 2xl:w-full 2xl:-ml-20 mt-8 2xl:mt-12 z-40">
+        <div className="grid items-center md:p-5 md:w-2/5 2xl:w-full 2xl:-ml-20 mt-8 2xl:mt-12 z-0 md:z-40">
           <h2 className="text-3xl md:text-4xl 2xl:text-5xl flex justify-center font-bold mb-4 md:mb-3 2xl:mb-8 capitalize">
             Login
           </h2>

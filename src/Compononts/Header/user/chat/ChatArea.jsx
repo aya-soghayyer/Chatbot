@@ -9,9 +9,9 @@ marked.setOptions({
   gfm: true,
 });
 
-const ChatArea = ({ messages, messageEndRef, isLoading }) => {
+const ChatArea = ({ messages, messageEndRef, isLoading, className }) => {
   return (
-    <div className="overflow-y-auto w-full p-3 md:p-0 md:px-7 max-h-[490px] md:max-h-[490px] custom-scrollbar relative">
+    <div className={`overflow-y-auto w-full p-3 md:p-0 md:px-7 ${className} max-h-[490px] md:max-h-[420px] custom-scrollbar relative`}>
       {messages.map((msg, index) => (
         <div
           key={index}
@@ -32,8 +32,8 @@ const ChatArea = ({ messages, messageEndRef, isLoading }) => {
           <span
             className={`p-3 rounded-lg text-sm md:text-base max-w-[70%] break-words prose prose-invert ${
               msg.sender === "user"
-                ? "bg-slate-500/40 text-white rounded-br-none"
-                : "text-white bg-darkBlue rounded-bl-none"
+                ? "bg-slate-500/40 text-white rounded-[30px] rounded-br-none"
+                : "text-white bg-darkBlue rounded-[30px] rounded-bl-none"
             }`}
             ref={index === messages.length - 1 ? messageEndRef : null}
           >

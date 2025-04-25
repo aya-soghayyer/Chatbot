@@ -7,7 +7,7 @@ function WelcomeHeader() {
   return (
     <header className="py-8 z-20 flex font-Outfit text-white  md:justify-start  2xl:-mt-16">
       <div className="flex flex-col px-6 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
-        <div className="w-full z-10 md:w-1/2 md:ml-7 2xl:w-3/5">
+        <div className="w-full md:z-10 md:w-1/2 md:ml-7 2xl:w-3/5">
           <h2 className="text-4xl whitespace-break-spaces md:whitespace-break-spaces md:text-5xl/tight 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
             <span className="tracking-wider" >welcome  to</span> milo chatbot
           </h2>
@@ -39,7 +39,7 @@ function WelcomeHeader() {
           </div>
         </div>
 
-        <div className="z-40 w-4/5 sm:h-full  2xl:w-3/4 md:w-8/12 md:h-full flex flex-col -mt-4 items-center">
+        <div className="md:z-40 w-4/5 sm:h-full  2xl:w-3/4 md:w-8/12 md:h-full flex flex-col -mt-4 items-center">
           <div className="">
             <img src={Frame} alt="computer" />
           </div>

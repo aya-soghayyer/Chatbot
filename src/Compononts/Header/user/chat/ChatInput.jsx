@@ -35,7 +35,7 @@ const ChatInput = ({
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className={`pl-4 pr-14 p-3 flex-auto rounded-2xl md:text-lg text-sm md:text-base ${isBotLoading ? "bg-gray-700 cursor-not-allowed" : "bg-gray-800"} ${className}`}
+          className={`pl-4 pr-14 p-3 flex-auto rounded-2xl md:text-lg text-sm ${isBotLoading ? "bg-gray-700 cursor-not-allowed" : "bg-gray-800"} ${className}`}
           type="text"
           placeholder="Ask MiLo"
           disabled={isBotLoading}

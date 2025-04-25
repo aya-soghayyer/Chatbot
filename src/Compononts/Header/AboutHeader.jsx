@@ -43,7 +43,7 @@ function AboutHeader() {
             {teamMembers.map((member, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center gap-2 z-10"
+                className="flex flex-col items-center text-center gap-2 md:z-10"
               >
                 <img
                   src={member.image}
@@ -62,7 +62,7 @@ function AboutHeader() {
         <section className="mb-10">
           <div className="flex relative items-center mb-6">
             <div className="bg-gradient-to-r from-gradientPurple to-gradientSkyBlue w-6 h-6 md:w-8 md:h-8 rounded-full absolute -left-4 top-2 z-0" />
-            <p className="border-b text-2xl font-medium md:text-2xl md:font-semibold capitalize z-10">
+            <p className="border-b text-2xl font-medium md:text-2xl md:font-semibold capitalize z-0 md:z-10">
               About our website
             </p>
           </div>

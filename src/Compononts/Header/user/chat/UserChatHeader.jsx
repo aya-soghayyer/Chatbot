@@ -11,7 +11,7 @@ import Cookie from "js-cookie";
 import { domainName } from "../../../../App";
 import ChatHistory from "./ChatHistory";
 
-function UserChatHeader() {
+function UserChatHeader({ chatid, onChatIdChange }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [listening, setListening] = useState(false);
@@ -19,11 +19,14 @@ function UserChatHeader() {
   const [chatHistory, setChatHistory] = useState(false);
   const [chatId, setChatId] = useState("newchat");
   const [showSettings, setSettings] = useState(false);
+  const [settingsDetails, setSettingsDetails] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState(true);
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
   const { preview, handleFileChange } = usePhoto();
   const [isLoading, setIsLoading] = useState(false);
+  const [showPhotos, setPhoto] = useState(false)
+
   const [botBuffer, setBotBuffer] = useState("");
 
   const navigate = useNavigate();
@@ -162,9 +165,14 @@ function UserChatHeader() {
   const fetchMessages = async (chatId) => {
     try {
       const token = Cookie.get("token");
+      if (!token) {
+        throw new Error("No authentication token found.");
+      }
+  
       const response = await fetch(
-        `${domainName}chat/messages?start=1&end=10&chat_id=${chatId}`,
+        `${domainName}chat/messages?chat_id=${chatId}`,
         {
+          method: "GET",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -172,13 +180,29 @@ function UserChatHeader() {
           },
         }
       );
-
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
       const data = await response.json();
-      setMessages(data.Messages || []);
+  
+      if (!data.messages || !Array.isArray(data.messages)) {
+        throw new Error("Unexpected response format from server.");
+      }
+  
+      const formattedMessages = data.messages.map((msg, index) => ({
+        sender: index % 2 === 0 ? "user" : "bot",
+        text: msg.message
+      }));
+  
+      setMessages(formattedMessages);
     } catch (error) {
       console.error("Failed to fetch messages:", error);
     }
   };
+  
+  
 
   return (
     <div
@@ -188,14 +212,15 @@ function UserChatHeader() {
         chatHistory={chatHistory}
         setChatHistory={setChatHistory}
         onNewChat={handleNewChat}
-        selectedChatId={fetchMessages}
+        setSelectedChat={setSelectedChatId}
+        fetchMessages={fetchMessages} // ✅ ADD THIS
         setIsActiveChat={setIsActiveChat}
-        className="z-50"
+        className="z-50 md:z-0 hidden md:inline-flex"
       />
       <div className="relative w-full md:w-[70vw] m-2 md:m-5 h-[80vh] md:h-screen">
         <div className="text-white fixed top-5 right-5">
           <button
-            className="md:w-14 md:h-14 rounded-full border"
+            className="md:w-14 md:h-14 rounded-full border hidden md:block"
             onClick={() => setSettings(!showSettings)}
           >
             {isChangePhoto ? (
@@ -214,13 +239,13 @@ function UserChatHeader() {
           </button>
         </div>
 
-        <Settings showSettings={showSettings} setSettings={setSettings} />
+        <Settings className="z-30" setPhoto={setPhoto} showPhotos={showPhotos} settingsDetails={settingsDetails} setSettingsDetails={setSettingsDetails} showSettings={showSettings} setSettings={setSettings} />
 
         {isActiveChat ? (
-          <div className="flex  justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full">
             <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
               <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
-                {greeting}
+                {greeting},
               </h2>
               <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
                 What can I help with?
@@ -242,11 +267,7 @@ function UserChatHeader() {
           </div>
         ) : (
           <div className="grid grid-rows-[1fr_auto] min-h-[99%] pt-3 w-full rounded-2xl md:min-h-[96%]">
-            <ChatArea
-              messages={messages}
-              messageEndRef={messageEndRef}
-              isLoading={isLoading}
-            />
+            <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
             <ChatInput
               inputValue={inputValue}
               setInputValue={setInputValue}

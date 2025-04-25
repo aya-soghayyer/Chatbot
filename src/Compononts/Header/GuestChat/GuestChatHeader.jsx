@@ -44,7 +44,7 @@ function HeaderGuestChat() {
   return (
     <>
       <div
-        className={` grid place-items-center 2xl:py-12 text-white font-Outfit h-svh z-10 relative`}
+        className={` grid place-items-center 2xl:py-12 text-white font-Outfit h-svh md:h-[31rem] z-10 relative`}
       >
         {!activeChat ? (
           <div
@@ -93,7 +93,7 @@ function HeaderGuestChat() {
           </div>
         ) : (
           <div
-            className={`grid grid-rows-[1fr_auto] w-full  items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[610px] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
+            className={`grid grid-rows-[1fr_auto] w-full  items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
           >
             {/* <div className="flex-1 overflow-y-auto p-2 2xl:p-4 max-h-[250px] md:max-h-[480px] 2xl:max-h-[500px] custom-scrollbar">
               {messages.map((msg, index) => (
@@ -121,21 +121,22 @@ function HeaderGuestChat() {
                 {isLoading && <Loader />}
               </div>
             </div> */}
-             <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading}/>
+             <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
 
-            <div className="p-2 md:p-3 md:mb-3 2xl:p-4 space-y-2 md:space-y-3 2xl:space-y-4">
+            <div className="p-2 md:p-3 2xl:p-4 space-y-2 2xl:space-y-4">
               <div className="relative mx-4">
               <ChatInput
-               inputValue={inputValue}
-               setInputValue={setInputValue}
-               language={language}
-               setLanguage={setLanguage}
-               listening={listening}
-               handleToggle={handleToggle}
-               handleSubmit={handleSubmit}
-               setIsActiveChat={setIsActiveChat}
-                className="bg-white/15"
-              />
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              language={language}
+              setLanguage={setLanguage}
+              listening={listening}
+              handleToggle={handleToggle}
+              handleSubmit={handleSubmit}
+              setIsActiveChat={setIsActiveChat}
+              className="bg-white bg-opacity-25"
+              isBotLoading={isLoading}
+            />
             </div>
             </div>
           </div>

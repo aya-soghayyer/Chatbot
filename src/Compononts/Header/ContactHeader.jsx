@@ -42,11 +42,11 @@ function ContactHeader() {
         </div>
 
         {/* Right Section */}
-        <div className="w-full md:w-2/5 z-10">
+        <div className="w-full md:w-2/5 md:z-10">
           <div className="grid gap-6 md:gap-10">
             <div className="flex relative">
-              <div className="bg-gradient-to-r from-gradientPurple to-gradientSkyBlue w-6 h-6 md:w-8 md:h-8 rounded-full absolute -left-4 top-2 md:top-4 z-10"></div>
-              <h3 className="border-b-[1px] capitalize text-2xl md:text-2xl font-semibold font-Outfit z-20">
+              <div className="bg-gradient-to-r from-gradientPurple to-gradientSkyBlue w-6 h-6 md:w-8 md:h-8 rounded-full absolute -left-4 top-2 md:top-4 z-0 md:z-10"></div>
+              <h3 className="border-b-[1px] capitalize text-2xl md:text-2xl font-semibold font-Outfit z-0 md:z-20">
                 send a message
               </h3>
             </div>

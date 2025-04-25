@@ -2,123 +2,159 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import usePhoto from "../../../../hooks/usePhoto";
+import { useState } from "react";
 
 const Settings = ({
   showSettings,
-  setSettings,
-  isShowsettings,
-  setShowSettinges,
+  setShowSettings,
+  settingsDetails,
+  setSettingsDetails,
+  setPhoto,
+  showPhotos,
+  // setShowPhotos,
 }) => {
   const navigate = useNavigate();
-  const {
-    selectedFile,
-    preview,
-    handleFileChange,
-  } = usePhoto()
+  const { selectedFile, preview, handleFileChange } = usePhoto();
 
   const handleLogout = () => {
     Cookie.remove("token");
     Cookie.remove("token_expiration");
-
     localStorage.removeItem("users");
     navigate("/login");
   };
 
   const handleNewPassword = () => {
-    setSettings(true);
+    // setShowSettings(true);
     navigate("/changepassword");
   };
 
-  // If showSettings is false, return null
-  if (!showSettings
-    
-  ) return null;
+  const showingSettingDetails = () => {
+    setSettingsDetails(!settingsDetails);
+    setPhoto(false);
+    // setShowPhotos(false);
+  };
+
+  if (!showSettings) return null;
 
   return (
     <>
-      <div className="w-64 md:w-fit h-80 md:h-fit md:rounded-xl backdrop-blur-xl fixed top-16 right-4 md:right-10 md:top-16 rounded-2xl z-50 border bg-darkBlue/50 drop-shadow-xl">
-        <div className="flex flex-col">
+      <div className="md:w-fit w-fit h-fit md:h-fit md:rounded-xl backdrop-blur-xl absolute top-1/3 right-4 md:fixed  md:right-10 md:top-16 rounded-2xl z-50 border bg-darkBlue drop-shadow-xl">
+        <div className="flex flex-col   md:-z-0">
           <button
-            onClick={() => {
-              setShowSettinges(false); // corrected the function name
-              setSettings(true);
-            }}
-            className="hidden  md:flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white md:text-base md:font-normal md:text-2 2xl:text-3xl font-bold bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-t-2xl"
+            onClick={showingSettingDetails}
+            className="flex gap-4 items-center md:p-7 p-7 w-full h-10 md:h-12 text-white md:text-base md:font-normal md:text-2 2xl:text-3xl font-bold bg-darkBlue hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-t-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-gear" size="lg" />
             Settings
           </button>
-          <div className="">
+          <div>
             <hr />
           </div>
           <button
             onClick={handleLogout}
-            className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-base md:font-normal 2xl:text-3xl bg-darkBlue/50 hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
+            className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-base md:font-normal 2xl:text-3xl bg-darkBlue hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" size="lg" />
             Logout
           </button>
         </div>
       </div>
-      
-      {/* Show settings content */}
-      {isShowsettings ? (
-        <div></div>
-      ) : (
-        <div className="absolute top-48 right-96 bg-darkBlue/50 backdrop-blur-xl rounded-xl px-3 ">
-          <div className="flex justify-between items-center px-4 py-3 ">
-            <h3>Settings</h3>
-            <button
-              onClick={() => {
-                setShowSettinges(true); // corrected the function name
-              }}
-            >
-              <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
-            </button>
-          </div>
-          <hr />
-          <div className="flex justify-between items-center gap-14 font-light px-4 py-5">
-            <h5>Change Password</h5>
-            <button
-              onClick={handleNewPassword}
-              className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
-            >
-              Change
-            </button>
-          </div>
 
-          <div className="flex justify-between items-center font-light px-4 py-5">
-            <div>
-              <h5>Change Photo</h5>
+      {/* Settings Modal */}
+      {settingsDetails && !showPhotos && (
+        <div className="fixed inset-0 z-20 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
+          <div className="absolute top-7 right-5 z-50 md:w-1/3 md:top-48 md:right-96 bg-darkBlue backdrop-blur-xl rounded-xl px-3 ">
+            <div className="flex justify-between items-center px-4 py-3 ">
+              <h3>Settings</h3>
+              <button onClick={() => setSettingsDetails(false)}>
+                <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
+              </button>
             </div>
-            <div>
-              {/* Hidden File Input */}
-              <input
-                type="file"
-                id="fileInput"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="hidden"
-              />
-              {console.log("Preview:", preview)} {/* Fixed console log */}
-              {console.log("Selected File:", selectedFile)} {/* Fixed console log */}
-
-              {/* Custom Upload Button */}
-              <label
-                htmlFor="fileInput"
-                className="px-3 cursor-pointer rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
+            <hr />
+            <div className="flex justify-between items-center gap-14 font-light px-4 py-5">
+              <h5>Change Password</h5>
+              <button
+                onClick={handleNewPassword}
+                className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
               >
-                Upload Image
-              </label>
+                Change
+              </button>
+            </div>
+            <div className="flex justify-between items-center font-light px-4 py-5">
+              <h5>Change Photo</h5>
+              <button
+                onClick={() => {
+                  setSettingsDetails(false);
+                  setPhoto(true);
+                  setShowSettings(false);
 
-              {/* Image Preview */}
-              {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="w-40 h-40 object-cover rounded-md shadow-md"
+                  // setShowPhotos(true);
+                }}
+                className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
+              >
+                Choose
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Photo Selection Modal */}
+      {showPhotos && (
+        <div className="fixed inset-0 z-20 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
+          <div className="absolute z-20 md:w-1/2 md:h-4/5 top-68 right-86 bg-darkBlue backdrop-blur-xl rounded-xl px-3 ">
+            <div className="flex justify-between items-center px-4 py-3 ">
+              <h3>Choose your photo</h3>
+              <button
+                onClick={() => {
+                  setPhoto(false);
+                  setShowSettings(!showSettings);
+
+                }}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
+              </button>
+            </div>
+            <hr />
+            <div className="grid justify-between items-center gap-5 font-light px-4 py-5">
+              <h5>Choose avatar</h5>
+              <div className="flex justify-around">
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/3" alt="avatar 3" />
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/4" alt="avatar 4" />
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/5" alt="avatar 5" />
+              </div>
+              <div className="flex justify-around">
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/62" alt="avatar 62" />
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/63" alt="avatar 63" />
+                <img className="w-1/5" src="https://avatar.iran.liara.run/public/64" alt="avatar 64" />
+              </div>
+              <div className="flex justify-between items-center">
+                <hr className="border-t border-white/30 w-3/4 mx-auto 2xl:mb-8" />
+                <h3 className="capitalize px-3 flex items-start">or</h3>
+                <hr className="border-t border-white/30 w-3/4 mx-auto 2xl:mb-8" />
+              </div>
+              <div className="m-auto">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
                 />
-              )}
+                <label
+                  htmlFor="fileInput"
+                  className="px-5 py-4 cursor-pointer rounded-xl font-extralight bg-gradientSkyBlue/80"
+                >
+                  Choose your photo
+                </label>
+                {preview && (
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="w-40 h-40 object-cover rounded-md shadow-md"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>

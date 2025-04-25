@@ -4,18 +4,20 @@ import Footer from "../Compononts/Footer/Footer";
 import { Outlet, useLocation } from "react-router-dom";
 import GuestChatNavbar from "../Compononts/Navbar/GuestChatNavbar";
 import AdminNavbar from "../Compononts/Navbar/AdminNavbar";
+import UserChatMobileNavbar from "../Compononts/Navbar/UserChatMobileNavbar";
 
 function Layout() {
   const location = useLocation();
   const navbars = {
     "/": <Navbar />,
     "/guestchat": <GuestChatNavbar />,
-    "/userchat": <></>,
+    "/userchat": <UserChatMobileNavbar/>,
     // "/changepassword": <></>,
     "/admin": <AdminNavbar/>,
     "/admin/courses": <AdminNavbar/>,
     "/admin/students": <AdminNavbar/>,
-    "/admin/services": <AdminNavbar/>
+    "/admin/services": <AdminNavbar/>,
+    "/chatId": <></>
   };
 
   const footer ={

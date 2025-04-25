@@ -20,7 +20,7 @@ function SendButton({
         <button
           type="submit"
           onClick={() => setIsActiveChat(false)}
-          className="absolute right-4 top-11 w-6 md:w-8"
+          className="absolute right-4 top-12 w-6 md:w-8"
           disabled={isBotLoading} // ✅ Disable button when loading
         >
           {isBotLoading ? (
@@ -56,7 +56,7 @@ function SendButton({
             pause();
             handleToggle();
           }}
-          className={`absolute right-4 top-11 w-6 md:w-8 ${
+          className={`absolute right-4 top-[50px] w-6 md:w-8 ${
             isBotLoading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={isBotLoading} 

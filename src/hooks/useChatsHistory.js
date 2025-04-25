@@ -20,8 +20,8 @@ export const useChatsHistory = (chatsHistory) => {
 
     try {
       const data = await chatsHistory;
-      
-      console.log(data);
+      // console.log("aya:", data); // Ensure data structure is correct
+      // console.log(data.chats);
     } catch (error) {
       console.error("Error sending message:", error);
       setMessages((prev) => [...prev, { text: "Error: Could not get response", sender: "bot" }]);

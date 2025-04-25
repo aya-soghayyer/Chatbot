@@ -11,7 +11,6 @@ import SignUp from "./views/SignUp";
 import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
 import UserChat from "./views/UserChat";
-import GuestChatId from "./views/GuestChatId";
 import ProtectedRout from "./utils/ProtectedRout";
 import Contact from "./views/Contact";
 import Admin from "./views/AdminDashboard.jsx";
@@ -22,10 +21,13 @@ import { TokenProvider } from "./store/TokenContext.tsx";
 import AdminCourses from "./views/AdminCourses.jsx";
 import AdminServices from "./views/AdminServices.jsx";
 import AdminAccounts from "./views/AdminAccounts.jsx";
+import { useState } from "react";
 
 export let domainName = "http://localhost:8000/";
 
 function App() {
+  const [chatId, setChatId] = useState("newchat");
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -56,10 +58,10 @@ function App() {
           path: "/guestchat",
           element: <GuestChat />,
         },
-        {
-          path: "/chat/id",
-          element: <GuestChatId />,
-        },
+        // {
+        //   path: `/chatId`,
+        //   element: <UserChatId />,
+        // },
         {
           path: "/forgetpassword",
           element: (
@@ -76,11 +78,15 @@ function App() {
             </TokenProvider>
           ),
         },
+        // {
+        //   path: "/userchat/:chatId",
+        //   element: <UserChat chatId={chatId} />,
+        // },
         {
-          path: "/userchat",
+          path: `/userchat`,
           element: (
             <ProtectedRout>
-              <UserChat />
+              <UserChat chatId={chatId} />
             </ProtectedRout>
           ),
         },

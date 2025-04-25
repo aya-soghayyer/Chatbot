@@ -2,7 +2,7 @@ import Cookie from "js-cookie";
 import { domainName } from "../App";
 
 class chatsHistoryService {
-  async getMessage() {
+  async getChats() {
     const token = Cookie.get("token");
     if (!token) {
       throw new Error("No token found, please log in.");
@@ -16,7 +16,6 @@ class chatsHistoryService {
         Authorization: `Bearer ${token}`,
       }
     });
-
     if (!response.ok) {
       if (response.status === 401) {
         throw new Error("Unauthorized. Please log in again.");

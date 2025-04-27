@@ -90,7 +90,7 @@ function HeaderGuestChat() {
           </div>
         ) : (
           <div
-            className={`grid grid-rows-[1fr_auto] h-[37rem] md:h-[33rem] w-full items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
+            className={`grid grid-rows-[1fr_auto] h-screen md:h-[33rem] w-full items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
           >
              <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
 

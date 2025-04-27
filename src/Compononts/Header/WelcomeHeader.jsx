@@ -2,32 +2,33 @@ import Frame from "../../assets/images/Frame.svg";
 import { Link } from "react-router-dom";
 import FilledButton from "../ui/FilledButton";
 import UnFilledButton from "../ui/UnFilledButton";
+import { useTranslation } from "react-i18next";
 
 function WelcomeHeader() {
+  const { t } = useTranslation();
   return (
     <header className="py-8 z-20 flex font-Outfit text-white  md:justify-start  2xl:-mt-16">
       <div className="flex flex-col px-6 md:gap-24 md:flex-row gap-6 2xl:gap-12 items-center md:px-4 2xl:px-7 relative">
         <div className="w-full md:z-10 md:w-1/3 md:ml-7 2xl:w-3/5">
-          <h2 className="text-4xl whitespace-break-spaces md:whitespace-break-spaces md:text-5xl/tight 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
-            <span className="tracking-wider" >welcome  to</span> milo chatbot
+          <h2 className="text-[42px] ml-3 whitespace-break-spaces md:whitespace-break-spaces md:text-5xl 2xl:text-7xl font-bold mb-4 uppercase leading-tight">
+            <span className="tracking-wider -ml-2" > {t('welcome')}</span> {t('chatbotMilo')}
           </h2>
-          <p className="md:text-xl md:font-light text-lg 2xl:text-xl font-light">
-            Welcome to MiLo! Explore a smarter way to navigate university
-            resources and get the answers you need. Let’s get started!
+          <p className="md:text-base px-2 md:whitespace-break-spaces md:font-extralight text-lg 2xl:text-xl font-light">
+           {t('description')}
           </p>
-          <div className="flex flex-col w-full md:pt-10 md:flex-row md:w-[95%] justify-between mt-6 2xl:mt-10 gap-4 ">
-            <Link to="/Login" className="w-full hidden md:flex md:w-[45%]">
+          <div className="flex flex-col w-full md:pt-7 md:flex-row md:justify-self-center md:w-[95%] justify-between mt-6 2xl:mt-10 gap-4">
+            <Link to="/Login" className="w-full hidden md:flex md:w-[48%]">
               <FilledButton
-                title="login"
+                title={t('loginButton')}
                 className="px-4 h-5/6 w-full md:mt-1"
               />
             </Link>
             <Link
               to="/Signup"
-              className="w-full hidden md:flex md:w-[45%] md:mt-2"
+              className="w-full hidden md:flex md:w-[48%] md:mt-2"
             >
               <UnFilledButton
-                title="Sign Up"
+                title={t('registerButton')}
                 className="px-4 py-3"
                 className2="w-full"
               />
@@ -35,7 +36,7 @@ function WelcomeHeader() {
           </div>
 
           <div className="hidden text-base md:text-lg 2xl:text-xl md:flex justify-center my-6 underline underline-offset-2">
-            <Link to="/guestchat">Try it as Guest</Link>
+            <Link to="/guestchat">{t('guestChatButton')}</Link>
           </div>
         </div>
 

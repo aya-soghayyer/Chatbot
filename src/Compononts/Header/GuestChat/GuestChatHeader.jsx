@@ -17,7 +17,6 @@ function HeaderGuestChat() {
     handleToggle,
     setLanguage,
     language,
-    greeting,
     messages,
     inputValue,
     listening,
@@ -38,25 +37,22 @@ function HeaderGuestChat() {
     "What is the required rate for computer science major?",
     "What are the majors offered by Hebron University?",
     "How can I change the major I was accepted into?",
-    "Tell me about Hebron University please"
+    // "Tell me about Hebron University please"
   ];
 
   return (
     <>
       <div
-        className={` grid place-items-center 2xl:py-12 text-white font-Outfit h-svh md:h-[31rem] z-10 relative`}
+        className={`grid 2xl:py-12 text-white font-Outfit md:h-[33rem] z-0 md:z-10 relative`}
       >
         {!activeChat ? (
           <div
-            className={`grid gap-1 md:-mt-28 px-5 md:px-44 md:gap-3 2xl:gap-8 w-full min-w-full md:min-w-full 2xl:max-w-5xl mx-auto 2xl:mt-20 z-10 relative `}
+            className={`grid gap-1 px-5 h-[33rem] md:px-44 md:gap-3 2xl:gap-8 w-full min-w-full md:min-w-full 2xl:max-w-5xl mx-auto 2xl:mt-20 z-10 relative `}
           >
-            <h2 className="text-white font-extralight text-xl md:text-2xl flex justify-center items-center">
-              {greeting}
-            </h2>
-            <h2 className="text-2xl md:text-2xl 2xl:text-3xl font-bold flex justify-center items-center">
+            <h2 className="text-2xl md:text-3xl 2xl:text-3xl font-bold flex justify-center items-end">
               What can I help with?
             </h2>
-            <div className="space-y-3 md:space-y-4 2xl:space-y-6">
+            <div className="space-y-3 h-1/2  md:space-y-4 2xl:space-y-6">
               <div className="relative mx-4">
               <ChatInput
                 inputValue={inputValue}
@@ -67,21 +63,22 @@ function HeaderGuestChat() {
                 handleToggle={handleToggle}
                 handleSubmit={handleSubmit}
                 setIsActiveChat={setIsActiveChat}
-                className="rounded-2xl bg-white/15"
+                className="rounded-2xl bg-white/15 py-4"
               />
             </div>
-              <div className="hidden md:inline-grid md:px-7 2xl:p-4 text-white md:w-full space-y-3 md:space-y-4 2xl:space-y-5">
-                <p className="text-sm md:text-base 2xl:text-lg">
-                  Suggestion questions:
+              <div className="hidden md:inline-grid md:px-24 2xl:p-4 text-white md:w-full space-y-3 md:space-y-4 2xl:space-y-5">
+                <p className="text-sm md:text-base 2xl:text-lg text-white/70">
+
+                  Suggested questions:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 2xl:gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-1 2xl:gap-4">
                   {suggestionQuestions.map((question, index) => (
                     <button
                       key={index}
                       value={question}
                       onClick={(e) => handleSuggestion(e.target.value)}
                       className={`bg-white bg-opacity-10 p-2 md:p-3 2xl:p-4 rounded-full text-sm md:text-sm 2xl:text-lg hover:bg-white/20 transition-colors ${
-                        index === 3 ? "md:col-span-1" : ""
+                        index === 2 ? "md:col-span-2 mt-1 flex justify-center justify-self-center" : ""
                       }`}
                     >
                       {question}
@@ -93,7 +90,7 @@ function HeaderGuestChat() {
           </div>
         ) : (
           <div
-            className={`grid grid-rows-[1fr_auto] w-full  items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
+            className={`grid grid-rows-[1fr_auto] h-[37rem] md:h-[33rem] w-full items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}
           >
              <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
 

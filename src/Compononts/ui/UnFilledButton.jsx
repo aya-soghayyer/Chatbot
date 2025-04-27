@@ -9,7 +9,7 @@ function UnFilledButton({ title, className = "", className2 = "" }) {
       transition-all duration-1000  hover:brightness-110 hover:scale-105`}
         >
           <div
-            className={`rounded-[0.5rem] capitalize font-medium text-white bg-primary text-base 2xl:text-lg ${className}
+            className={`rounded-[0.5rem] capitalize font-medium text-white bg-primary/90 text-base  2xl:text-lg ${className}
         transition-all duration-1000 hover:bg-opacity-90`}
           >
             {title}

@@ -27,14 +27,14 @@ function LoginHeader() {
       <div className="flex flex-col md:flex-row md:gap-6 2xl:gap-12 items-center justify-between">
         {/* Form Section */}
         <div className="grid items-center md:p-5 md:w-2/5 2xl:w-full 2xl:-ml-20 mt-8 2xl:mt-12 z-0 md:z-40">
-          <h2 className="text-3xl md:text-4xl 2xl:text-5xl flex justify-center font-bold mb-4 md:mb-3 2xl:mb-8 capitalize">
+          <h2 className="text-3xl md:text-4xl md:mr-16 2xl:text-5xl flex justify-center font-bold mb-4 md:mb-3 2xl:mb-8 capitalize">
             Login
           </h2>
-          <form onSubmit={handleSubmit} method="post" className="w-full">
+          <form onSubmit={handleSubmit} method="post" className="w-full md:w-10/12">
             <div className="grid justify-items-start gap-2 px-10 md:px-5 2xl:px-6 py-4 2xl:py-8">
               <label
                 htmlFor="studentId"
-                className="text-lg md:text-xl 2xl:text-2xl font-extralight"
+                className="text-lg md:text-lg 2xl:text-2xl font-extralight"
               >
                 Student ID
               </label>
@@ -59,7 +59,7 @@ function LoginHeader() {
               <div className="px-10 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
                 <label
                   htmlFor="miloPassword"
-                  className="text-lg md:text-xl 2xl:text-2xl font-extralight"
+                  className="text-lg md:text-lg 2xl:text-2xl font-extralight"
                 >
                   Milo Password
                 </label>
@@ -92,7 +92,7 @@ function LoginHeader() {
 
             <Link
               to="/forgetpassword"
-              className="px-10 md:px-5 2xl:px-6 pt-1 text-sm md:text-base 2xl:text-lg font-extralight"
+              className="px-10 md:px-5 2xl:px-6 pt-1 text-sm md:text-sm 2xl:text-lg font-extralight"
             >
               Forgot password?
             </Link>
@@ -101,7 +101,7 @@ function LoginHeader() {
                 title={isLoading ? "Logging In..." : "Login"}
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 rounded-md disabled:opacity-50"
+                className="w-full py-2 rounded-md disabled:opacity-50"
               />
             </div>
             {isSuccess && (
@@ -112,18 +112,18 @@ function LoginHeader() {
             )}
           </form>
 
-          <div className="flex md:flex-row justify-center items-center mt-4 md:mt-6 2xl:mt-8">
-            <span className="text-sm md:text-base 2xl:text-lg font-extralight">
+          <div className="flex md:flex-row justify-center md:mr-16 items-center mt-4 md:mt-6 2xl:mt-8 gap-1">
+            <span className="text-sm md:text-sm 2xl:text-lg font-extralight">
               Don't have an account?
             </span>
-            <div className="text-base md:text-lg 2xl:text-xl font-medium underline underline-offset-2 text-[#21ABDB]">
+            <div className="text-base md:text-sm 2xl:text-xl font-medium underline underline-offset-2 text-gradientSkyBlue">
               <Link to="/Signup">Sign up</Link>
             </div>
           </div>
         </div>
 
         {/* Image Section */}
-        <div className="z-10 w-full hidden md:inline-flex md:w-1/2 2xl:w-full mt-6 md:mt-0">
+        <div className="z-10 w-full hidden md:inline-flex md:w-1/2 md:mt-12 2xl:w-full mt-6 ">
           <img className="w-full" src={Frame} alt="computer" />
         </div>
       </div>

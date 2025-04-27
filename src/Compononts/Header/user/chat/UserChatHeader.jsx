@@ -20,13 +20,12 @@ function UserChatHeader({ chatid, onChatIdChange }) {
   const [chatId, setChatId] = useState("newchat");
   const [showSettings, setSettings] = useState(false);
   const [settingsDetails, setSettingsDetails] = useState(false);
-  const [isActiveChat, setIsActiveChat] = useState(true);
+  const [isActiveChat, setIsActiveChat] = useState(false);
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
   const { preview, handleFileChange } = usePhoto();
   const [isLoading, setIsLoading] = useState(false);
   const [showPhotos, setPhoto] = useState(false)
-
   const [botBuffer, setBotBuffer] = useState("");
 
   const navigate = useNavigate();
@@ -109,7 +108,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
     window.location.reload(true);
     setChatId("newchat");
     setMessages([]);
-    setIsActiveChat(true);
+    setIsActiveChat(false);
   };
 
   const handleSubmit = async (e) => {
@@ -120,6 +119,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInputValue("");
     setIsLoading(true);
+    setIsActiveChat(true);
 
     let streamedText = "";
 
@@ -241,7 +241,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
 
         <Settings className="z-30" setPhoto={setPhoto} showPhotos={showPhotos} settingsDetails={settingsDetails} setSettingsDetails={setSettingsDetails} showSettings={showSettings} setSettings={setSettings} />
 
-        {isActiveChat ? (
+        {!isActiveChat ? (
           <div className="flex justify-center items-center h-full">
             <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
               <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">

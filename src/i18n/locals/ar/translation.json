@@ -1,0 +1,122 @@
+{   
+    "welcome": "أهلا بك في",
+    "chatbotMilo": "دردشة مايلو",
+    "description": "أهلاً بكم في ميلو! اكتشفوا طريقةً أذكى للتنقل بين موارد الجامعة والحصول على الإجابات التي تحتاجونها. هيا بنا!",
+    "guestChatButton": "الدردشة كزائر",
+    "loginButton": "تسجيل الدخول",
+    "registerButton": "إنشاء حساب",
+    "home":"الصفحة الرئيسية",
+    "about":"حولنا",
+    "contact":"اتصل بنا",
+  
+
+    "app": {
+        "title": "",
+        "description": "تطبيق React متعدد اللغات باستخدام i18next"
+    },
+    "common": {
+        "welcome": "أهلا بك في تطبيقنا!",
+        "language": "اللغة",
+        "changeLanguage": "تغيير اللغة"
+    },
+
+    "login": {
+        "title": "تسجيل الدخول",
+        "username": "اسم المستخدم",
+        "password": "كلمة المرور",
+        "submit": "تسجيل الدخول",
+        "forgotPassword": "نسيت كلمة المرور؟"
+    },
+    "register": {
+        "title": "إنشاء حساب",
+        "username": "اسم المستخدم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "submit": "إنشاء حساب",
+        "alreadyHaveAccount": "هل لديك حساب بالفعل؟ تسجيل الدخول هنا."
+    },
+    "dashboard": {
+        "title": "لوحة التحكم",
+        "welcomeMessage": "مرحبًا بعودتك، {{username}}!",
+        "logout": "تسجيل الخروج",
+        "settings": "الإعدادات",
+        "profile": "الملف الشخصي"
+    },
+    "settings": {
+        "title": "الإعدادات",
+        "language": "اللغة",
+        "notifications": "الإشعارات",
+        "privacy": "الخصوصية",
+        "saveChanges": "حفظ التغييرات",
+        "changesSaved": "تم حفظ التغييرات بنجاح!"
+    },
+    "profile": {
+        "title": "الملف الشخصي",
+        "username": "اسم المستخدم",
+        "email": "البريد الإلكتروني",
+        "updateProfile": "تحديث الملف الشخصي",
+        "profileUpdated": "تم تحديث الملف الشخصي بنجاح!"
+    },
+    "error": {
+        "generic": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+        "notFound": "الصفحة غير موجودة.",
+        "unauthorized": "ليس لديك إذن لعرض هذه الصفحة.",
+        "forbidden": "الوصول محظور. ليس لديك إذن لعرض هذه الصفحة.",
+        "serverError": "خطأ داخلي في الخادم. يرجى المحاولة مرة أخرى لاحقًا."
+    },
+    "success": {
+        "operationSuccessful": "تمت العملية بنجاح!",
+        "dataSaved": "تم حفظ البيانات بنجاح!",
+        "profileUpdated": "تم تحديث الملف الشخصي بنجاح!"
+    },
+    "loading": {
+        "loading": "جارٍ التحميل...",
+        "pleaseWait": "يرجى الانتظار...",
+        "fetchingData": "جارٍ جلب البيانات..."
+    },
+    "validation": {
+        "requiredField": "هذا الحقل مطلوب.",
+        "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+        "minLength": "يجب أن يكون الحد الأدنى لطول هذا الحقل {{min}} أحرف.",
+        "maxLength": "يجب ألا يتجاوز الحد الأقصى لطول هذا الحقل {{max}} أحرف.",
+        "passwordMismatch": "كلمات المرور غير متطابقة."
+    },
+    "date": {
+        "today": "اليوم",
+        "yesterday": "أمس",
+        "tomorrow": "غدًا",
+        "daysAgo": "{{count}} يومًا مضت",
+        "daysLater": "{{count}} يومًا لاحقًا"
+    },
+    "time": {
+        "hoursAgo": "{{count}} ساعة مضت",
+        "hoursLater": "{{count}} ساعة لاحقًا",
+        "minutesAgo": "{{count}} دقيقة مضت",
+        "minutesLater": "{{count}} دقيقة لاحقًا",
+        "secondsAgo": "{{count}} ثانية مضت",
+        "secondsLater": "{{count}} ثانية لاحقًا"
+    },
+    "confirmation": {
+        "delete": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء.",
+        "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+        "discardChanges": "هل أنت متأكد أنك تريد تجاهل التغييرات؟"
+    },
+    "search": {
+        "placeholder": "ابحث هنا...",
+        "noResults": "لا توجد نتائج."
+    },
+    "pagination": {
+        "previous": "السابق",
+        "next": "التالي",
+        "page": "صفحة {{page}} من {{total}}",
+        "showing": "عرض {{count}} من {{total}} عناصر"
+    },
+    "toast": {
+        "success": "نجاح!",
+        "error": "خطأ!",
+        "info": "معلومات!",
+        "warning": "تحذير!"
+    }
+    
+}

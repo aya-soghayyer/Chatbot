@@ -30,10 +30,10 @@ const ChatArea = ({ messages, messageEndRef, isLoading, className }) => {
           )}
 
           <span
-            className={`p-3 rounded-lg text-sm md:text-base max-w-[70%] break-words prose prose-invert ${
+            className={`p-3 text-sm md:text-base max-w-[70%] break-words prose prose-invert ${
               msg.sender === "user"
                 ? "bg-slate-500/40 text-white rounded-[30px] rounded-br-none"
-                : "text-white bg-darkBlue rounded-[30px] rounded-bl-none"
+                : "text-white bg-darkBlue rounded-[30px]  rounded-bl-none"
             }`}
             ref={index === messages.length - 1 ? messageEndRef : null}
           >

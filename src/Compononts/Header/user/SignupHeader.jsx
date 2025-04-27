@@ -7,6 +7,7 @@ import { useSignupForm } from "../../../hooks/UseSignupForm";
 import AuthService from "../../../services/AuthSignupService";
 import FilledButton from "../../../Compononts/ui/FilledButton";
 import eye from "../../../assets/images/eye.svg";
+import Computer from "../../ui/Computer";
 
 function HeaderS() {
   const {
@@ -39,36 +40,34 @@ function HeaderS() {
   } = useSignupForm(AuthService);
 
   return (
-    <div className="py-16 font-Outfit text-white md:flex md:justify-center md:items-center">
+    <div className="py-6 font-Outfit text-white md:flex md:justify-center md:items-center">
       <div className="flex flex-col md:flex-row md:items-center md:gap-12 items-center justify-between w-full max-w-5xl">
         {/* Form Section */}
-        <div className="z-0 w-full px-6 md:h-full md:w-2/5">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 capitalize">
+        <div className="z-0 w-full px-6 md:h-full md:w-1/2">
+          <h2 className="text-3xl md:text-4xl font-bold md:font-semibold text-center mb-5 capitalize">
             Sign Up
           </h2>
-          <form onSubmit={handleSubmit} className="w-full space-y-1 px-5">
+          <form onSubmit={handleSubmit} className="w-full px-5 space-y-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4">
               <div className="gap-1 grid">
                 <label htmlFor="firstName" className="text-lg font-light">
                   First name
                 </label>
                 <input
-  type="text"
-  id="firstName"
-  name="firstName"
-  className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
-    isInvalidFirst ? "invalid:border-red-500" : "border-white"
-  }`}
-  onFocus={() => setInvalidFirst(true)}
-  placeholder="First name"
-  required
-  value={formData.firstName}
-  onChange={handleChange}
-  pattern="^[A-Za-z]{2,}$"
-  title="Must contain at least 2 letters (A-Z or a-z)"
-/>
-
-
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  className={`border p-3 h-10 w-full bg-slate-500 rounded-md ${
+                    isInvalidFirst ? "invalid:border-red-500" : "border-white"
+                  }`}
+                  onFocus={() => setInvalidFirst(true)}
+                  // placeholder="First name"
+                  required
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  pattern="^[A-Za-z]{2,}$"
+                  title="Must contain at least 2 letters (A-Z or a-z)"
+                />
               </div>
               <div className="gap-1 grid">
                 <label htmlFor="lastName" className="text-lg font-light">
@@ -77,12 +76,12 @@ function HeaderS() {
                 <input
                   type="text"
                   id="lastName"
-                  className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
+                  className={`border p-3 h-10 w-full bg-slate-500 rounded-md ${
                     isInvalidLast ? "invalid:border-red-500" : "border-white"
                   }`}
                   onFocus={() => setInvalidLast(true)}
                   name="lastName"
-                  placeholder="Last name"
+                  // placeholder="Last name"
                   required
                   value={formData.lastName}
                   onChange={handleChange}
@@ -92,19 +91,21 @@ function HeaderS() {
               </div>
             </div>
 
-            <div className="gap-1 grid">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4">
+
+            <div className="gap-1 grid  md:py-0 md:px-0 md:w-full relative md:mb-1">
               <label htmlFor="studentId" className="text-lg font-light">
-                Student ID
+                Student id
               </label>
               <input
                 type="text"
                 id="studentId"
-                className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
+                className={`border p-3 h-10 w-full bg-slate-500 rounded-md ${
                   isInvalidID ? "invalid:border-red-500" : "border-white"
                 }`}
                 onFocus={() => setInvalidID(true)}
                 name="studentId"
-                placeholder="Student ID"
+                // placeholder="Student ID"
                 value={formData.studentId}
                 required
                 onChange={handleChange}
@@ -114,17 +115,17 @@ function HeaderS() {
             </div>
             <div className="gap-1 grid  md:py-0 md:px-0 md:w-full relative">
               <label htmlFor="portalPassword" className="text-lg font-light">
-                Portal Password
+                Portal password
               </label>
               <input
                 type={showPortalPassword ? "text" : "password"}
                 id="portalPassword"
-                className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
+                className={`border p-3 md:pr-8 h-10 w-full bg-slate-500 rounded-md ${
                   isInvalidPortal ? "invalid:border-red-500" : "border-white"
                 }`}
                 onFocus={() => setInvalidPortal(true)}
                 name="portalPassword"
-                placeholder="Portal Password"
+                // placeholder="Portal Password"
                 required
                 value={formData.portalPassword}
                 onChange={handleChange}
@@ -133,71 +134,72 @@ function HeaderS() {
                 <button
                   type="button"
                   onClick={() => setShowPortalPassword((prev) => !prev)}
-                  className="absolute right-5 top-14 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                  className="absolute right-2 top-[3.3rem] md:right-2 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
                 >
-                  <img src={eye} alt="eye icon" className="scale-110" />
+                  <img src={eye} alt="eye icon" className="scale-90" />
                 </button>
               </div>
             </div>
-              <div className="gap-1 grid md:py-0 md:px-0 md:w-full relative">
-                <label htmlFor="miloPassword" className="text-lg font-light">
-                  Milo Password
-                </label>
-                <input
-                  type={showMiloPassword ? "text" : "password"}
-                  id="miloPassword"
-                  className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
-                    isInvalidMilo ? "invalid:border-red-500" : "border-white"
-                  }`}
-                  onFocus={() => setInvalidMilo(true)}        
-                  name="miloPassword"
-                  placeholder="Milo Password"
-                  required
-                  value={formData.miloPassword}
-                  onChange={handleChange}
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                />
-                <div className="flex justify-center items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowMiloPassword((prev) => !prev)}
-                    className="absolute right-5 top-14 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
-                  >
-                    <img src={eye} alt="eye icon" className="scale-110" />
-                  </button>
-                </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4">
+
+            <div className="gap-1 grid md:py-0 md:px-0 md:w-full relative">
+              <label htmlFor="miloPassword" className="text-lg font-light">
+                Milo password
+              </label>
+              <input
+                type={showMiloPassword ? "text" : "password"}
+                id="miloPassword"
+                className={`border p-3 md:pr-8 h-10 w-full bg-slate-500 rounded-md ${
+                  isInvalidMilo ? "invalid:border-red-500" : "border-white"
+                }`}
+                onFocus={() => setInvalidMilo(true)}
+                name="miloPassword"
+                // placeholder="Milo Password"
+                required
+                value={formData.miloPassword}
+                onChange={handleChange}
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              />
+              <div className="flex justify-center items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowMiloPassword((prev) => !prev)}
+                  className="absolute  right-2 top-[3.3rem] md:right-2 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                >
+                  <img src={eye} alt="eye icon" className="scale-90" />
+                </button>
               </div>
-              <div className="gap-1 grid md:py-0 md:px-0 md:w-full relative">
-                  <label
-                    htmlFor="confirmPassword"
-                    className="text-lg font-light"
-                  >
-                    Confirm Password
-                  </label>
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    id="confirmPassword"
-                    className={`border p-3 h-12 w-full bg-slate-500 rounded-md ${
-                      isInvalidConfirm ? "invalid:border-red-500" : "border-white"
-                    }`}
-                    onFocus={() => setInvalidConfirm(true)}
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    required
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                   <div className="flex justify-center items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword((prev) => !prev)}
-                    className="absolute right-5 top-14 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
-                  >
-                    <img src={eye} alt="eye icon" className="scale-110" />
-                  </button>
-                </div>
-                </div>
+            </div>
+            <div className="gap-1 grid md:py-0 md:px-0 md:w-full relative">
+              <label htmlFor="confirmPassword" className="text-lg font-light">
+                Confirm password
+              </label>
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                className={`border p-3 md:pr-8 h-10 w-full bg-slate-500 rounded-md ${
+                  isInvalidConfirm ? "invalid:border-red-500" : "border-white"
+                }`}
+                onFocus={() => setInvalidConfirm(true)}
+                name="confirmPassword"
+                // placeholder="Confirm Password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+              <div className="flex justify-center items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  className="absolute  right-2 top-[3.3rem] md:right-2 md:top-[3.3rem] md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                >
+                  <img src={eye} alt="eye icon" className="scale-90" />
+                </button>
+              </div>
+            </div>
+            </div>
             <div className="flex items-start ">
               <input
                 type="checkbox"
@@ -205,7 +207,7 @@ function HeaderS() {
                 name="checkbox"
                 required
               />
-              <p className="text-sm font-light ">
+              <p className="font-light md:w-full ">
                 I agree to allow the collection and use of my data in accordance
                 with the privacy policy.
               </p>
@@ -214,7 +216,7 @@ function HeaderS() {
               title={isLoading ? "Signing Up..." : "Sign Up"}
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-md disabled:opacity-50"
+              className="w-full  py-3 rounded-md disabled:opacity-50"
             />
             {isSuccess && (
               <p className="text-green-500 text-center mt-4">{isSuccess}</p>
@@ -236,9 +238,7 @@ function HeaderS() {
         </div>
 
         {/* Image Section */}
-        <div className="hidden md:z-10 md:block w-1/2">
-          <img className="w-full" src={Frame} alt="Computer" />
-        </div>
+        <Computer />
       </div>
       <div className="flex justify-between items-end px-10 mt-5 md:hidden">
         <hr className="border-t border-white/30 w-3/4 mx-auto mb-3 md:mb-6 2xl:mb-8" />

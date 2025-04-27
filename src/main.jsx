@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import "./icons/fontAwsomeLibrary.jsx";
+import '../src/i18n/translation.js';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

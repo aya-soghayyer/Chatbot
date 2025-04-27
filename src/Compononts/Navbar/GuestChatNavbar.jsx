@@ -10,8 +10,8 @@ function NavbarChat() {
 
   return (
     <>
-      <div className="flex justify-between items-center p-6 md:justify-between md:pt-3 md:p-0 md:px-11 text-white">
-        <div className="z-40">
+      <div className="flex justify-between items-center p-4 md:justify-between md:pt-3 md:p-0 md:px-11 text-white">
+        <div className="z-10 md:z-40 md:w-32 w-[8rem]">
           <Link to="/">
             <img src={Logo} alt="MiLo Logo" />
           </Link>
@@ -84,21 +84,21 @@ function NavbarChat() {
         </div>
 
         <div className="hidden md:inline-flex">
-          <ul className="flex justify-between gap-3">
+          <ul className="flex justify-between gap-3 md:mt-3 md:-mr-3 md:gap-0">
             <li>
               <Link
                 to="/login"
                 className="p-4"
               >
-                <FilledButton title={"login"} className="px-10 py-2" />
+                <FilledButton title={"login"} className="px-8 py-2 md:text-sm" />
               </Link>
             </li>
             <li>
               <Link to="/signup">
                 <UnFilledButton
-                  title={"signup"}
-                  className2=""
-                  className="px-9 py-2"
+                  title={"sign up"}
+                  className2="mt-1"
+                  className="px-7 py-[7px] md:text-sm"
                 />
               </Link>
             </li>

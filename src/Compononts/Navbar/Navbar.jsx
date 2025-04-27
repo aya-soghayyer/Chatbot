@@ -2,12 +2,27 @@ import { useState } from "react";
 import websiteName from "../../assets/images/Logo.svg";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
   const [isHovered4, setIsHovered4] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const handleLanguageChange = (e) => {
+    const selectedLang = e.target.value;
+    i18n.changeLanguage(selectedLang);
+    document.documentElement.dir = selectedLang === "ar" ? "rtl" : "ltr";
+  };
+
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
+
 
   return (
     <>
@@ -16,7 +31,7 @@ function Navbar() {
         <div className="flex items-center z-10">
           <Link to="/">
             <img
-              className="2xl:w-[15rem] md:w-full w-[8rem]"
+              className="2xl:w-[15rem] md:w-32 w-[8rem]"
               src={websiteName}
               alt="MiLo Logo"
             />
@@ -113,7 +128,7 @@ function Navbar() {
                     className="md:font-medium md:text-base 2xl:text-3xl capitalize hover:text-gray-200 transition-colors"
                     to="/"
                   >
-                    Home
+                  {t('home')}
                   </Link>
                 </li>
               </div>
@@ -133,7 +148,7 @@ function Navbar() {
                     className="font-medium 2xl:text-3xl md:text-base capitalize hover:text-gray-200 transition-colors"
                     to="/contact"
                   >
-                    Contact Us
+                    {t('contact')}
                   </Link>
                 </li>
               </div>
@@ -153,11 +168,25 @@ function Navbar() {
                     className="font-medium 2xl:text-3xl md:text-base capitalize hover:text-gray-200 transition-colors"
                     to="/about"
                   >
-                    About Us
+                    {t('about')}
+
                   </Link>
                 </li>
+               
               </div>
             </div>
+            {/* <div className="p-4">
+              <li>
+                  <select
+      value={i18n.language}
+      onChange={handleLanguageChange}
+      className="rounded-md bg-primary cursor-pointer text-white font-medium 2xl:text-3xl md:text-base capitalize hover:text-gray-200 transition-colors"
+    >
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+                </li>
+                </div> */}
           </ul>
         </div>
       </nav>

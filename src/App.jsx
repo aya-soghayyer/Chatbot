@@ -22,6 +22,7 @@ import AdminCourses from "./views/AdminCourses.jsx";
 import AdminServices from "./views/AdminServices.jsx";
 import AdminAccounts from "./views/AdminAccounts.jsx";
 import { useState } from "react";
+import PublicRoute from "./utils/PublicRoute.jsx";
 
 export let domainName = "http://localhost:8000/";
 
@@ -44,11 +45,21 @@ function App() {
         },
         {
           path: "/login",
-          element: <Login />,
+          element:
+          (
+            <PublicRoute>
+            <Login />
+            </PublicRoute>
+              ),
         },
         {
           path: "/signup",
-          element: <SignUp />,
+          element: 
+          (
+          <PublicRoute>
+          <SignUp />
+          </PublicRoute>
+            ),
         },
         {
           path: "/contact",
@@ -65,17 +76,21 @@ function App() {
         {
           path: "/forgetpassword",
           element: (
+            <PublicRoute>
             <TokenProvider>
               <ForgetPassword />
             </TokenProvider>
+            </PublicRoute>
           ),
         },
         {
           path: "/resetpassword",
           element: (
+            <PublicRoute>
             <TokenProvider>
               <ResetPassword />
             </TokenProvider>
+            </PublicRoute>
           ),
         },
         // {

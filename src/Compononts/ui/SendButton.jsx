@@ -19,12 +19,10 @@ function SendButton({
       {inputValue.trim() ? (
         <button
           type="submit"
-          onClick={() => setIsActiveChat(false)}
           className="absolute right-4 top-12 w-6 md:w-8"
-          disabled={isBotLoading} // ✅ Disable button when loading
+          disabled={isBotLoading}
         >
           {isBotLoading ? (
-            // Spinner instead of image
             <svg
               className="animate-spin h-5 w-5 text-gray-300 mx-auto"
               xmlns="http://www.w3.org/2000/svg"

@@ -110,14 +110,14 @@ const ChatHistory = ({
             </div>
           </div>
           {!chatHistory && (
-            <>
-              <h1 className="text-xl mt-3 md:text-lg md:font-normal text-white/55 mb-3">
+            <> 
+              <h1 className="text-xl mt-3 md:text-lg md:items-start md:font-normal text-white/55 mb-3">
                 History
               </h1>
 
               <div className="h-3/4 md:h-full">
                 {loading ? (
-                  <p className="text-gray-400">Loading chats...</p>
+                  <p className="text-gray-400 ">Loading chats...</p>
                 ) : error ? (
                   <p className="text-red-500">{error}</p>
                 ) : chats.length > 0 ? (
@@ -130,7 +130,7 @@ const ChatHistory = ({
                         }`}                     
                            onClick={() => {
                           setSelectedChat(chat.id);
-                          setIsActiveChat(isActivateChat); // Set the active chat state
+                          setIsActiveChat(true); // Set the active chat state
                           fetchMessages(chat.id); 
                           // {console.log("Selected chat ID hello aya:", chat.id)}
                           // setSelectedChatId(chat.id); // Set the selected chat ID
@@ -144,29 +144,12 @@ const ChatHistory = ({
                       </li>
                     ))}
                   </ul>
+
                 ) : (
                   <p className="text-gray-500">No chats available.</p>
                 )}
 
-                {/* {selectedChatId && (
-            <div className="mt-6">
-              <h2 className="text-xl font-bold text-white">Messages in Chat {selectedChatId}</h2>
-              <div className="mt-2">
-                {messages.length > 0 ? (
-                  <ul>
-                    {messages.map((message, index) => (
-                      <li key={index} className="bg-gray-700 text-white p-2 rounded-lg mb-2">
-                        {message.content || "No content"}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-500">No messages yet.</p>
-                )}
-              </div>
-            </div>
-          )} */}
-          <div className="md:hidden">
+            <div className="md:hidden">
             <hr />
             <div className="flex justify-between items-center mt-4 px-3">
               <div className="flex justify-center gap-4 items-center">

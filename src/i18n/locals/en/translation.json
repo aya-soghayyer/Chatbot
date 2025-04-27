@@ -1,0 +1,116 @@
+{
+    "welcome": "Welcome to",
+    "chatbotMilo": "Milo chatbot",
+    "description": "Welcome  to  MiLo!  Explore  a smarter  way   to navigate university resources and get the answers you need. Let’s get started! ",
+    "guestChatButton": "Try it as Guest",
+    "loginButton": "Login",
+    "registerButton": "sign up",
+    "home":"home",
+    "about":"about us",
+    "contact":"contact us",
+    "login": {
+        "title": "Login",
+        "username": "Username",
+        "password": "Password",
+        "submit": "Submit",
+        "forgotPassword": "Forgot Password?"
+    },
+    "register": {
+        "title": "Register",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "submit": "Register",
+        "alreadyHaveAccount": "Already have an account? Login here."
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "welcomeMessage": "Welcome back, {{username}}!",
+        "logout": "Logout",
+        "settings": "Settings",
+        "profile": "Profile"
+    },
+    "settings": {
+        "title": "Settings",
+        "language": "Language",
+        "notifications": "Notifications",
+        "privacy": "Privacy",
+        "saveChanges": "Save Changes",
+        "changesSaved": "Changes saved successfully!"
+    },  
+    "profile": {
+        "title": "Profile",
+        "username": "Username",
+        "email": "Email",
+        "updateProfile": "Update Profile",
+        "profileUpdated": "Profile updated successfully!"
+    },
+    "error": {
+        "generic": "An error occurred. Please try again.",
+        "notFound": "Page not found.",
+        "unauthorized": "You are not authorized to view this page.",
+        "forbidden": "Access forbidden. You do not have permission to view this page.",
+        "serverError": "Internal server error. Please try again later."
+    },
+    "success": {
+        "operationSuccessful": "Operation completed successfully!",
+        "dataSaved": "Data saved successfully!",
+        "profileUpdated": "Profile updated successfully!"
+    },
+    "loading": {
+        "loading": "Loading...",
+        "pleaseWait": "Please wait...",
+        "fetchingData": "Fetching data..."
+    },
+    "validation": {
+        "requiredField": "This field is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "passwordMismatch": "Passwords do not match.",
+        "minLength": "Minimum length is {{length}} characters.",
+        "maxLength": "Maximum length is {{length}} characters.",
+        "usernameTaken": "Username is already taken.",
+        "emailTaken": "Email is already registered."
+    },
+    "confirmation": {
+        "delete": "Are you sure you want to delete this item? This action cannot be undone.",
+        "logout": "Are you sure you want to logout?",
+        "discardChanges": "Are you sure you want to discard changes?"
+    },
+    "date": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "tomorrow": "Tomorrow",
+        "daysAgo": "{{count}} days ago",
+        "daysFromNow": "{{count}} days from now",
+        "monthsAgo": "{{count}} months ago",
+        "monthsFromNow": "{{count}} months from now",
+        "yearsAgo": "{{count}} years ago",
+        "yearsFromNow": "{{count}} years from now"
+    },
+    "time": {
+        "hours": "{{count}} hours",
+        "minutes": "{{count}} minutes",
+        "seconds": "{{count}} seconds",
+        "justNow": "Just now",
+        "aMomentAgo": "A moment ago",
+        "inAMoment": "In a moment"
+    },
+    "currency": {
+        "usd": "USD",
+        "eur": "EUR",
+        "gbp": "GBP",
+        "jpy": "JPY",
+        "aud": "AUD",
+        "cad": "CAD",
+        "cny": "CNY",
+        "inr": "INR",
+        "rub": "RUB"
+    },
+    "number": {
+        "thousandsSeparator": ",",
+        "decimalSeparator": ".",
+        "currencyFormat": "{{symbol}}{{amount}}",
+        "percentageFormat": "{{amount}}%"
+    }
+}

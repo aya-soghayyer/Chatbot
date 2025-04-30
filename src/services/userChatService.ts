@@ -60,7 +60,7 @@ class ChatService {
 
       buffer = "";
     }
-
+    
     return { fullResponse, chat_id: newChatId };
   }
 }

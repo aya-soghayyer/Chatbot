@@ -20,7 +20,8 @@ const ChatInput = ({
   setIsActiveChat,
   isActiveChat,
   className = "",
-  isBotLoading, // ✅ This prop controls disabled state
+  isBotLoading,
+  classNameButton
 }) => {
   // const [play] = useSound(micStart)
   // const [pause] = useSound(micStop)
@@ -47,6 +48,7 @@ const ChatInput = ({
           isActiveChat={isActiveChat}
           inputValue={inputValue}
           isBotLoading={isBotLoading}
+          classNameButton={classNameButton}
         />
       </form>
     </div>

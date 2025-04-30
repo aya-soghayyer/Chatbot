@@ -216,7 +216,7 @@ function HeaderS() {
               title={isLoading ? "Signing Up..." : "Sign Up"}
               type="submit"
               disabled={isLoading}
-              className="w-full  py-3 rounded-md disabled:opacity-50"
+              className="w-full py-2 rounded-md disabled:opacity-50"
             />
             {isSuccess && (
               <p className="text-green-500 text-center mt-4">{isSuccess}</p>
@@ -225,7 +225,7 @@ function HeaderS() {
               <p className="text-red-500 text-center mt-4">{isError}</p>
             )}
           </form>
-          <div className="text-lg font-extralight flex justify-center my-6 underline underline-offset-2">
+          <div className="text-lg font-extralight flex justify-center mt-3 underline underline-offset-2">
             <Link
               onClick={(e) => {
                 e.preventDefault;
@@ -267,24 +267,35 @@ function HeaderS() {
                 How to sign up on MiLo?
               </h2>
               <ul className="relative font-light text-sm md:text-base 2xl:text-lg space-y-2">
-                <li>
+              <li>
                   <span className="font-medium">Step 1:</span> Enter your
+                  first name in the first name field.
+                </li>
+              <li>
+                  <span className="font-medium">Step 2:</span> Enter your
+                  last name in the last name field.
+                </li>
+                <li>
+                  <span className="font-medium">Step 3:</span> Enter your
                   university number in the student ID field.
                 </li>
                 <li>
-                  <span className="font-medium">Step 2:</span> Enter your Hebron
+                  <span className="font-medium">Step 4:</span> Enter your Hebron
                   University portal password in the portal password field.
                 </li>
                 <li>
-                  <span className="font-medium">Step 3:</span> Choose any
+                  <span className="font-medium">Step 5:</span> Choose any
                   password for Milo in the Milo password field.
                 </li>
                 <li>
-                  <span className="font-medium">Step 4:</span> Check the box to
+                  <span className="font-medium">Step 6:</span> confirm milo password in the confirm password field.
+                </li>
+                <li>
+                  <span className="font-medium">Step 7:</span> Check the box to
                   agree to the privacy policy.
                 </li>
                 <li>
-                  <span className="font-medium">Step 5:</span> Click the "Sign
+                  <span className="font-medium">Step 8 :</span> Click the "Sign
                   Up" button.
                 </li>
               </ul>

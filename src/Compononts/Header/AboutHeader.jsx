@@ -30,7 +30,7 @@ const teamMembers = [
 function AboutHeader() {
   return (
     <>
-      <div className="text-white my-10 font-Outfit w-full px-9 md:px-24 z-auto md:-ml-10">
+      <div className="text-white my-10 font-Outfit w-full px-9 md:my-0 md:-mt-6 md:px-24 z-auto md:-ml-10">
         <section className="md:hidden mb-6">
           <div className="flex relative items-center mb-6">
             <div className="bg-gradient-to-r from-gradientPurple to-gradientSkyBlue w-6 h-6 md:w-8 md:h-8 rounded-full absolute -left-4 top-2 z-0" />
@@ -43,7 +43,7 @@ function AboutHeader() {
             {teamMembers.map((member, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center gap-2 md:z-10"
+                className="flex flex-col z-0 items-center text-center gap-2 md:z-10"
               >
                 <img
                   src={member.image}
@@ -59,14 +59,14 @@ function AboutHeader() {
           </div>
         </section>
         {/* About Section */}
-        <section className="mb-10">
+        <section className="mb-5">
           <div className="flex relative items-center mb-6">
             <div className="bg-gradient-to-r from-gradientPurple to-gradientSkyBlue w-6 h-6 md:w-8 md:h-8 rounded-full absolute -left-4 top-2 z-0" />
             <p className="border-b text-2xl font-medium md:text-2xl md:font-semibold capitalize z-0 md:z-10">
               About our website
             </p>
           </div>
-          <p className="text-sm md:text-lg font-light md:-z-30 bg-darkBlue px-4 py-5 md:px-10 md:py-7 rounded-3xl md:rounded-2xl">
+          <p className="text-sm md:text-base font-light md:-z-30 bg-darkBlue px-4 py-5 md:px-10 md:py-7 rounded-3xl md:rounded-2xl">
             We are a dedicated platform designed to provide academic guidance
             and support to students of the College of Information Technology.
             <div>

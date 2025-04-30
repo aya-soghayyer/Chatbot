@@ -3,6 +3,8 @@ import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import usePhoto from "../../../../hooks/usePhoto";
 import { useState } from "react";
+import UnFilledButton from "../../../ui/UnFilledButton";
+import FilledButton from "../../../ui/FilledButton";
 
 const Settings = ({
   showSettings,
@@ -11,6 +13,8 @@ const Settings = ({
   setSettingsDetails,
   setPhoto,
   showPhotos,
+  showLogoutScreen,
+  setShowLogoutScreen
   // setShowPhotos,
 }) => {
   const navigate = useNavigate();
@@ -51,7 +55,7 @@ const Settings = ({
             <hr />
           </div>
           <button
-            onClick={handleLogout}
+            onClick={() => { setShowLogoutScreen(true);}}
             className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-base md:font-normal 2xl:text-3xl bg-darkBlue hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" size="lg" />
@@ -59,6 +63,41 @@ const Settings = ({
           </button>
         </div>
       </div>
+      {showLogoutScreen && (
+  <div className="fixed inset-0 z-20 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
+    <div className="absolute top-7 right-5 z-50 md:w-1/3 md:top-48 md:right-96 bg-darkBlue backdrop-blur-xl rounded-xl px-3">
+      <div className="flex justify-between items-center px-4 py-3">
+        <h3>Confirm Logout</h3>
+        <button onClick={() => setShowLogoutScreen(false)}>
+          <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
+        </button>
+      </div>
+      <hr />
+      <div className="flex justify-between">
+        <div className="flex justify-between items-center gap-14 font-light px-4 py-5">
+          <button
+            onClick={handleLogout}
+            className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
+          >
+            Logout
+          </button>
+        </div>
+        <div className="flex justify-between items-center font-light px-4 py-5">
+          <button
+            onClick={() => {
+              setShowLogoutScreen(false);
+              setShowSettings(false);
+            }}
+            className="px-3 rounded-xl font-extralight"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {/* Settings Modal */}
       {settingsDetails && !showPhotos && (

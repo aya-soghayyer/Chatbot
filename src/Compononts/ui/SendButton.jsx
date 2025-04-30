@@ -10,7 +10,8 @@ function SendButton({
   setIsActiveChat,
   isActiveChat,
   inputValue,
-  isBotLoading, // ✅ New prop
+  isBotLoading,
+  classNameButton,
 }) {
   const [pause] = useSound(micStop);
 
@@ -19,7 +20,7 @@ function SendButton({
       {inputValue.trim() ? (
         <button
           type="submit"
-          className="absolute right-4 top-12 w-6 md:w-8"
+          className={`absolute ${classNameButton} right-4 top-[50px] w-6 md:w-8`} 
           disabled={isBotLoading}
         >
           {isBotLoading ? (
@@ -54,7 +55,7 @@ function SendButton({
             pause();
             handleToggle();
           }}
-          className={`absolute right-4 top-[50px] w-6 md:w-8 ${
+          className={`absolute ${classNameButton} right-4 top-[50px] w-6 md:w-8 ${
             isBotLoading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={isBotLoading} 
@@ -62,7 +63,7 @@ function SendButton({
           <img
             src={voiceMessage}
             alt="Send voice message icon"
-            className={listening ? "bg-green-500 p-1 rounded-full" : ""}
+            className={listening ?"" : ""}
           />
         </button>
       )}

@@ -7,7 +7,7 @@ import { useForgetPassword } from '../../../hooks/useForgetPassword';
 
 
 
-function ForgetPasswordHeader({}) {
+function ForgetPasswordHeader() {
   const navigate = useNavigate();
 
   const {
@@ -27,10 +27,10 @@ function ForgetPasswordHeader({}) {
 
   return (
     <>
-    <div className="grid py-20 md:bg-darkBlue md:z-30 md:grid text-white md:py-6 md:w-1/3 md:h-1/3 rounded-xl md:items-center ">
-    <div className="grid px-16">
+    <div className="grid py-20 md:bg-darkBlue md:-mt-8 md:z-30 md:grid text-white md:py-3 md:w-1/3 md:h-1/3 rounded-xl md:items-center ">
+    <div className="grid px-16 mt-3">
 
-        <h1 className="flex justify-center text-2xl items-center md:justify-center z-0 md:text-3xl md:font-medium font-normal md:py-2">
+        <h1 className="flex justify-center text-3xl mb-4 items-center md:justify-center z-0 md:text-3xl md:font-medium font-normal md:mb-0 md:py-2">
           Forget Password?
         </h1>
         <p className="flex justify-center text-center text-base font-light md:justify-start z-0 md:text-sm md:py-2">
@@ -40,10 +40,10 @@ function ForgetPasswordHeader({}) {
 
         <form
           onSubmit={handleSubmit}
-          className="grid justify-center h-full z-0 items-center py-9 px-10 w-screen md:gap-3 md:py-6 md:w-full"
+          className="grid justify-center h-full z-0 items-center py-6 px-10 w-screen md:gap-3 md:py-6 md:w-full"
         >
           <div className="">
-          <div className="px-8 py-3 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
+          <div className="px-12 py-2 gap-1 grid w-svw md:py-0 md:px-0 md:w-full relative">
             <label htmlFor="userId" className="text-base font-light">
               Your ID
             </label>
@@ -63,7 +63,7 @@ function ForgetPasswordHeader({}) {
               title="Must contain 8 digits"
             />
           </div>
-          <div className="px-8 py-3 gap-1 grid w-svw md:w-full md:py-0 md:px-0 relative">
+          <div className="px-12 py-2 gap-1 grid w-svw md:w-full md:pt-2 md:py-0 md:px-0 relative">
             <label htmlFor="portalPassword" className="text-base font-light">
               Portal Password
             </label>
@@ -84,20 +84,20 @@ function ForgetPasswordHeader({}) {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-12 top-16 md:right-3 md:top-12 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
+                className="absolute right-14 top-16 md:right-3 md:top-14 md:-translate-y-1/2 transform -translate-y-1/2 text-white focus:outline-none"
               >
-                <img src={eye} alt="eye icon" className="scale-110 " />
+                <img src={eye} alt="eye icon" className="scale-90 " />
               </button>
             </div>
           </div>
 
           {/* {console.log("old " + passwordData.currentPassword)} */}
 
-          <div className="flex gap-6 py-5 px-8 md:py-5 md:px-0 h-full">
+          <div className="flex gap-6 py-5 px-12 md:pt-4 md:pb-0 md:px-0 h-full">
             <FilledButton
               title={isLoading ? "Go to reset page ..." : "Reset Password"}
               type="submit"
-              className={`w-full py-3 rounded-full md:rounded-md text-lg font-normal md:py-3 ${
+              className={`w-full py-3 rounded-full md:rounded-md text-lg font-normal md:py-2 ${
                 isLoading ? "cursor-not-allowed bg-none bg-white/15" : ""
               } `}
               disabled={isLoading}

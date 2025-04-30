@@ -1,5 +1,5 @@
 // ✅ ChatService.js (streamed response and emit via callback)
-import { domainName } from "../App";
+import { domainName } from "../App"
 
 class ChatService {
   async sendGuestMessage(message, chatId = "", onStreamUpdate = () => {}) {

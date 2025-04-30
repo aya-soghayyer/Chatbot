@@ -27,11 +27,11 @@ function UserChatHeader({ chatid, onChatIdChange }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPhotos, setPhoto] = useState(false)
   const [botBuffer, setBotBuffer] = useState("");
+  const [showLogoutScreen, setShowLogoutScreen] = useState(false);
 
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
   const messageEndRef = useRef(null);
-  const userData = JSON.parse(localStorage.getItem("users"));
 
   useEffect(() => {
     const currentHour = new Date().getHours();
@@ -239,7 +239,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
           </button>
         </div>
 
-        <Settings className="z-30" setPhoto={setPhoto} showPhotos={showPhotos} settingsDetails={settingsDetails} setSettingsDetails={setSettingsDetails} showSettings={showSettings} setSettings={setSettings} />
+        <Settings className="z-30" setPhoto={setPhoto} showPhotos={showPhotos} settingsDetails={settingsDetails} setSettingsDetails={setSettingsDetails} showSettings={showSettings} setSettings={setSettings} showLogoutScreen={showLogoutScreen} setShowLogoutScreen={setShowLogoutScreen} />
 
         {!isActiveChat ? (
           <div className="flex justify-center items-center h-full">

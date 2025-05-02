@@ -1,16 +1,16 @@
-// components/ProtectedRoute.js
+// components/AdminRoute.js
 import { Navigate } from "react-router-dom";
 import Cookie from "js-cookie";
 
-const ProtectedRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const token = Cookie.get("token");
+  const role = localStorage.getItem("role");
 
-  if (!token) {
-    // Redirect to login if no token is found
+  if (!token || role !== "admin") {
     return <Navigate to="/login" replace />;
   }
 
   return children;
 };
 
-export default ProtectedRoute;  
+export default AdminRoute;

@@ -17,6 +17,8 @@ function Layout() {
     "/admin/courses": <AdminNavbar/>,
     "/admin/students": <AdminNavbar/>,
     "/admin/services": <AdminNavbar/>,
+    "/admin/addcourse": <AdminNavbar/>,
+
     "/chatId": <></>
   };
 
@@ -27,7 +29,9 @@ function Layout() {
     "/admin": <></>,
     "/admin/courses": <></>,
     "/admin/students": <></>,
-    "/admin/services": <></>
+    "/admin/services": <></>,
+    "/admin/addcourse": <></>,
+
   }
   return (
     <>

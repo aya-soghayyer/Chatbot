@@ -5,15 +5,16 @@ import accounts from "../../../assets/images/account.svg"
 import services from "../../../assets/images/services.svg" 
 
 
-function SideBar() {
+function SideBar({className}) {
     const location = useLocation();
-  const isActive = location.pathname === "/admin/courses"; // highlight if active\
+  const isActive =  location.pathname ===  "/admin/addcourse" || location.pathname === "/admin/courses"; // highlight if active\
   const isActive2 = location.pathname === "/admin/students"; // highlight if active\
   const isActive3 = location.pathname === "/admin/services"; // highlight if active\
 
+
   return (
     <>
-    <div className='bg-darkBlue h-full md:-ml-16 md:w-1/4 rounded md:z-10 p-4 text-white'>
+    <div className={`bg-darkBlue h-[33rem]  md:-ml-16 md:w-1/4 rounded md:z-10 p-4 ${className} text-white`}>
     <Link to="/admin">
         <h1 className='text-xl font-normal text-slate-300 mb-3 hover:text-white'>Dashboard</h1>
         </Link>

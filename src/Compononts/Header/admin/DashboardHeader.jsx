@@ -4,7 +4,7 @@ import Header from '../../ui/admin/Header';
 
 function DashboardHeader() {
   return (
-    <div className='flex gap-5 h-screen'>
+    <div className='flex gap-5'>
       <SideBar />
       <Header>
       </Header>

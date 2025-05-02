@@ -11,7 +11,7 @@ import SignUp from "./views/SignUp";
 import GuestChat from "./views/GuestChat";
 import NotFound from "./views/NotFound";
 import UserChat from "./views/UserChat";
-import ProtectedRout from "./utils/ProtectedRout";
+import StudentRoute from "./utils/StudentRoute.jsx";
 import Contact from "./views/Contact";
 import Admin from "./views/AdminDashboard.jsx";
 import ChangePassword from "./views/ChangePassword";
@@ -23,6 +23,9 @@ import AdminServices from "./views/AdminServices.jsx";
 import AdminAccounts from "./views/AdminAccounts.jsx";
 import { useState } from "react";
 import PublicRoute from "./utils/PublicRoute.jsx";
+import AddCourse from "./Compononts/Header/admin/AddCourse.jsx";
+import AdminAddCourse from "./views/AdminAddCourse.jsx";
+import AdminRoute from "./utils/AdminRoute.jsx";
 
 export let domainName = "http://localhost:8000/";
 
@@ -100,53 +103,59 @@ function App() {
         {
           path: `/userchat`,
           element: (
-            <ProtectedRout>
+            <StudentRoute>
               <UserChat chatId={chatId} />
-            </ProtectedRout>
+            </StudentRoute>
           ),
         },
         {
           path: "/changepassword",
           element: (
-            <ProtectedRout>
+            <StudentRoute>
               <ChangePassword />
-            </ProtectedRout>
+            </StudentRoute>
           ),
         },
         {
           path: "/admin",
           element: (
-            // <ProtectedRout>
+            <AdminRoute> 
               <Admin />
-            // </ProtectedRout>
+            </AdminRoute>
           ),
         },
         {
           path: "/admin/courses",
           element: (
-            // <ProtectedRout>
+            <AdminRoute> 
               <AdminCourses />
-            // </ProtectedRout>
-          ),
+              </AdminRoute> 
+            ),
         },
         {
           path: "/admin/students",
           element: (
-            // <ProtectedRout>
+            <AdminRoute> 
               <AdminAccounts />
-            // </ProtectedRout>
-          ),
+              </AdminRoute> 
+            ),
         },
         {
           path: "/admin/services",
           element: (
-            // <ProtectedRout>
+            <AdminRoute> 
               <AdminServices />
-            // </ProtectedRout>
-          ),
+              </AdminRoute> 
+            ),
         },
-
-
+        {
+          path: "/admin/addcourse",
+          element: (
+            <AdminRoute> 
+              <AdminAddCourse />
+            </AdminRoute> 
+            ),
+        },
         {
           path: "*", //another way for the error
           element: <NotFound />,

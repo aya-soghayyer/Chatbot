@@ -10,6 +10,8 @@ import usePhoto from "../../../../hooks/usePhoto";
 import Cookie from "js-cookie";
 import { domainName } from "../../../../App";
 import ChatHistory from "./ChatHistory";
+import { useLoginForm } from "../../../../hooks/UseLoginFrom";
+import AuthService from "../../../../services/AuthService";
 
 function UserChatHeader({ chatid, onChatIdChange }) {
   const [messages, setMessages] = useState([]);
@@ -28,10 +30,16 @@ function UserChatHeader({ chatid, onChatIdChange }) {
   const [showPhotos, setPhoto] = useState(false)
   const [botBuffer, setBotBuffer] = useState("");
   const [showLogoutScreen, setShowLogoutScreen] = useState(false);
-
+  const {username} = useLoginForm(AuthService)
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
   const messageEndRef = useRef(null);
+
+  useEffect(() => {
+    if (username) {
+      console.log("Username updated:", username);
+    }
+  }, [username]);
 
   useEffect(() => {
     const currentHour = new Date().getHours();
@@ -208,6 +216,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
     <div
       className={`flex flex-col md:flex-row md:-ml-12 md:justify-between text-white min-h-screen p-2 md:p-0`}
     >
+      {console.log("username", username)}
       <ChatHistory
         chatHistory={chatHistory}
         setChatHistory={setChatHistory}
@@ -245,7 +254,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
           <div className="flex justify-center items-center h-full">
             <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
               <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
-                {greeting},
+                {greeting}, {username}!
               </h2>
               <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
                 What can I help with?

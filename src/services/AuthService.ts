@@ -19,6 +19,7 @@ class AuthService {
       });
       const data = await response.json();
 
+
       // Set token with expiration (30 minutes)
       Cookies.set("token", data.user.token, { expires: 0.0007, secure: true });
 

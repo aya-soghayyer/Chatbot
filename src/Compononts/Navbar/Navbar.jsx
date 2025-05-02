@@ -48,7 +48,7 @@ function Navbar() {
           </button>
 
           <div             
-                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 
           className={`${!isMobileMenuOpen? "bg-none" : "bg-black/50 z-50 fixed inset-0 flex items-center justify-center p-4"} `}>
           <div

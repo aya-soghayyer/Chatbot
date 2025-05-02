@@ -42,8 +42,8 @@ const Settings = ({
 
   return (
     <>
-      <div className="md:w-fit w-fit h-fit md:h-fit md:rounded-xl backdrop-blur-xl absolute top-1/3 right-4 md:fixed  md:right-10 md:top-16 rounded-2xl z-50 border bg-darkBlue drop-shadow-xl">
-        <div className="flex flex-col   md:-z-0">
+      <div className="md:w-fit w-fit h-fit md:h-fit md:rounded-xl backdrop-blur-xl absolute top-1/3 right-4 md:fixed  md:right-10 md:top-16 rounded-2xl z-10 border bg-darkBlue drop-shadow-xl">
+        <div className="flex flex-col md:-z-0">
           <button
             onClick={showingSettingDetails}
             className="flex gap-4 items-center md:p-7 p-7 w-full h-10 md:h-12 text-white md:text-base md:font-normal md:text-2 2xl:text-3xl font-bold bg-darkBlue hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-t-2xl"

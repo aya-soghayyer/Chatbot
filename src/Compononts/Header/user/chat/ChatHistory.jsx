@@ -7,6 +7,7 @@ import userMobileSetting from "../../../../assets/images/userMobileSetting.svg";
 import Cookie from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Settings from "./Settings";
+import { domainName } from "../../../../App";
 
 
 const ChatHistory = ({
@@ -36,7 +37,7 @@ const ChatHistory = ({
         const token = Cookie.get("token");
         if (!token) throw new Error("No token found, please log in.");
 
-        const response = await fetch("http://localhost:8000/chat/chats", {
+        const response = await fetch(`${domainName}chat/chats`, {
           method: "GET",
           headers: {
             Accept: "application/json",
@@ -111,11 +112,13 @@ const ChatHistory = ({
           </div>
           {!chatHistory && (
             <> 
-              <h1 className="text-xl mt-3 md:text-lg md:items-start md:font-normal text-white/55 mb-3">
+              <div className="h-screen md:items-start grid gap-3">
+
+              <h1 className="text-xl mt-3 md:text-lg md:items-start md:font-normal text-white/55 mb-3 md:mb-0">
                 History
               </h1>
 
-              <div className="h-3/4 md:h-full">
+              <div className="h-3/4 md:h-screen">
                 {loading ? (
                   <p className="text-gray-400 ">Loading chats...</p>
                 ) : error ? (
@@ -125,7 +128,7 @@ const ChatHistory = ({
                     {chats.map((chat) => (
                       <li
                         key={chat.id} // Use chat_number as key
-                        className={`md:p-2 text-lg font-light md:bg-darkBlue/20 text-white md:rounded-lg cursor-pointer md:hover:bg-gradientPurple md:hover:bg-opacity-20 ${
+                        className={`md:p-2 text-lg font-light md:bg-primary/30 text-white md:rounded-lg cursor-pointer md:hover:bg-gradientPurple md:hover:bg-opacity-20 ${
                           selectedChatId === chat.id ? "bg-gradientPurple bg-opacity-20" : ""
                         }`}                     
                            onClick={() => {
@@ -144,10 +147,12 @@ const ChatHistory = ({
                       </li>
                     ))}
                   </ul>
-
+                  
                 ) : (
                   <p className="text-gray-500">No chats available.</p>
                 )}
+                            </div>
+
 
             <div className="md:hidden">
             <hr />
@@ -167,7 +172,6 @@ const ChatHistory = ({
             </div>
             </div>
               </div>
-
             </>
           )}
         </div>

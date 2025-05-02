@@ -40,7 +40,7 @@ export const useChangePassword = () => {
     try {
       const token = Cookie.get("token");
       const response = await fetch(`${domainName}user/changepassword`, {
-        method: "POST",
+        method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

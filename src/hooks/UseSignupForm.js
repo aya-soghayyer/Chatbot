@@ -68,6 +68,8 @@ export const useSignupForm = (authService) => {
       // if(response.ok){
       //   navigate("/userchat")
       // }
+
+      console.log(data)
       if(data){
         console.log("Navigating to userchat...");
         navigate("/userchat");

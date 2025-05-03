@@ -1,10 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import usePhoto from "../../../../hooks/usePhoto";
+// import usePhoto from "../../../../hooks/usePhoto";
 import { useState } from "react";
 import UnFilledButton from "../../../ui/UnFilledButton";
 import FilledButton from "../../../ui/FilledButton";
+import redGirl from "../../../../assets/images/redGirl.png";
+import blackGirl from "../../../../assets/images/blackGirl.png";
+import blondeGirl from "../../../../assets/images/blondeGirl.png";
+import blackBoy from "../../../../assets/images/blackBoy.png";
+import redBoy from "../../../../assets/images/redBoy.png";
+import blondeboy from "../../../../assets/images/blondeBoy.png";
 
 const Settings = ({
   showSettings,
@@ -18,12 +24,13 @@ const Settings = ({
   // setShowPhotos,
 }) => {
   const navigate = useNavigate();
-  const { selectedFile, preview, handleFileChange } = usePhoto();
+  // const { selectedFile, preview, handleFileChange } = usePhoto();
 
   const handleLogout = () => {
     Cookie.remove("token");
     Cookie.remove("token_expiration");
-    localStorage.removeItem("users");
+    localStorage.removeItem("name");
+    localStorage.removeItem("role");
     navigate("/login");
   };
 
@@ -42,7 +49,7 @@ const Settings = ({
 
   return (
     <>
-      <div className="md:w-fit w-fit h-fit md:h-fit md:rounded-xl backdrop-blur-xl absolute top-1/3 right-4 md:fixed  md:right-10 md:top-16 rounded-2xl z-10 border bg-darkBlue drop-shadow-xl">
+      <div className="md:w-fit w-fit h-fit md:h-fit md:rounded-xl backdrop-blur-xl absolute top-1/3 right-4 md:fixed  md:right-10 md:top-16 rounded-2xl z-10  bg-darkBlue drop-shadow-xl">
         <div className="flex flex-col md:-z-0">
           <button
             onClick={showingSettingDetails}
@@ -52,10 +59,12 @@ const Settings = ({
             Settings
           </button>
           <div>
-            <hr />
+            <div className="px-4">
+            <hr  />
+            </div>
           </div>
           <button
-            onClick={() => { setShowLogoutScreen(true);}}
+            onClick={() => {setShowLogoutScreen(true);}}
             className="flex gap-4 items-center p-7 w-full h-10 md:h-12 text-white text-lg md:text-base md:font-normal 2xl:text-3xl bg-darkBlue hover:bg-darkBlue/75 transition duration-300 ease-in-out rounded-b-2xl"
           >
             <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" size="lg" />
@@ -65,16 +74,16 @@ const Settings = ({
       </div>
       {showLogoutScreen && (
   <div className="fixed inset-0 z-20 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
-    <div className="absolute top-7 right-5 z-50 md:w-1/3 md:top-48 md:right-96 bg-darkBlue backdrop-blur-xl rounded-xl px-3">
+    <div className="absolute top-7 right-5 z-50 md:w-1/4 md:top-48 md:right-auto bg-darkBlue backdrop-blur-xl rounded-xl px-3">
       <div className="flex justify-between items-center px-4 py-3">
-        <h3>Confirm Logout</h3>
+        <h3>Are you sure?</h3>
         <button onClick={() => setShowLogoutScreen(false)}>
           <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
         </button>
       </div>
-      <hr />
-      <div className="flex justify-between">
-        <div className="flex justify-between items-center gap-14 font-light px-4 py-5">
+      {/* <hr /> */}
+      <div className="flex justify-between md:justify-center">
+        <div className="flex justify-between md:justify-center items-center gap-14 font-light px-4 py-5">
           <button
             onClick={handleLogout}
             className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
@@ -158,14 +167,14 @@ const Settings = ({
             <div className="grid justify-between items-center gap-5 font-light px-4 py-5">
               <h5>Choose avatar</h5>
               <div className="flex justify-around">
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/3" alt="avatar 3" />
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/4" alt="avatar 4" />
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/5" alt="avatar 5" />
+                <img className="w-1/5" src={blackBoy} alt="boy with black hair avatar" />
+                <img className="w-1/5" src={redBoy} alt="boy with red hair avatar" />
+                <img className="w-1/5" src={blondeboy} alt="bofy with blond hair avatar" />
               </div>
               <div className="flex justify-around">
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/62" alt="avatar 62" />
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/63" alt="avatar 63" />
-                <img className="w-1/5" src="https://avatar.iran.liara.run/public/64" alt="avatar 64" />
+                <img className="w-1/5" src={blackGirl} alt="girl with black hair avatar" />
+                <img className="w-1/5" src={redGirl} alt="gril with red hair avatar" />
+                <img className="w-1/5" src={blondeGirl} alt="girl with blond avatar" />
               </div>
               <div className="flex justify-between items-center">
                 <hr className="border-t border-white/30 w-3/4 mx-auto 2xl:mb-8" />
@@ -177,7 +186,7 @@ const Settings = ({
                   type="file"
                   id="fileInput"
                   accept="image/*"
-                  onChange={handleFileChange}
+                  // onChange={handleFileChange}
                   className="hidden"
                 />
                 <label
@@ -186,13 +195,13 @@ const Settings = ({
                 >
                   Choose your photo
                 </label>
-                {preview && (
+                {/* {preview && (
                   <img
                     src={preview}
                     alt="Preview"
-                    className="w-40 h-40 object-cover rounded-md shadow-md"
-                  />
-                )}
+                    className="w-40 h-40 object-cover rounded-md shadow-md" */}
+                  {/* /> */}
+                {/* )} */}
               </div>
             </div>
           </div>

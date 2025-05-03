@@ -2,6 +2,7 @@
 import React from "react";
 import Loader from "../../../loader/Loader";
 import { marked } from "marked";
+import aiRobot from "../../../../assets/images/Ai Robot.svg";
 
 // Optional config for better Markdown rendering
 marked.setOptions({
@@ -22,7 +23,7 @@ const ChatArea = ({ messages, messageEndRef, isLoading, className }) => {
           {msg.sender !== "user" && (
             <div className="w-10 h-10 md:w-12 md:h-12 mr-2">
               <img
-                src="https://avatar.iran.liara.run/public/1"
+                src={aiRobot}
                 alt="Bot Avatar"
                 className="rounded-full w-full h-full object-cover"
               />

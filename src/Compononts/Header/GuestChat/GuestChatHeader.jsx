@@ -36,7 +36,8 @@ function HeaderGuestChat() {
       <div className="grid 2xl:py-12 text-white font-Outfit md:h-[33rem] z-0 md:z-10 relative">
         {!activeChat ? (
           <div className="grid gap-1 px-5 h-[33rem] md:px-44 md:gap-3 2xl:gap-8 w-full min-w-full md:min-w-full 2xl:max-w-5xl mx-auto 2xl:mt-20 z-10 relative">
-            <h2 className="text-2xl md:text-3xl 2xl:text-3xl font-bold flex justify-center items-end">What can I help with?</h2>
+            <h2 className="text-2xl md:text-3xl 2xl:text-3xl font-bold flex justify-center items-end">
+              What can I help with?</h2>
             <div className="space-y-3 h-1/2 md:space-y-4 2xl:space-y-6">
               <div className="relative mx-4">
                 <ChatInput

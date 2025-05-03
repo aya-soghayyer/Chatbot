@@ -16,11 +16,12 @@ class AuthService {
             portal_id: portalId,
             portal_password: portalPassword,
             password: miloPassword,
-            name:firsName
+            name: `${firsName} ${lastName}`,
           }),
         });
         const data = await response.json()
               console.log("data response  ", data)
+              localStorage.setItem("name", data.Name);
            // Set token with expiration (30 minutes)
               Cookies.set("token", data.Token, { expires: 0.0007, secure: true });
         
@@ -43,11 +44,15 @@ class AuthService {
               } else {
                 console.log("Token is still valid");
               }
+            
+              if(response.ok){
+                    console.log("Signup successful", data); 
+              }
         if (!response.ok) {
           throw new Error("Signup failed");
         }
   
-        return await data;
+        return  data;
       } catch (error) {
         throw error;
       }

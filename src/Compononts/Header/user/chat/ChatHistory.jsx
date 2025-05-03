@@ -61,7 +61,7 @@ const ChatHistory = ({
         }
       } catch (err) {
         console.error("Fetch error:", err.message);
-        setError(err.message);
+        // setError(err.message);
       } finally {
         setLoading(false); // Set loading to false after fetching
       }

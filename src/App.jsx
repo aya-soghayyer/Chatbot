@@ -103,17 +103,17 @@ function App() {
         {
           path: `/userchat`,
           element: (
-            <StudentRoute>
+            // <StudentRoute>
               <UserChat chatId={chatId} />
-            </StudentRoute>
+            //  </StudentRoute>
           ),
         },
         {
           path: "/changepassword",
           element: (
-            <StudentRoute>
+          <StudentRoute>
               <ChangePassword />
-            </StudentRoute>
+             </StudentRoute>
           ),
         },
         {

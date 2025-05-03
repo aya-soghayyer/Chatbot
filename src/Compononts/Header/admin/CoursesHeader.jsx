@@ -7,12 +7,19 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import edit from "../../../assets/images/edit.svg";
 import deletee from "../../../assets/images/delete.svg";
+import useAdminGetCourses from "../../../hooks/admin/useAdminGetCourses";
 
 function CoursesHeader() {
+  // const [activeCourseIndex, setActiveCourseIndex] = useState(null);
+
+  // const [showCourseSettings, setShowCourseSettings] = useState(false);
   const navigate = useNavigate();
   const [activeCourseIndex, setActiveCourseIndex] = useState(null);
-
   const [showCourseSettings, setShowCourseSettings] = useState(false);
+  // const { courses, loading, error } = useAdminGetCourses();
+
+  // if (loading) return <div className="text-white p-4">Loading courses...</div>;
+  // if (error) return <div className="text-red-500 p-4">Error: {error}</div>;
   const courses = [
     {
       id: "TI1280",
@@ -64,6 +71,7 @@ function CoursesHeader() {
       time: "Monday, Wednesday 11:00 am",
     },
   ];
+
 
   return (
     <div className="flex gap-5 ">

@@ -25,7 +25,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
   const [isActiveChat, setIsActiveChat] = useState(false);
   const [greeting, setGreeting] = useState("");
   const [isChangePhoto, setChangePhoto] = useState(false);
-  const { preview, handleFileChange } = usePhoto();
+  // const { preview, handleFileChange } = usePhoto();
   const [isLoading, setIsLoading] = useState(false);
   const [showPhotos, setPhoto] = useState(false)
   const [botBuffer, setBotBuffer] = useState("");
@@ -34,12 +34,6 @@ function UserChatHeader({ chatid, onChatIdChange }) {
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
   const messageEndRef = useRef(null);
-
-  useEffect(() => {
-    if (username) {
-      console.log("Username updated:", username);
-    }
-  }, [username]);
 
   useEffect(() => {
     const currentHour = new Date().getHours();
@@ -166,7 +160,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  };    
 
   const [selectedChatId, setSelectedChatId] = useState(null);
 
@@ -216,7 +210,6 @@ function UserChatHeader({ chatid, onChatIdChange }) {
     <div
       className={`flex flex-col md:flex-row md:-ml-12 md:justify-between text-white min-h-screen p-2 md:p-0`}
     >
-      {console.log("username", username)}
       <ChatHistory
         chatHistory={chatHistory}
         setChatHistory={setChatHistory}
@@ -229,21 +222,21 @@ function UserChatHeader({ chatid, onChatIdChange }) {
       <div className="relative w-full md:w-[70vw] m-2 md:m-5 h-[80vh] md:h-screen">
         <div className="text-white fixed top-5 right-5">
           <button
-            className="md:w-14 md:h-14 rounded-full border hidden md:block"
+            className="md:w-10 md:h-10 rounded-full border hidden md:block"
             onClick={() => setSettings(!showSettings)}
           >
             {isChangePhoto ? (
               <div>
-                {preview && (
+                {/* {preview && (
                   <img
-                    src={preview}
+                    // src={preview}
                     alt="Preview"
                     className="w-14 h-14 object-cover rounded-full shadow-md"
                   />
-                )}
+                )} */}
               </div>
             ) : (
-              <FontAwesomeIcon icon="fa-solid fa-user" size="xl" />
+              <FontAwesomeIcon icon="fa-solid fa-user" size="lg" />
             )}
           </button>
         </div>
@@ -252,12 +245,12 @@ function UserChatHeader({ chatid, onChatIdChange }) {
 
         {!isActiveChat ? (
           <div className="flex justify-center items-center h-full">
-            <div className="grid justify-stretch item rounded-2xl w-full h-1/3">
-              <h2 className="text-white font-extralight text-xl md:text-[28px] flex justify-center items-center">
-                {greeting}, {username}!
+            <div className="grid justify-stretch md:-ml-10 rounded-2xl w-full h-1/3">
+              <h2 className="text-white font-extralight text-xl md:text-2xl flex justify-center items-center">
+                {greeting}, {localStorage.getItem("name").split(" ")[0]} !
               </h2>
-              <h2 className="text-white font-bold text-2xl md:text-[28px] flex justify-center items-center">
-                What can I help with?
+              <h2 className="text-2xl md:text-3xl 2xl:text-3xl font-bold md:font-normal flex justify-center items-end">
+              What can I help with?
               </h2>
               <div className="relative mx-4">
               <ChatInput
@@ -269,15 +262,19 @@ function UserChatHeader({ chatid, onChatIdChange }) {
                 handleToggle={handleToggle}
                 handleSubmit={handleSubmit}
                 setIsActiveChat={setIsActiveChat}
-                className="rounded-2xl bg-white/15"
+                className="rounded-2xl bg-white/15 py-4"
               />
             </div>
             </div>
           </div>
         ) : (
-          <div className="grid grid-rows-[1fr_auto] min-h-[99%] pt-3 w-full rounded-2xl md:min-h-[96%]">
+          <div className="grid grid-rows-[1fr_auto] md:-ml-4 min-h-[99%] h-screen w-full items-end rounded-2xl ">
+            <div className="flex flex-col h-full w-full overflow-y-auto items-end">
+
             <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
-            <ChatInput
+            </div>
+            {/* <div className="p-2 md:p-3 2xl:p-4 space-y-2 2xl:space-y-4"> */}
+              <ChatInput
               inputValue={inputValue}
               setInputValue={setInputValue}
               language={language}
@@ -286,9 +283,11 @@ function UserChatHeader({ chatid, onChatIdChange }) {
               handleToggle={handleToggle}
               handleSubmit={handleSubmit}
               setIsActiveChat={setIsActiveChat}
-              className="bg-white bg-opacity-25"
+              className="bg-white bg-opacity-25 py-3"
               isBotLoading={isLoading}
+              classNameButton="md:top-[46px]"
             />
+          {/* </div>¿ */}
           </div>
         )}
       </div>

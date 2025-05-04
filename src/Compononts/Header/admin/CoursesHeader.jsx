@@ -5,7 +5,7 @@ import Search from "../../ui/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import edit from "../../../assets/images/edit.svg";
+import edit from "../../../assets/images/Edit.svg";
 import deletee from "../../../assets/images/delete.svg";
 import useAdminGetCourses from "../../../hooks/admin/useAdminGetCourses";
 import { useEffect } from "react";

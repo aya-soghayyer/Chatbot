@@ -6,7 +6,7 @@ function DashboardHeader() {
   return (
     <div className='flex gap-5'>
       <SideBar />
-      <Header>
+      <Header className="border">
       </Header>
     </div>
   );

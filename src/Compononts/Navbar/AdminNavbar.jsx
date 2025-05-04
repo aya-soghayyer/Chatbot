@@ -72,16 +72,17 @@ function AdminNavbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center justify-end font-Outfit">
+        <div className="hidden md:flex items-end justify-end font-Outfit">
           <button
             onClick={() => {
               setShowMenu(!showMenu);
             }}
-            className="border rounded-full w-12 h-12 z-40"
+            className=" rounded-full w-10 h-10 z-40 absolute top-2 right-5 border hover:bg-white/20 transition duration-300 ease-in-out flex items-center justify-center"
           >
             <FontAwesomeIcon icon="fa-solid fa-user" size="xl" />
           </button>
         </div>
+
         {showMenu && (
           <div className="fixed inset-0 z-20 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
           <div className="absolute w-44 h-fit text-xl top-[3.6rem] right-8 bg-darkBlue rounded-md flex-col items-center font-Outfit z-10 transition-all duration-500 ease-in-out">
@@ -104,41 +105,36 @@ function AdminNavbar() {
         )}
         {showLogoutScreen && (
           <div className="fixed inset-0 z-40 bg-black/65 flex items-center justify-center p-4 md:p-6 2xl:p-8">
-            <div className="absolute top-7 right-5 z-50 md:w-1/3 md:top-48 md:right-96 bg-darkBlue backdrop-blur-xl rounded-xl px-3">
-              <div className="flex justify-between items-center px-4 py-3">
-                <h3>Confirm Logout</h3>
-                <button
-                  onClick={() => {
-                    setShowLogoutScreen(false);
-                    setShowMenu(false);
-                  }}
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
-                </button>
-              </div>
-              <hr />
-              <div className="flex justify-between">
-                <div className="flex justify-between items-center gap-14 font-light px-4 py-5">
-                  <button
-                    onClick={handleLogout}
-                    className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
-                  >
-                    Logout
-                  </button>
-                </div>
-                <div className="flex justify-between items-center font-light px-4 py-5">
-                  <button
-                    onClick={() => {
-                      setShowLogoutScreen(false);
-                      setShowMenu(false);
-                    }}
-                    className="px-3 rounded-xl font-extralight"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="absolute top-7 right-5 z-50 md:w-1/4 md:top-48 md:right-auto bg-darkBlue backdrop-blur-xl rounded-xl px-3">
+      <div className="flex justify-between items-center px-4 py-3">
+        <h3>Are you sure?</h3>
+        <button onClick={() => setShowLogoutScreen(false)}>
+          <FontAwesomeIcon icon="fa-solid fa-xmark" shake size="lg" />
+        </button>
+      </div>
+      {/* <hr /> */}
+      <div className="flex justify-between md:justify-center">
+        <div className="flex justify-between md:justify-center items-center gap-14 font-light px-4 py-5">
+          <button
+            onClick={handleLogout}
+            className="px-3 rounded-xl font-extralight bg-gradient-to-r from-gradientPurple to-gradientSkyBlue"
+          >
+            Logout
+          </button>
+        </div>
+        <div className="flex justify-between items-center font-light px-4 py-5">
+          <button
+            onClick={() => {
+              setShowLogoutScreen(false);
+              setShowMenu(false);
+            }}
+            className="px-3 rounded-xl font-extralight"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
           </div>
         )}
       </nav>

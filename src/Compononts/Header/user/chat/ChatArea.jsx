@@ -2,7 +2,8 @@
 import React from "react";
 import Loader from "../../../loader/Loader";
 import { marked } from "marked";
-import aiRobot from "../../../../assets/images/Ai Robot.svg";
+import aiRobot from "../../../../assets/images/robot.png";
+import user from "../../../../assets/images/user.png";
 
 // Optional config for better Markdown rendering
 marked.setOptions({
@@ -50,7 +51,7 @@ const ChatArea = ({ messages, messageEndRef, isLoading, className }) => {
           {msg.sender === "user" && (
             <div className="w-10 h-10 md:w-12 md:h-12 ml-2">
               <img
-                src="https://avatar.iran.liara.run/public/2"
+                src={user }
                 alt="User Avatar"
                 className="rounded-full w-full h-full object-cover"
               />

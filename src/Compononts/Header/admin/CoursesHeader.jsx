@@ -8,6 +8,8 @@ import { useState } from "react";
 import edit from "../../../assets/images/edit.svg";
 import deletee from "../../../assets/images/delete.svg";
 import useAdminGetCourses from "../../../hooks/admin/useAdminGetCourses";
+import { useEffect } from "react";
+import {handleFileUpload} from "../../../services/adminHandleFileUpload";
 
 function CoursesHeader() {
   // const [activeCourseIndex, setActiveCourseIndex] = useState(null);
@@ -16,66 +18,67 @@ function CoursesHeader() {
   const navigate = useNavigate();
   const [activeCourseIndex, setActiveCourseIndex] = useState(null);
   const [showCourseSettings, setShowCourseSettings] = useState(false);
-  // const { courses, loading, error } = useAdminGetCourses();
+  const { courses, loading, error } = useAdminGetCourses();
 
   // if (loading) return <div className="text-white p-4">Loading courses...</div>;
   // if (error) return <div className="text-red-500 p-4">Error: {error}</div>;
-  const courses = [
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-    {
-      id: "TI1280",
-      name: "أساليب البحث العلمي",
-      hours: 3,
-      teacher: "Ibrahim Ahmaro",
-      time: "Monday, Wednesday 11:00 am",
-    },
-  ];
+  // const courses = [
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  //   {
+  //     id: "TI1280",
+  //     name: "أساليب البحث العلمي",
+  //     hours: 3,
+  //     teacher: "Ibrahim Ahmaro",
+  //     time: "Monday, Wednesday 11:00 am",
+  //   },
+  // ];
 
 
   return (
-    <div className="flex gap-5 ">
+    <div className="flex gap-5">
       <SideBar />
+      <Header className="">
       <div className="gird">
         <div className="flex gap-2 items-center rounded-tl-[5px] rounded-tr-[5px]  text-white">
           <Search />
@@ -95,7 +98,7 @@ function CoursesHeader() {
                 type="file"
                 id="fileInput"
                 accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                // onChange={}
+                onChange={handleFileUpload}
                 className="hidden"
               />
               <label
@@ -130,7 +133,7 @@ function CoursesHeader() {
                 <td scope="col" className="px-6 py-3"></td>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="">
               {courses.map((course, index) => (
                 <tr
                   key={index}
@@ -211,6 +214,7 @@ function CoursesHeader() {
           )}
         </div>
       </div>
+      </Header>
     </div>
   );
 }

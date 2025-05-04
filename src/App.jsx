@@ -27,8 +27,8 @@ import AddCourse from "./Compononts/Header/admin/AddCourse.jsx";
 import AdminAddCourse from "./views/AdminAddCourse.jsx";
 import AdminRoute from "./utils/AdminRoute.jsx";
 
-export let domainName = "http://localhost:8000/";
-
+export let domainName = "http://18.208.251.97:8000/";
+// 18.208.251.97
 function App() {
   const [chatId, setChatId] = useState("newchat");
 

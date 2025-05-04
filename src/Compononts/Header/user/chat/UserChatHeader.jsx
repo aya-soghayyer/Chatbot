@@ -269,10 +269,10 @@ function UserChatHeader({ chatid, onChatIdChange }) {
           </div>
         ) : (
           <div className="grid grid-rows-[1fr_auto] md:-ml-4 min-h-[99%] h-screen w-full items-end rounded-2xl ">
-            <div className="flex flex-col h-full w-full overflow-y-auto items-end">
+            {/* <div className="flex flex-col h-full w-full overflow-y-auto items-end"> */}
 
             <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} className=""/>
-            </div>
+            {/* </div> */}
             {/* <div className="p-2 md:p-3 2xl:p-4 space-y-2 2xl:space-y-4"> */}
               <ChatInput
               inputValue={inputValue}
@@ -287,7 +287,7 @@ function UserChatHeader({ chatid, onChatIdChange }) {
               isBotLoading={isLoading}
               classNameButton="md:top-[46px]"
             />
-          {/* </div>¿ */}
+          {/* </div> */}
           </div>
         )}
       </div>

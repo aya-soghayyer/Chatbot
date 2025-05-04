@@ -1,42 +1,50 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "../../ui/Search";
 import SideBar from "../../ui/admin/SideBar";
 import Header from "../../ui/admin/Header";
+import { fetchStudents } from "../../../services/adminStudentsService"; // Adjust the import path as necessary
 
 function AccountsHeader() {
-  const initialData = Array(50)
-    .fill({
-      avatar: <div className="w-10 h-10 rounded-full bg-white"></div>,
-      id: "2213653",
-      name: "Mohmmad ali",
-      signUpDate: "3/31/2025",
-      level: 4,
-      active: true,
-    })
-    .map((item, index) => ({
-      ...item,
-      active: index % 2 === 0,
-    }));
-
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const toggleActive = (index) => {
-    const updatedData = [...data];
-    updatedData[index].active = !updatedData[index].active;
-    setData(updatedData);
-  };
+  useEffect(() => {
+    const loadStudents = async () => {
+      try {
+        const students = await fetchStudents();
+        console.log("Fetched students:", students); // 👈 Check this
+        if (!Array.isArray(students)) {
+          throw new Error("Fetched data is not an array");
+        }
+        // console.log("Fetched students:", students.Studetns.users); // 👈 Check this
+        setData(students);
+      } catch (error) {
+        console.error("Failed to fetch students", error);
+      }
+    };
+    loadStudents();
+  }, []);
+  
+  console.log(data);
 
   const handleToggleClick = (index) => {
     setSelectedIndex(index);
     setModalOpen(true);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (selectedIndex !== null) {
-      toggleActive(selectedIndex);
-      setModalOpen(false);
+      const student = data[selectedIndex];
+      try {
+        // await toggleStudentActive(student.id, !student.active);
+        const updatedData = [...data];
+        updatedData[selectedIndex].active = !student.active;
+        setData(updatedData);
+        setModalOpen(false);
+      } catch (error) {
+        console.error("Failed to toggle status", error);
+      }
     }
   };
 
@@ -66,22 +74,22 @@ function AccountsHeader() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((student, index) => (
+                {data?.map((student, index) => (
                   <tr
                     key={index}
                     className="bg-white bg-opacity-20 border-b border-white text-base font-normal hover:bg-white hover:bg-opacity-10 transition-all"
                   >
                     <td className="px-6 py-4">{index + 1}</td>
-                    <td className="px-6 py-4">{student.avatar}</td>
+                    <td className="px-6 py-4">{student.profile_image}</td>
                     <td className="px-6 py-4">{student.id}</td>
                     <td className="px-6 py-4">{student.name}</td>
-                    <td className="px-6 py-4">{student.signUpDate}</td>
+                    <td className="px-6 py-4">{student.created_at}</td>
                     <td className="px-6 py-4">{student.level}</td>
                     <td className="px-6 py-4 text-right">
                       <label className="relative inline-flex items-center justify-center cursor-pointer">
                         <input
                           type="checkbox"
-                          checked={student.active}
+                          checked={student.status}
                           onChange={() => handleToggleClick(index)}
                           className="sr-only peer"
                         />

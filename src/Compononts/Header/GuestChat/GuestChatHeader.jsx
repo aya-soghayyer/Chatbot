@@ -70,7 +70,7 @@ function HeaderGuestChat() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-rows-[1fr_auto] h-screen w-full items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:max-h-[30rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4">
+          <div   className={`grid grid-rows-[1fr_auto] h-screen md:h-[33rem] w-full items-end max-w-full md:max-w-[80%] 2xl:max-w-5xl mx-auto rounded-2xl min-h-[350px] md:min-h-[33rem] 2xl:min-h-[600px] pt-2 md:pt-3 2xl:pt-4`}>
             <ChatArea messages={messages} messageEndRef={messageEndRef} isLoading={isLoading} />
             <div className="p-2 md:p-3 2xl:p-4 space-y-2 2xl:space-y-4">
               <div className="relative mx-4">

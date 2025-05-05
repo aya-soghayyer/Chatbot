@@ -13,7 +13,7 @@ marked.setOptions({
 
 const ChatArea = ({ messages, messageEndRef, isLoading, className }) => {
   return (
-    <div className={`overflow-y-auto w-full p-3 md:p-0 md:px-7 ${className} max-h-[490px] md:max-h-[460px] custom-scrollbar relative`}>
+    <div className={`overflow-y-auto w-full p-3 md:p-0 md:px-7 ${className} max-h-[490px] md:max-h-[400px] custom-scrollbar relative`}>
       {messages.map((msg, index) => (
         <div
           key={index}

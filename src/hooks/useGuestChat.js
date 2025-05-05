@@ -17,6 +17,10 @@ export const useGuestChat = (chatService = ChatService, speechService = SpeechSe
     speechService.setLanguage(language);
   }, [language]);
 
+   useEffect(() => {
+      messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
   const handleToggleSpeech = () => {
     if (listening) {
       speechService.stop();

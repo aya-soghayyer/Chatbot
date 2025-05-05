@@ -17,7 +17,7 @@ function AccountsHeader() {
         if (!Array.isArray(students)) {
           throw new Error("Fetched data is not an array");
         }
-        // console.log("Fetched students:", students.Studetns.users); // 👈 Check this
+        console.log("Fetched students:", students); // 👈 Check this
         setData(students);
       } catch (error) {
         console.error("Failed to fetch students", error);
@@ -81,7 +81,7 @@ function AccountsHeader() {
                   >
                     <td className="px-6 py-4">{index + 1}</td>
                     <td className="px-6 py-4">{student.profile_image}</td>
-                    <td className="px-6 py-4">{student.id}</td>
+                    <td className="px-6 py-4">{student.portal_id}</td>
                     <td className="px-6 py-4">{student.name}</td>
                     <td className="px-6 py-4">{student.created_at}</td>
                     <td className="px-6 py-4">{student.level}</td>

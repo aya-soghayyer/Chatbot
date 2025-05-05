@@ -18,7 +18,8 @@ function CoursesHeader() {
   const navigate = useNavigate();
   const [activeCourseIndex, setActiveCourseIndex] = useState(null);
   const [showCourseSettings, setShowCourseSettings] = useState(false);
-  const { courses, loading, error } = useAdminGetCourses();
+  const { courses, loading, error, refetch } = useAdminGetCourses();
+
 
   // if (loading) return <div className="text-white p-4">Loading courses...</div>;
   // if (error) return <div className="text-red-500 p-4">Error: {error}</div>;
@@ -94,13 +95,14 @@ function CoursesHeader() {
               Add new course
             </button>
             <div>
-              <input
-                type="file"
-                id="fileInput"
-                accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                onChange={handleFileUpload}
-                className="hidden"
-              />
+            <input
+  type="file"
+  id="fileInput"
+  accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  onChange={(e) => handleFileUpload(e, refetch)}
+  className="hidden"
+/>
+
               <label
                 htmlFor="fileInput"
                 className="px-3 py-2 rounded-full font-light bg-gradient-to-r from-gradientPurple to-gradientSkyBlue cursor-pointer"

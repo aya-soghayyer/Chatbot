@@ -1,45 +1,46 @@
-import { useState, useEffect } from 'react';
-import {domainName} from "../../App";
+import { useEffect, useState, useCallback } from "react";
 import Cookie from "js-cookie";
+import { domainName } from "../../App";
 
 const useAdminGetCourses = () => {
-    const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    console.log(domainName);
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    
+  const fetchCourses = useCallback(async () => {
+    setLoading(true);
+    try {
+      const token = Cookie.get("token");
+      const response = await fetch(`${domainName}admin/courses`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    useEffect(() => {
-        const fetchCourses = async () => {
-            try {
-                const token = Cookie.get("token");
-                
-                const response = await fetch(`${domainName}admin/courses`,
-                    {
-                      method: "GET", 
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                      }}
-                    ); 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch courses');
-                }
-                console.log(response);
-                const data = await response.json();
-                setCourses(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+      const data = await response.json();
+      console.log("Courses data:", data); // Debugging line
+      
 
-        fetchCourses();
-    }, []);
+      if (!response.ok) {
+        throw new Error(data.detail || "Failed to fetch courses");
+      }
 
-    return { courses, loading, error };
+      const parsedCourses = data.Courses?.Courses || []; // Assumes nested structure
+      setCourses(parsedCourses);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
+
+  return { courses, loading, error, refetch: fetchCourses };
 };
 
 export default useAdminGetCourses;

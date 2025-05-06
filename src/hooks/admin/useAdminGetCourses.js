@@ -27,7 +27,8 @@ const useAdminGetCourses = () => {
         throw new Error(data.detail || "Failed to fetch courses");
       }
 
-      const parsedCourses = data.Courses?.Courses || []; // Assumes nested structure
+      const parsedCourses = data.Courses?.courses || [];
+      console.log(parsedCourses) // Assumes nested structure
       setCourses(parsedCourses);
     } catch (err) {
       setError(err.message);

@@ -124,7 +124,7 @@ function CoursesHeader() {
                   Course Name
                 </td>
                 <td scope="col" className="px-6 py-3">
-                  Hours
+                  Room
                 </td>
                 <td scope="col" className="px-6 py-3">
                   Course Teacher
@@ -141,11 +141,11 @@ function CoursesHeader() {
                   key={index}
                   className="bg-white bg-opacity-20 border-b border-white hover:bg-white hover:bg-opacity-10 transition-all"
                 >
-                  <td className="px-6 py-4">{course.id}</td>
-                  <td className="px-6 py-4">{course.name}</td>
-                  <td className="px-6 py-4">{course.hours}</td>
-                  <td className="px-6 py-4">{course.teacher}</td>
-                  <td className="px-6 py-4">{course.time}</td>
+                  <td className="px-6 py-4">{course.CRS_NO}</td>
+                  <td className="px-6 py-4">{course.CRS_A_NAME_Config}</td>
+                  <td className="px-6 py-4">{course.ROOM_NO}</td>
+                  <td className="px-6 py-4">{course.TCHR_A_NAME_View}</td>
+                  <td className="px-6 py-4">{course.TimeRoomTeacher}</td>
                   <td className="px-6 py-4 text-right relative">
                     <button
                       onClick={() =>

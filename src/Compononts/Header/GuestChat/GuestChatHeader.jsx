@@ -26,9 +26,9 @@ function HeaderGuestChat() {
   
 
   const suggestionQuestions = [
-    "What is the required rate for computer science major?",
-    "What are the majors offered by Hebron University?",
-    "How can I change the major I was accepted into?",
+    "Tell me about Hebron University" ,
+    "What is the acceptance rate for computer science major?",
+    "What is the registration procedur at Hebron University?",
   ];
 
   return (

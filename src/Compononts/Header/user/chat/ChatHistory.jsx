@@ -52,7 +52,7 @@ const ChatHistory = ({
 
         const data = await response.json();
         console.log("Fetched Chats hello:", data.Chats[0].id); // Ensure data structure is correct
-
+        console.log(data.Chats)
         if (Array.isArray(data.Chats)) {
           setChats(data.Chats);
         } else {
@@ -126,7 +126,7 @@ const ChatHistory = ({
                       {chats.map((chat) => (
                         <li
                           key={chat.id} // Use chat_number as key
-                          className={`md:p-2 text-lg md:w-full font-light md:bg-primary/30 text-white md:rounded-lg cursor-pointer md:hover:bg-gradientPurple md:hover:bg-opacity-20 ${
+                          className={`md:p-2 text-base md:w-full font-light md:bg-primary/30 text-white md:rounded-lg cursor-pointer md:hover:bg-gradientPurple md:hover:bg-opacity-20 ${
                             selectedChatId === chat.id
                               ? "bg-gradientPurple bg-opacity-20"
                               : ""
@@ -143,7 +143,7 @@ const ChatHistory = ({
                             } // Pass correct chat ID}
                           }} // Pass correct chat ID
                         >
-                          {chat.chat_number || "Untitled Chat"}
+                          {chat.title || "Untitled Chat"}
                           {/* {console.log("Selected chat ID:", chat.id)} */}
                         </li>
                       ))}

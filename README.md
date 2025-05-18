@@ -72,7 +72,7 @@ npm run dev
 ---
 
 ## 🧠 How It Works
-![system overview](https://drive.google.com/file/d/1zTl2wAhuq5Pf9xTlcGPXJttm8DTEI9fb/view?usp=sharing)
+<img width="557" alt="image" src="https://github.com/user-attachments/assets/f2c35f3b-dfc5-40a1-bb7a-b89539db62dc" />
 
 ---
 

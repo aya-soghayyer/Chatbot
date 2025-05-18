@@ -1,19 +1,22 @@
-# 📢 Chatbot for IT students in Hebron University (MiLo) <img src="https://github.com/user-attachments/assets/b530a436-f251-4218-aabc-16eb161090f5" alt="image" width="50" height="50">  – Frontend Interface (Graduation Project)
+# 📢 Chatbot for IT students in Hebron University (MiLo) <img src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bot-machine-robotic-future-things-and-ai-pack-technology-icons-6740636.png" width="70" height="70"> – Frontend Interface (Graduation Project)
 
 A modern, responsive chatbot interface built with **React.js** and **Tailwind CSS**. This project serves as the **frontend** of a conversational AI system, supporting features like **live chat**, **message streaming**, **speech recognition**, and **image upload**.
-
-![Chatbot Screenshot](./public/screenshot.png) <!-- Replace with your actual screenshot -->
 
 ---
 
 ## 🚀 Features
 
-- 💬 Live Chat Interface
-- ⏱ Real-Time Streaming Responses
-- 🎤 Voice Input via Web Speech API
-- 📸 Image Upload Support
-- 📜 Chat History Panel
-- 🌗 Responsive Design (Mobile & Desktop)
+- 💬 Live Chat Interface  
+- ⏱ Real-Time Streaming Responses  
+- 🎤 Voice Input via React Speech Recognition 
+- 📜 Chat History Panel  
+- 🌗 Responsive Design (Mobile & Desktop)  
+- 🛠️ **Admin Panel:** Manage users, view chat logs, and configure chatbot settings.  
+- 🎓 **Student Chat:** Dedicated chat interface for students to generate lecture schedules and tables at the beginning of each semester.  
+- 👥 **Guest Chat:** A public chat option for guests to inquire about university information and services.  
+- 🔐 **Milo’s Password Management:**  
+  - Change Milo’s password securely.  
+  - Forgot password flow to reset Milo’s password via verification.  
 
 ---
 
@@ -93,7 +96,7 @@ GitHub: @aya-soghayyer
 
 ## 🚀 Deployment on Render
 
-This project deployed on [Render](https://www.chatbotmilo.online/) — a simple and powerful cloud platform for hosting frontend and backend apps.
+This project was deployed on [MiLo chatbot](https://www.chatbotmilo.online/) — a simple and powerful cloud platform for hosting frontend and backend apps.
 
 
 

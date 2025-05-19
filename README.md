@@ -1,4 +1,4 @@
-# 📢 Chatbot for IT students in Hebron University (MiLo) <img src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bot-machine-robotic-future-things-and-ai-pack-technology-icons-6740636.png" width="50" height="50"> – Frontend Interface (Graduation Project)
+# 📢 Chatbot for IT students at Hebron University (MiLo) <img src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bot-machine-robotic-future-things-and-ai-pack-technology-icons-6740636.png" width="50" height="50"> – Frontend Interface (Graduation Project)
 
 A modern, responsive chatbot interface built with **React.js** and **Tailwind CSS**. This project serves as the **frontend** of a conversational AI system, supporting features like **live chat**, **message streaming**, **speech recognition**, and **image upload**.
 

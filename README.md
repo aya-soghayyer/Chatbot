@@ -1,4 +1,4 @@
-# 📢 Chatbot for IT students in Hebron University (MiLo) <img src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bot-machine-robotic-future-things-and-ai-pack-technology-icons-6740636.png" width="70" height="70"> – Frontend Interface (Graduation Project)
+# 📢 Chatbot for IT students in Hebron University (MiLo) <img src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bot-machine-robotic-future-things-and-ai-pack-technology-icons-6740636.png" width="50" height="50"> – Frontend Interface (Graduation Project)
 
 A modern, responsive chatbot interface built with **React.js** and **Tailwind CSS**. This project serves as the **frontend** of a conversational AI system, supporting features like **live chat**, **message streaming**, **speech recognition**, and **image upload**.
 
@@ -76,6 +76,44 @@ npm run dev
 
 ---
 
+## 🎨 Project Pages Designs
+
+The chatbot frontend is structured into several pages and layouts to support different user roles and functions:
+
+### 🏠 Home Page
+![image](https://github.com/user-attachments/assets/32a2328a-4003-49fb-8921-7d665bbf71cd)
+
+### 👤 Guest Chat Page
+![image](https://github.com/user-attachments/assets/bb3343d4-cf1c-4e28-800d-147ecfbbbdce)
+
+
+### 🎓 Student Chat Page
+![image](https://github.com/user-attachments/assets/ba7d2296-9af7-4d59-8823-89d42ae6452d)
+
+
+### 🛠️ Admin Panel
+
+
+### 🔐 Authentication Pages
+- **Login Page:** For students and admins.
+  ![image](https://github.com/user-attachments/assets/a4b6c064-c5f6-47df-a59f-8bad5a3f33fd)
+
+- **Signup Page:** just for IT students at Hebron University.
+  ![image](https://github.com/user-attachments/assets/378c2882-08e0-4fc3-b03e-2c8dd5ee6572)
+
+- **Forgot Password Page:** token-based reset flow.
+  ![image](https://github.com/user-attachments/assets/1e46efdc-cf2d-4727-9261-1fa61dff9c01)
+
+- **Reset Password Page:** Set a new password after verification.
+  
+- **Change Password Page:** set a new milo password 
+  ![image](https://github.com/user-attachments/assets/768f39b7-4f63-4bd0-bc9e-616b71617b9f)
+
+
+### 📱 Responsive Design
+
+---
+
 ## 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to improve or add.
 
@@ -91,6 +129,8 @@ GitHub: @aya-soghayyer
 - React Documentation
 
 - Tailwind CSS Docs
+
+- FastAPI Docs
 
 ---
 
